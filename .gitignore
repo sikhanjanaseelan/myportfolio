@@ -1,0 +1,65 @@
+# WordPress core
+/wp-admin/
+/wp-includes/
+
+# Root WordPress files
+/index.php
+/license.txt
+/readme.html
+/wp-activate.php
+/wp-blog-header.php
+/wp-comments-post.php
+/wp-config-sample.php
+/wp-cron.php
+/wp-links-opml.php
+/wp-load.php
+/wp-login.php
+/wp-mail.php
+/wp-settings.php
+/wp-signup.php
+/wp-trackback.php
+/xmlrpc.php
+
+# Sensitive configuration
+/wp-config.php
+/.htaccess
+
+# WordPress generated content
+/wp-content/uploads/
+/wp-content/cache/
+/wp-content/upgrade/
+/wp-content/backups/
+/wp-content/backup-db/
+/wp-content/advanced-cache.php
+/wp-content/object-cache.php
+
+# Installed third-party themes
+/wp-content/themes/twentytwenty*/
+/wp-content/themes/twentyeleven/
+/wp-content/themes/twentyten/
+# Installed third-party plugins
+/wp-content/plugins/akismet/
+/wp-content/plugins/hello.php
+
+# Local environment
+/.idea/
+/.vscode/
+.DS_Store
+Thumbs.db
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+
+# Dependencies
+/node_modules/
+/vendor/
+
+# Environment files
+.env
+.env.local
+
+/local-xdebuginfo.php
+/local-xdebuginfo.php
+/.local/
