@@ -1,8 +1,5 @@
 /**
- * Hero code-window placement.
- *
- * The reusable code-window component itself remains in:
- * assets/css/components/code-window.css
+ * Compact hero code-window placement.
  */
 
 .hero__visual {
@@ -11,13 +8,48 @@
 
 .hero__visual .code-window {
     box-shadow:
-        0 30px 80px rgb(23 49 38 / 18%),
-        var(--shadow-lg);
+        0 18px 44px rgb(23 49 38 / 14%),
+        var(--shadow-sm);
 }
 
-@media (max-width: 78rem) {
+.hero__visual .code-window__topbar {
+    min-height: 2.4rem;
+}
+
+.hero__visual .code-window__editor {
+    max-height: 20rem;
+    overflow: auto;
+    padding: 1rem;
+}
+
+.hero__visual .code-window__code {
+    font-size: 0.68rem;
+    line-height: 1.65;
+}
+
+.hero__visual .code-window__sidebar {
+    gap: 1rem;
+    padding-block: 1rem;
+}
+
+.hero__visual .code-window__footer {
+    min-height: 2.75rem;
+}
+
+.hero__visual .code-window__technology {
+    padding: 0.55rem;
+    font-size: 0.62rem;
+}
+
+.hero__visual .code-window__technology-mark {
+    min-width: 1.45rem;
+    min-height: 1.45rem;
+    font-size: 0.48rem;
+}
+
+@media (max-width: 70rem) {
     .hero__visual {
         width: 100%;
-        max-width: 58rem;
+        max-width: 50rem;
     }
 }

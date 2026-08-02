@@ -1,34 +1,25 @@
 /**
- * Hero engineering capability cards.
+ * Compact personal capability row.
  */
 
 .hero__capabilities {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 0;
-    margin-top: var(--space-8);
-    padding: var(--space-5);
+    margin-top: 1rem;
+    padding: 0.7rem;
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    background: rgb(255 255 255 / 58%);
+    border-radius: var(--radius-md);
+    background: rgb(255 255 255 / 62%);
     box-shadow: var(--shadow-xs);
 }
 
 .hero-capability {
     display: grid;
-    grid-template-columns: 3rem minmax(0, 1fr);
+    grid-template-columns: 2rem minmax(0, 1fr);
     min-width: 0;
     align-items: center;
-    gap: var(--space-3);
-    padding: 0 var(--space-4);
-}
-
-.hero-capability:first-child {
-    padding-left: 0;
-}
-
-.hero-capability:last-child {
-    padding-right: 0;
+    gap: 0.45rem;
+    padding-inline: 0.65rem;
 }
 
 .hero-capability + .hero-capability {
@@ -37,17 +28,15 @@
 
 .hero-capability__icon {
     display: inline-flex;
-    width: 3rem;
-    height: 3rem;
-    flex: 0 0 3rem;
+    width: 2rem;
+    height: 2rem;
+    flex: 0 0 2rem;
     align-items: center;
     justify-content: center;
-    justify-self: start;
-    margin: 0;
     border-radius: 50%;
     background: var(--color-primary-100);
     color: var(--color-primary-900);
-    font-size: var(--font-size-xs);
+    font-size: 0.52rem;
     font-weight: var(--font-weight-bold);
     line-height: 1;
 }
@@ -79,41 +68,38 @@
 
 .hero-capability > div strong {
     color: var(--color-text-strong);
-    font-size: 0.8rem;
-    line-height: 1.25;
+    font-size: 0.63rem;
+    line-height: 1.2;
 }
 
 .hero-capability > div span {
-    margin-top: 0.15rem;
+    margin-top: 0.08rem;
     color: var(--color-text-default);
-    font-size: 0.78rem;
-    line-height: 1.3;
+    font-size: 0.6rem;
+    line-height: 1.2;
 }
 
 .hero-capability > div small {
-    margin-top: 0.25rem;
+    margin-top: 0.12rem;
     color: var(--color-text-soft);
-    font-size: 0.68rem;
-    line-height: 1.35;
+    font-size: 0.52rem;
+    line-height: 1.25;
 }
 
-/*
- * Standard 14-inch laptops.
- */
-@media (max-width: 90rem) {
+@media (max-width: 70rem) {
+    .hero__capabilities {
+        max-width: 40rem;
+    }
+}
+
+@media (max-width: 42rem) {
     .hero__capabilities {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .hero-capability {
-        min-height: 5.75rem;
-        padding: var(--space-4);
-    }
-
-    .hero-capability:first-child,
-    .hero-capability:last-child {
-        padding-left: var(--space-4);
-        padding-right: var(--space-4);
+        min-height: 3.5rem;
+        padding: 0.6rem;
     }
 
     .hero-capability:nth-child(3) {
@@ -125,25 +111,16 @@
     }
 }
 
-/*
- * Mobile.
- */
-@media (max-width: 38rem) {
+@media (max-width: 28rem) {
     .hero__capabilities {
         grid-template-columns: 1fr;
-        padding: var(--space-4);
     }
 
-    .hero-capability,
-    .hero-capability:first-child,
-    .hero-capability:last-child {
-        min-height: auto;
-        grid-template-columns: 3rem minmax(0, 1fr);
-        padding: var(--space-4) 0;
+    .hero-capability {
+        padding: 0.65rem 0;
     }
 
-    .hero-capability + .hero-capability,
-    .hero-capability:nth-child(3) {
+    .hero-capability + .hero-capability {
         border-top: 1px solid var(--color-border);
         border-left: 0;
     }

@@ -1,13 +1,11 @@
 /**
- * Hero outer structure and main responsive layout.
+ * Compact personal portfolio hero layout.
  */
 
 .hero {
     position: relative;
     overflow: hidden;
-    padding-block:
-        clamp(3.5rem, 7vw, 6.5rem)
-        clamp(3rem, 6vw, 5rem);
+    padding-block: 1.25rem 1rem;
     background:
         linear-gradient(
             135deg,
@@ -20,23 +18,22 @@
     position: absolute;
     border-radius: 50%;
     pointer-events: none;
-    filter: blur(2px);
 }
 
 .hero__background--one {
-    top: 10%;
-    right: 28%;
-    width: 24rem;
-    height: 24rem;
-    background: rgb(217 121 24 / 7%);
+    top: 5%;
+    right: 30%;
+    width: 18rem;
+    height: 18rem;
+    background: rgb(217 121 24 / 5%);
 }
 
 .hero__background--two {
     right: -8rem;
-    bottom: -7rem;
-    width: 32rem;
-    height: 32rem;
-    background: rgb(95 143 117 / 8%);
+    bottom: -9rem;
+    width: 24rem;
+    height: 24rem;
+    background: rgb(95 143 117 / 6%);
 }
 
 .hero__layout {
@@ -44,47 +41,33 @@
     z-index: 1;
     display: grid;
     grid-template-columns:
-        minmax(30rem, 0.95fr)
-        minmax(34rem, 1.05fr);
-    gap: clamp(2.5rem, 4vw, 4.5rem);
+        minmax(22rem, 0.9fr)
+        minmax(30rem, 1.1fr);
+    gap: 2rem;
     align-items: center;
 }
 
 .hero__content {
     min-width: 0;
-    max-width: 46rem;
+    max-width: 38rem;
 }
 
-/*
- * Standard 14-inch laptops.
- */
-@media (max-width: 90rem) {
-    .hero__layout {
-        grid-template-columns:
-            minmax(0, 0.95fr)
-            minmax(30rem, 1.05fr);
-        gap: var(--space-8);
-    }
-}
-
-/*
- * Tablet and smaller laptops.
- */
-@media (max-width: 78rem) {
+@media (max-width: 70rem) {
     .hero__layout {
         grid-template-columns: 1fr;
     }
 
     .hero__content {
-        max-width: 55rem;
+        max-width: 42rem;
     }
 }
 
-/*
- * Mobile.
- */
-@media (max-width: 38rem) {
+@media (max-width: 40rem) {
     .hero {
-        padding-top: var(--space-9);
+        padding-block: 1rem;
+    }
+
+    .hero__layout {
+        gap: 1.5rem;
     }
 }

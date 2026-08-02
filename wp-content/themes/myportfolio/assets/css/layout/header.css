@@ -10,13 +10,15 @@
 .admin-bar .site-header {
     top: 32px;
 }
-
 .site-header__inner {
     display: flex;
-    min-height: var(--header-height);
+    min-height: 3.75rem;
     align-items: center;
     justify-content: space-between;
-    gap: var(--space-6);
+    gap: var(--space-5);
+}
+.site-main {
+    padding-top: 0;
 }
 
 .site-branding {
