@@ -1,0 +1,21 @@
+/*
+Theme Name: MyPortfolio
+Theme URI: https://github.com/sikhanjanaseelan/myportfolio
+Author: Sikha Njanaseelan
+Author URI: https://github.com/sikhanjanaseelan
+Description: A reusable, modular and accessible WordPress portfolio theme for developers, designers and digital professionals.
+Version: 0.1.0
+Requires at least: 6.0
+Tested up to: 6.8
+Requires PHP: 8.0
+Text Domain: myportfolio
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Tags: portfolio, developer, custom-theme, responsive, accessibility-ready
+*/
+
+body {
+    background: #f8f4ec;
+    color: #1e2d25;
+    font-family: Arial, sans-serif;
+}
