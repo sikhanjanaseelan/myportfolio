@@ -35,5 +35,10 @@ function myportfolio_enqueue_assets(): void {
         $theme->get( 'Version' ),
         true
     );
+    wp_script_add_data(
+	'myportfolio-main',
+	'type',
+	'module'
+);
 }
 add_action( 'wp_enqueue_scripts', 'myportfolio_enqueue_assets' );
