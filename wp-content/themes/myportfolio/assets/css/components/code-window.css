@@ -1,4 +1,9 @@
+/**
+ * Reusable developer code-window component.
+ */
+
 .code-window {
+    min-width: 0;
     overflow: hidden;
     border: 1px solid rgb(255 255 255 / 8%);
     border-radius: var(--radius-lg);
@@ -7,6 +12,9 @@
     box-shadow: var(--shadow-lg);
 }
 
+/*
+ * Top bar.
+ */
 .code-window__topbar {
     display: flex;
     min-height: 3.25rem;
@@ -20,6 +28,7 @@
 
 .code-window__controls {
     display: flex;
+    flex: 0 0 auto;
     gap: 0.45rem;
 }
 
@@ -49,12 +58,14 @@
 
 .code-window__tab {
     display: inline-flex;
+    min-width: 0;
     align-items: center;
     padding-inline: var(--space-5);
     border-bottom: 2px solid transparent;
     color: #9eacb8;
     font-family: var(--font-family-code);
     font-size: var(--font-size-xs);
+    white-space: nowrap;
 }
 
 .code-window__tab--active {
@@ -64,6 +75,7 @@
 
 .code-window__status {
     display: inline-flex;
+    flex: 0 0 auto;
     align-items: center;
     gap: var(--space-2);
     color: #b8c5ce;
@@ -78,8 +90,12 @@
     content: "";
 }
 
+/*
+ * Editor workspace.
+ */
 .code-window__workspace {
     display: grid;
+    min-width: 0;
     grid-template-columns: 3.75rem minmax(0, 1fr);
 }
 
@@ -105,6 +121,7 @@
 }
 
 .code-window__editor {
+    min-width: 0;
     overflow-x: auto;
     padding: var(--space-6);
 }
@@ -158,29 +175,42 @@
     color: #f6b36a;
 }
 
+/*
+ * Technology footer.
+ */
 .code-window__footer {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: var(--space-5);
-    padding: var(--space-4) var(--space-6);
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 0;
+    padding: 0;
     border-top: 1px solid var(--color-border);
     background: var(--color-surface);
     color: var(--color-text-default);
 }
 
 .code-window__technology {
-    display: inline-flex;
+    display: flex;
+    min-width: 0;
     align-items: center;
+    justify-content: center;
     gap: var(--space-2);
+    padding: var(--space-4);
+    border-left: 1px solid var(--color-border);
     font-size: var(--font-size-xs);
     font-weight: var(--font-weight-semibold);
+    white-space: nowrap;
+}
+
+.code-window__technology:first-child {
+    border-left: 0;
 }
 
 .code-window__technology-mark {
     display: inline-flex;
     min-width: 1.9rem;
     min-height: 1.9rem;
+    flex: 0 0 auto;
     align-items: center;
     justify-content: center;
     border-radius: var(--radius-pill);
@@ -190,6 +220,26 @@
     font-weight: var(--font-weight-bold);
 }
 
+/*
+ * Standard 14-inch laptop.
+ */
+@media (max-width: 90rem) {
+    .code-window__footer {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .code-window__technology:nth-child(odd) {
+        border-left: 0;
+    }
+
+    .code-window__technology:nth-child(n + 3) {
+        border-top: 1px solid var(--color-border);
+    }
+}
+
+/*
+ * Mobile.
+ */
 @media (max-width: 48rem) {
     .code-window__topbar {
         padding-inline: var(--space-4);
@@ -211,8 +261,31 @@
         padding: var(--space-5) var(--space-4);
     }
 
-    .code-window__footer {
-        gap: var(--space-3);
-        padding-inline: var(--space-4);
+    .code-window__code {
+        min-width: 29rem;
+        font-size: 0.74rem;
+    }
+}
+
+/*
+ * Very small mobile.
+ */
+@media (max-width: 30rem) {
+    .code-window__technology {
+        padding: var(--space-3);
+        font-size: 0.68rem;
+    }
+
+    .code-window__technology-mark {
+        min-width: 1.7rem;
+        min-height: 1.7rem;
+        font-size: 0.6rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .code-window,
+    .code-window * {
+        transition: none;
     }
 }

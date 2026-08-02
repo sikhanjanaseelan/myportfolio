@@ -1,3 +1,7 @@
+/**
+ * Container layouts.
+ */
+
 .container {
     width: min(
         calc(100% - 2rem),
@@ -7,14 +11,33 @@
 }
 
 .container--wide {
-    max-width: var(--container-wide);
+    width: min(
+        calc(100% - 3rem),
+        var(--container-wide)
+    );
+    max-width: none;
 }
 
 .container--narrow {
-    max-width: var(--container-narrow);
+    width: min(
+        calc(100% - 2rem),
+        var(--container-narrow)
+    );
+    max-width: none;
 }
 
 .container--full {
     width: 100%;
     max-width: none;
+}
+
+@media (max-width: 48rem) {
+    .container,
+    .container--wide,
+    .container--narrow {
+        width: min(
+            calc(100% - 1.25rem),
+            var(--container-default)
+        );
+    }
 }

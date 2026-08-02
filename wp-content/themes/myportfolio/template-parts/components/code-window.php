@@ -52,43 +52,62 @@ $data = wp_parse_args( $args ?? array(), $defaults );
         <div class="code-window__editor">
 
             <code class="code-window__code">
+<span class="code-window__line-number">1</span>
+<span class="code-window__line"><span class="code-token--php">&lt;?php</span></span>
 
-                <span class="code-window__line-number">1</span>
-                <span class="code-window__line"><span class="code-token--php">&lt;?php</span></span>
+<span class="code-window__line-number">2</span>
+<span class="code-window__line"><span class="code-token--comment">/**</span></span>
 
-                <span class="code-window__line-number">2</span>
-                <span class="code-window__line"></span>
+<span class="code-window__line-number">3</span>
+<span class="code-window__line"><span class="code-token--comment"> * MyPortfolio Framework</span></span>
 
-                <span class="code-window__line-number">3</span>
-                <span class="code-window__line"><span class="code-token--keyword">function</span> <span class="code-token--function">build_solution</span>( <span class="code-token--variable">$idea</span> ) {</span>
+<span class="code-window__line-number">4</span>
+<span class="code-window__line"><span class="code-token--comment"> * Clean. Modular. Scalable.</span></span>
 
-                <span class="code-window__line-number">4</span>
-                <span class="code-window__line">    <span class="code-token--variable">$plan</span> <span class="code-token--operator">=</span> <span class="code-token--function">analyse</span>( <span class="code-token--variable">$idea</span> );</span>
+<span class="code-window__line-number">5</span>
+<span class="code-window__line"><span class="code-token--comment"> */</span></span>
 
-                <span class="code-window__line-number">5</span>
-                <span class="code-window__line">    <span class="code-token--variable">$design</span> <span class="code-token--operator">=</span> <span class="code-token--function">architect</span>( <span class="code-token--variable">$plan</span> );</span>
+<span class="code-window__line-number">6</span>
+<span class="code-window__line"><span class="code-token--keyword">class</span> <span class="code-token--function">MyPortfolio</span></span>
 
-                <span class="code-window__line-number">6</span>
-                <span class="code-window__line">    <span class="code-token--variable">$product</span> <span class="code-token--operator">=</span> <span class="code-token--function">develop</span>( <span class="code-token--variable">$design</span> );</span>
+<span class="code-window__line-number">7</span>
+<span class="code-window__line">{</span>
 
-                <span class="code-window__line-number">7</span>
-                <span class="code-window__line">    <span class="code-token--variable">$result</span> <span class="code-token--operator">=</span> <span class="code-token--function">optimize</span>( <span class="code-token--variable">$product</span> );</span>
+<span class="code-window__line-number">8</span>
+<span class="code-window__line">    <span class="code-token--keyword">public function</span> <span class="code-token--function">build</span>(): <span class="code-token--keyword">self</span></span>
 
-                <span class="code-window__line-number">8</span>
-                <span class="code-window__line"></span>
+<span class="code-window__line-number">9</span>
+<span class="code-window__line">    {</span>
 
-                <span class="code-window__line-number">9</span>
-                <span class="code-window__line">    <span class="code-token--keyword">return</span> <span class="code-token--variable">$result</span>;</span>
+<span class="code-window__line-number">10</span>
+<span class="code-window__line">        <span class="code-token--variable">$this</span>-&gt;<span class="code-token--function">load_design_system</span>();</span>
 
-                <span class="code-window__line-number">10</span>
-                <span class="code-window__line">}</span>
+<span class="code-window__line-number">11</span>
+<span class="code-window__line">        <span class="code-token--variable">$this</span>-&gt;<span class="code-token--function">register_components</span>();</span>
 
-                <span class="code-window__line-number">11</span>
-                <span class="code-window__line"></span>
+<span class="code-window__line-number">12</span>
+<span class="code-window__line">        <span class="code-token--variable">$this</span>-&gt;<span class="code-token--function">enqueue_assets</span>();</span>
 
-                <span class="code-window__line-number">12</span>
-                <span class="code-window__line"><span class="code-token--comment">// Building maintainable digital products.</span></span>
+<span class="code-window__line-number">13</span>
+<span class="code-window__line">        <span class="code-token--variable">$this</span>-&gt;<span class="code-token--function">optimize_performance</span>();</span>
 
+<span class="code-window__line-number">14</span>
+<span class="code-window__line">        <span class="code-token--variable">$this</span>-&gt;<span class="code-token--function">enable_seo</span>();</span>
+
+<span class="code-window__line-number">15</span>
+<span class="code-window__line">        <span class="code-token--variable">$this</span>-&gt;<span class="code-token--function">integrate_ai_tools</span>();</span>
+
+<span class="code-window__line-number">16</span>
+<span class="code-window__line"></span>
+
+<span class="code-window__line-number">17</span>
+<span class="code-window__line">        <span class="code-token--keyword">return</span> <span class="code-token--variable">$this</span>;</span>
+
+<span class="code-window__line-number">18</span>
+<span class="code-window__line">    }</span>
+
+<span class="code-window__line-number">19</span>
+<span class="code-window__line">}</span>
             </code>
 
         </div>
