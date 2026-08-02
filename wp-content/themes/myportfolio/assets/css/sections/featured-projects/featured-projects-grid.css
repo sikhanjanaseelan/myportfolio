@@ -1,13 +1,29 @@
 /**
- * Featured projects grid layout.
+ * Featured projects horizontal showcase.
  */
 
 .featured-projects__list {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-6);
+    grid-auto-columns: minmax(17rem, 1fr);
+    grid-auto-flow: column;
+    gap: var(--space-5);
+    overflow-x: auto;
+    padding-bottom: var(--space-3);
+    scroll-snap-type: inline mandatory;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: thin;
 }
 
-.featured-projects__list > .project-card:first-child {
-    grid-column: 1 / -1;
+.featured-projects__list > .project-card {
+    min-width: 0;
+    scroll-snap-align: start;
+}
+
+.featured-projects__list::-webkit-scrollbar {
+    height: 6px;
+}
+
+.featured-projects__list::-webkit-scrollbar-thumb {
+    border-radius: var(--radius-pill);
+    background: var(--color-border-strong);
 }

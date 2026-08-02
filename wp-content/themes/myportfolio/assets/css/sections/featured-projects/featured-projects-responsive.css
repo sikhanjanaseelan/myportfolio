@@ -2,26 +2,21 @@
  * Featured projects responsive behaviour.
  */
 
-@media (max-width: 64rem) {
+@media (min-width: 90rem) {
     .featured-projects__list {
-        grid-template-columns: 1fr;
-    }
-
-    .featured-projects__list > .project-card:first-child {
-        grid-column: auto;
-    }
-
-    .featured-projects__list > .project-card--featured {
-        min-height: auto;
+        grid-auto-columns: minmax(16rem, 1fr);
     }
 }
 
-@media (max-width: 48rem) {
-    .featured-projects__heading {
-        margin-bottom: var(--space-7);
+@media (max-width: 64rem) {
+    .featured-projects__list {
+        grid-auto-columns: minmax(18rem, 70vw);
     }
+}
 
-    .featured-projects__empty {
-        padding: var(--space-7) var(--space-5);
+@media (max-width: 40rem) {
+    .featured-projects__list {
+        grid-auto-columns: minmax(16.5rem, 86vw);
+        gap: var(--space-4);
     }
 }

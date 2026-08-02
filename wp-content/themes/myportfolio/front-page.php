@@ -24,7 +24,23 @@ get_header();
         )
     );
     ?>
+	
 
+<?php
+get_template_part(
+	'template-parts/sections/featured-projects',
+	null,
+	array(
+		'eyebrow'      => 'Featured Projects',
+		'title'        => '',
+		'description'  => '',
+		'action_label' => 'View All Projects',
+		'action_url'   => home_url( '/projects/' ),
+		'show_action'  => true,
+		'limit'        => 5,
+	)
+);
+?>
 </main>
 
 <?php

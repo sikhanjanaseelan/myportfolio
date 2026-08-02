@@ -147,7 +147,26 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
 }
+.project-card--compact .project-card__media {
+    aspect-ratio: 16 / 8.5;
+}
 
+
+
+.project-card--compact .project-card__title {
+    font-size: var(--font-size-lg);
+}
+
+
+
+.project-card--compact .project-card__technologies {
+    margin-top: var(--space-4);
+}
+
+.project-card--compact .project-card__actions {
+    gap: var(--space-3);
+    padding-top: var(--space-4);
+}
 /*
  * Focus state
  */
