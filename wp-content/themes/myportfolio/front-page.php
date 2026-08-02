@@ -41,6 +41,12 @@ get_template_part(
 	)
 );
 ?>
+
+<?php
+get_template_part(
+    'template-parts/sections/engineering-capabilities'
+);
+?>
 </main>
 
 <?php
