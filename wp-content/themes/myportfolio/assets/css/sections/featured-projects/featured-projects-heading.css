@@ -1,0 +1,11 @@
+/**
+ * Featured projects section heading.
+ */
+
+.featured-projects__heading {
+    margin-bottom: var(--space-9);
+}
+
+.featured-projects__heading .section-heading__description {
+    max-width: 44rem;
+}

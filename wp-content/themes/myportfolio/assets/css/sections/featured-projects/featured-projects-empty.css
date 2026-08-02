@@ -1,0 +1,22 @@
+/**
+ * Featured projects empty state.
+ */
+
+.featured-projects__empty {
+    max-width: 44rem;
+    margin-inline: auto;
+    padding: var(--space-9);
+    border: 1px dashed var(--color-border-strong);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface-soft);
+    text-align: center;
+}
+
+.featured-projects__empty h3 {
+    margin: 0;
+}
+
+.featured-projects__empty p {
+    margin-top: var(--space-3);
+    color: var(--color-text-soft);
+}

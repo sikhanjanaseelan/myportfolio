@@ -1,0 +1,10 @@
+/**
+ * Featured projects section modules.
+ */
+
+@import url("./featured-projects/featured-projects-layout.css");
+@import url("./featured-projects/featured-projects-heading.css");
+@import url("./featured-projects/featured-projects-grid.css");
+@import url("./featured-projects/featured-projects-featured.css");
+@import url("./featured-projects/featured-projects-empty.css");
+@import url("./featured-projects/featured-projects-responsive.css");

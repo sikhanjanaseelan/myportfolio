@@ -1,0 +1,25 @@
+/**
+ * Featured project presentation.
+ */
+
+.featured-projects__list > .project-card--featured {
+    min-height: 30rem;
+}
+
+.featured-projects__list > .project-card--featured .project-card__media {
+    min-height: 100%;
+}
+
+.featured-projects__list > .project-card--featured .project-card__body {
+    justify-content: center;
+}
+
+.featured-projects__list > .project-card--featured .project-card__title {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+}
+
+.featured-projects__list > .project-card--featured .project-card__description {
+    max-width: 34rem;
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-relaxed);
+}

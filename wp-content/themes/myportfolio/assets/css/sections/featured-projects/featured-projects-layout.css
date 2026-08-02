@@ -1,0 +1,37 @@
+/**
+ * Featured projects section outer layout.
+ */
+
+.featured-projects {
+    position: relative;
+    overflow: hidden;
+}
+
+.featured-projects::before {
+    position: absolute;
+    top: -10rem;
+    right: -8rem;
+    width: 24rem;
+    height: 24rem;
+    border-radius: 50%;
+    background: rgb(217 121 24 / 5%);
+    content: "";
+    pointer-events: none;
+}
+
+.featured-projects::after {
+    position: absolute;
+    bottom: -12rem;
+    left: -10rem;
+    width: 28rem;
+    height: 28rem;
+    border-radius: 50%;
+    background: rgb(95 143 117 / 6%);
+    content: "";
+    pointer-events: none;
+}
+
+.featured-projects > .container {
+    position: relative;
+    z-index: 1;
+}

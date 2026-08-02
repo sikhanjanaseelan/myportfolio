@@ -1,0 +1,27 @@
+/**
+ * Featured projects responsive behaviour.
+ */
+
+@media (max-width: 64rem) {
+    .featured-projects__list {
+        grid-template-columns: 1fr;
+    }
+
+    .featured-projects__list > .project-card:first-child {
+        grid-column: auto;
+    }
+
+    .featured-projects__list > .project-card--featured {
+        min-height: auto;
+    }
+}
+
+@media (max-width: 48rem) {
+    .featured-projects__heading {
+        margin-bottom: var(--space-7);
+    }
+
+    .featured-projects__empty {
+        padding: var(--space-7) var(--space-5);
+    }
+}
