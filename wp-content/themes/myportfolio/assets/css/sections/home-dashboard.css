@@ -1,50 +1,75 @@
 /**
- * Homepage dashboard grid.
+ * Homepage professional dashboard.
+ *
+ * Desktop:
+ * Five cards flow from left to right in one horizontal row.
+ *
+ * Tablet:
+ * The row remains horizontal and becomes scrollable.
+ *
+ * Mobile:
+ * Cards stack vertically for easier reading.
  */
 
+/* =========================================================
+   Section
+   ========================================================= */
+
 .home-dashboard {
+    position: relative;
     padding-block: 1rem 2rem;
+    background: var(--color-background);
 }
+
+.home-dashboard__viewport {
+    width: 100%;
+    min-width: 0;
+}
+
+/* =========================================================
+   Desktop horizontal layout
+   ========================================================= */
 
 .home-dashboard__grid {
     display: grid;
     grid-template-columns:
-        minmax(0, 1.35fr)
-        minmax(14rem, 0.8fr)
-        minmax(14rem, 0.8fr);
-    grid-template-areas:
-        "capabilities stack experience"
-        "capabilities building testimonial";
-    gap: 1rem;
+        minmax(21rem, 1.45fr)
+        minmax(13rem, 0.85fr)
+        minmax(14rem, 0.9fr)
+        minmax(14rem, 0.9fr)
+        minmax(15rem, 1fr);
+    gap: 0.9rem;
+    align-items: stretch;
 }
 
-.home-dashboard__item--capabilities {
-    grid-area: capabilities;
+.home-dashboard__item {
+    min-width: 0;
 }
 
-.home-dashboard__item--stack {
-    grid-area: stack;
-}
-
-.home-dashboard__item--experience {
-    grid-area: experience;
-}
-
-.home-dashboard__item--building {
-    grid-area: building;
-}
-
-.home-dashboard__item--testimonial {
-    grid-area: testimonial;
-}
+/* =========================================================
+   Shared dashboard card
+   ========================================================= */
 
 .dashboard-card {
+    position: relative;
     height: 100%;
+    min-height: 12rem;
+    overflow: hidden;
     padding: 1rem;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     background: var(--color-surface);
     box-shadow: var(--shadow-xs);
+    transition:
+        border-color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.dashboard-card:hover {
+    border-color: var(--color-primary-300);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-2px);
 }
 
 .dashboard-card__header {
@@ -52,33 +77,55 @@
 }
 
 .dashboard-card__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
     margin: 0;
     color: var(--color-text-strong);
-    font-size: 0.7rem;
+    font-size: 0.67rem;
     font-weight: var(--font-weight-bold);
-    letter-spacing: 0.07em;
+    letter-spacing: 0.065em;
+    line-height: 1.2;
     text-transform: uppercase;
+}
+
+.dashboard-card__eyebrow::before {
+    width: 0.4rem;
+    height: 0.4rem;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: var(--color-accent);
+    content: "";
 }
 
 .dashboard-card__placeholder {
     margin-top: 0.75rem;
     color: var(--color-text-soft);
-    font-size: 0.78rem;
+    font-size: 0.75rem;
     line-height: 1.5;
+}
+
+/* =========================================================
+   Engineering capabilities card
+   ========================================================= */
+
+.dashboard-card--capabilities {
+    padding: 1rem;
 }
 
 .capabilities-card__grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0;
+    margin-top: 0.35rem;
 }
 
 .capabilities-card__item {
     display: flex;
+    min-width: 0;
+    min-height: 2.8rem;
     align-items: center;
-    gap: 0.65rem;
-    min-height: 3rem;
-    padding: 0.65rem;
+    gap: 0.55rem;
+    padding: 0.55rem;
     border-top: 1px solid var(--color-border);
 }
 
@@ -92,9 +139,9 @@
 
 .capabilities-card__icon {
     display: inline-flex;
-    width: 2rem;
-    height: 2rem;
-    flex: 0 0 2rem;
+    width: 1.8rem;
+    height: 1.8rem;
+    flex: 0 0 1.8rem;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
@@ -102,36 +149,197 @@
     color: var(--color-primary);
 }
 
-.capabilities-card__title {
-    color: var(--color-text-strong);
-    font-size: 0.72rem;
-    font-weight: var(--font-weight-medium);
-    line-height: 1.35;
+.capabilities-card__icon svg {
+    width: 0.95rem;
+    height: 0.95rem;
 }
 
-@media (max-width: 64rem) {
+.capabilities-card__item:nth-child(2n) .capabilities-card__icon {
+    background: var(--color-accent-100);
+    color: var(--color-accent-700);
+}
+
+.capabilities-card__item:nth-child(3n) .capabilities-card__icon {
+    background: #e8f3f5;
+    color: #286b7a;
+}
+
+.capabilities-card__item:nth-child(4n) .capabilities-card__icon {
+    background: #eee8f7;
+    color: #6f4ba4;
+}
+
+.capabilities-card__title {
+    min-width: 0;
+    color: var(--color-text-strong);
+    font-size: 0.67rem;
+    font-weight: var(--font-weight-medium);
+    line-height: 1.3;
+}
+
+/* =========================================================
+   Tech stack card
+   ========================================================= */
+
+.dashboard-card--stack {
+    background:
+        linear-gradient(
+            145deg,
+            var(--color-surface),
+            var(--color-primary-100)
+        );
+}
+
+.dashboard-card--stack .dashboard-card__placeholder {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    color: var(--color-primary);
+    font-family: var(--font-family-code);
+    font-size: 0.68rem;
+}
+
+/* =========================================================
+   Experience card
+   ========================================================= */
+
+.dashboard-card--experience {
+    background:
+        linear-gradient(
+            145deg,
+            var(--color-surface),
+            var(--color-cream-200)
+        );
+}
+
+.dashboard-card--experience .dashboard-card__placeholder {
+    position: relative;
+    padding-left: 0.9rem;
+    border-left: 2px solid var(--color-accent-300);
+    color: var(--color-text-default);
+}
+
+/* =========================================================
+   Currently building card
+   ========================================================= */
+
+.dashboard-card--building {
+    background:
+        linear-gradient(
+            145deg,
+            var(--color-primary-900),
+            var(--color-primary-700)
+        );
+    color: var(--color-white);
+}
+
+.dashboard-card--building .dashboard-card__eyebrow {
+    color: var(--color-white);
+}
+
+.dashboard-card--building .dashboard-card__eyebrow::before {
+    background: #50c878;
+    box-shadow: 0 0 0 4px rgb(80 200 120 / 14%);
+}
+
+.dashboard-card--building .dashboard-card__placeholder {
+    color: rgb(255 255 255 / 74%);
+}
+
+/* =========================================================
+   Testimonial card
+   ========================================================= */
+
+.dashboard-card--testimonial {
+    background:
+        linear-gradient(
+            145deg,
+            var(--color-surface),
+            var(--color-accent-100)
+        );
+}
+
+.dashboard-card--testimonial .dashboard-card__placeholder {
+    margin-bottom: 0;
+    color: var(--color-text-default);
+    font-family: var(--font-family-heading);
+    font-size: 0.8rem;
+    font-style: italic;
+}
+
+/* =========================================================
+   Standard laptop and tablet
+   Keep cards left-to-right using horizontal scrolling.
+   ========================================================= */
+
+@media (max-width: 90rem) {
+    .home-dashboard__viewport {
+        overflow-x: auto;
+        padding-bottom: 0.55rem;
+        scroll-snap-type: inline mandatory;
+        overscroll-behavior-inline: contain;
+        scrollbar-width: thin;
+    }
+
+    .home-dashboard__viewport::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .home-dashboard__viewport::-webkit-scrollbar-thumb {
+        border-radius: var(--radius-pill);
+        background: var(--color-border-strong);
+    }
+
     .home-dashboard__grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-template-areas:
-            "capabilities capabilities"
-            "stack experience"
-            "building testimonial";
+        width: max-content;
+        grid-template-columns:
+            21rem
+            13.5rem
+            14.5rem
+            14.5rem
+            15.5rem;
+    }
+
+    .home-dashboard__item {
+        scroll-snap-align: start;
     }
 }
 
+/* =========================================================
+   Mobile
+   Stack cards vertically.
+   ========================================================= */
+
 @media (max-width: 40rem) {
+    .home-dashboard {
+        padding-block: 0.75rem 1.5rem;
+    }
+
+    .home-dashboard__viewport {
+        overflow: visible;
+        padding-bottom: 0;
+    }
+
     .home-dashboard__grid {
+        width: 100%;
         grid-template-columns: 1fr;
-        grid-template-areas:
-            "capabilities"
-            "stack"
-            "experience"
-            "building"
-            "testimonial";
+        gap: 0.75rem;
+    }
+
+    .dashboard-card {
+        min-height: auto;
     }
 
     .capabilities-card__grid {
         grid-template-columns: 1fr;
+    }
+
+    .capabilities-card__item {
+        border-top: 1px solid var(--color-border);
+    }
+
+    .capabilities-card__item:first-child {
+        border-top: 0;
     }
 
     .capabilities-card__item:nth-child(even) {
@@ -140,5 +348,15 @@
 
     .capabilities-card__item:nth-child(2) {
         border-top: 1px solid var(--color-border);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dashboard-card {
+        transition: none;
+    }
+
+    .dashboard-card:hover {
+        transform: none;
     }
 }

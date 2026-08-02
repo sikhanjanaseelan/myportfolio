@@ -2,70 +2,77 @@
 /**
  * Homepage dashboard section.
  *
+ * Displays compact professional information cards in a horizontal row.
+ *
  * @package MyPortfolio
  */
 
 defined( 'ABSPATH' ) || exit;
 ?>
 
-<section class="home-dashboard">
-
+<section
+	class="home-dashboard"
+	aria-label="<?php esc_attr_e( 'Professional overview', 'myportfolio' ); ?>"
+>
 	<div class="container container--wide">
 
-		<div class="home-dashboard__grid">
+		<div class="home-dashboard__viewport">
 
-			<div class="home-dashboard__item home-dashboard__item--capabilities">
+			<div class="home-dashboard__grid">
 
-				<?php
-				get_template_part(
-					'template-parts/cards/card-capabilities'
-				);
-				?>
+				<div class="home-dashboard__item home-dashboard__item--capabilities">
 
-			</div>
+					<?php
+					get_template_part(
+						'template-parts/cards/card-capabilities'
+					);
+					?>
 
-			<div class="home-dashboard__item home-dashboard__item--stack">
+				</div>
 
-				<?php
-				get_template_part(
-					'template-parts/cards/card-tech-stack'
-				);
-				?>
+				<div class="home-dashboard__item home-dashboard__item--stack">
 
-			</div>
+					<?php
+					get_template_part(
+						'template-parts/cards/card-tech-stack'
+					);
+					?>
 
-			<div class="home-dashboard__item home-dashboard__item--experience">
+				</div>
 
-				<?php
-				get_template_part(
-					'template-parts/cards/card-experience-preview'
-				);
-				?>
+				<div class="home-dashboard__item home-dashboard__item--experience">
 
-			</div>
+					<?php
+					get_template_part(
+						'template-parts/cards/card-experience-preview'
+					);
+					?>
 
-			<div class="home-dashboard__item home-dashboard__item--building">
+				</div>
 
-				<?php
-				get_template_part(
-					'template-parts/cards/card-currently-building'
-				);
-				?>
+				<div class="home-dashboard__item home-dashboard__item--building">
 
-			</div>
+					<?php
+					get_template_part(
+						'template-parts/cards/card-currently-building'
+					);
+					?>
 
-			<div class="home-dashboard__item home-dashboard__item--testimonial">
+				</div>
 
-				<?php
-				get_template_part(
-					'template-parts/cards/card-testimonial-preview'
-				);
-				?>
+				<div class="home-dashboard__item home-dashboard__item--testimonial">
+
+					<?php
+					get_template_part(
+						'template-parts/cards/card-testimonial-preview'
+					);
+					?>
+
+				</div>
 
 			</div>
 
 		</div>
 
 	</div>
-
 </section>
