@@ -1,0 +1,218 @@
+.code-window {
+    overflow: hidden;
+    border: 1px solid rgb(255 255 255 / 8%);
+    border-radius: var(--radius-lg);
+    background: #101a22;
+    color: #e8edf2;
+    box-shadow: var(--shadow-lg);
+}
+
+.code-window__topbar {
+    display: flex;
+    min-height: 3.25rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding: 0 var(--space-5);
+    border-bottom: 1px solid rgb(255 255 255 / 8%);
+    background: #17232d;
+}
+
+.code-window__controls {
+    display: flex;
+    gap: 0.45rem;
+}
+
+.code-window__control {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+}
+
+.code-window__control--red {
+    background: #ff6259;
+}
+
+.code-window__control--yellow {
+    background: #ffbe2f;
+}
+
+.code-window__control--green {
+    background: #28c840;
+}
+
+.code-window__tabs {
+    display: flex;
+    min-width: 0;
+    align-self: stretch;
+}
+
+.code-window__tab {
+    display: inline-flex;
+    align-items: center;
+    padding-inline: var(--space-5);
+    border-bottom: 2px solid transparent;
+    color: #9eacb8;
+    font-family: var(--font-family-code);
+    font-size: var(--font-size-xs);
+}
+
+.code-window__tab--active {
+    border-bottom-color: var(--color-accent);
+    color: #ffffff;
+}
+
+.code-window__status {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: #b8c5ce;
+    font-size: var(--font-size-xs);
+}
+
+.code-window__status::after {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: #28c840;
+    content: "";
+}
+
+.code-window__workspace {
+    display: grid;
+    grid-template-columns: 3.75rem minmax(0, 1fr);
+}
+
+.code-window__sidebar {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: var(--space-5);
+    padding: var(--space-5) var(--space-3);
+    border-right: 1px solid rgb(255 255 255 / 8%);
+    background: #14202a;
+}
+
+.code-window__sidebar-icon {
+    color: #a9b6c0;
+    font-family: var(--font-family-code);
+    font-size: var(--font-size-md);
+    line-height: 1;
+}
+
+.code-window__sidebar-icon--active {
+    color: var(--color-accent-300);
+}
+
+.code-window__editor {
+    overflow-x: auto;
+    padding: var(--space-6);
+}
+
+.code-window__code {
+    display: grid;
+    min-width: 32rem;
+    grid-template-columns: auto 1fr;
+    gap: 0 var(--space-5);
+    margin: 0;
+    font-family: var(--font-family-code);
+    font-size: clamp(0.75rem, 1.3vw, 0.9rem);
+    line-height: 1.9;
+}
+
+.code-window__line-number {
+    color: #5f7180;
+    text-align: right;
+    user-select: none;
+}
+
+.code-window__line {
+    white-space: pre;
+}
+
+.code-token--php {
+    color: #c89bff;
+}
+
+.code-token--keyword {
+    color: #ff7f90;
+}
+
+.code-token--function {
+    color: #66d9ef;
+}
+
+.code-token--variable {
+    color: #8cc8ff;
+}
+
+.code-token--string {
+    color: #d8e988;
+}
+
+.code-token--comment {
+    color: #718391;
+}
+
+.code-token--operator {
+    color: #f6b36a;
+}
+
+.code-window__footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-5);
+    padding: var(--space-4) var(--space-6);
+    border-top: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text-default);
+}
+
+.code-window__technology {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+}
+
+.code-window__technology-mark {
+    display: inline-flex;
+    min-width: 1.9rem;
+    min-height: 1.9rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-pill);
+    background: var(--color-primary-100);
+    color: var(--color-primary-900);
+    font-size: 0.7rem;
+    font-weight: var(--font-weight-bold);
+}
+
+@media (max-width: 48rem) {
+    .code-window__topbar {
+        padding-inline: var(--space-4);
+    }
+
+    .code-window__status {
+        display: none;
+    }
+
+    .code-window__workspace {
+        grid-template-columns: 3rem minmax(0, 1fr);
+    }
+
+    .code-window__sidebar {
+        padding-inline: var(--space-2);
+    }
+
+    .code-window__editor {
+        padding: var(--space-5) var(--space-4);
+    }
+
+    .code-window__footer {
+        gap: var(--space-3);
+        padding-inline: var(--space-4);
+    }
+}

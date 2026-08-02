@@ -262,6 +262,41 @@ get_header();
 
 </div>
 </section>
+<section class="stack" style="--stack-gap: var(--space-6);">
+
+    <header class="section-heading section-heading--compact">
+
+        <div class="section-heading__content">
+
+            <p class="section-heading__eyebrow">
+                Developer Interface
+            </p>
+
+            <h2 class="section-heading__title">
+                Code Window
+            </h2>
+
+            <p class="section-heading__description">
+                A reusable code editor component for hero sections,
+                technical case studies and developer-focused content.
+            </p>
+
+        </div>
+
+    </header>
+
+    <?php
+    get_template_part(
+        'template-parts/components/code-window',
+        null,
+        array(
+            'filename' => 'functions.php',
+            'status'   => 'PHP',
+        )
+    );
+    ?>
+
+</section>
 </main>
 
 <?php
