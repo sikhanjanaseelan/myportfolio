@@ -1,11 +1,86 @@
 /**
- * Featured projects section heading.
+ * Featured projects compact section header.
  */
 
-.featured-projects__heading {
-    margin-bottom: var(--space-9);
+.featured-projects__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+    margin-bottom: var(--space-5);
+    padding-inline: var(--space-2);
 }
 
-.featured-projects__heading .section-heading__description {
+.featured-projects__heading-content {
+    min-width: 0;
+}
+
+.featured-projects__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin: 0;
+    color: var(--color-text-strong);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.06em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.featured-projects__eyebrow > span {
+    width: 0.5rem;
+    height: 0.5rem;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: var(--color-accent);
+}
+
+.featured-projects__title {
+    margin: var(--space-3) 0 0;
+    font-size: clamp(1.75rem, 3vw, 2.75rem);
+}
+
+.featured-projects__description {
     max-width: 44rem;
+    margin-top: var(--space-3);
+    color: var(--color-text-soft);
+}
+
+.featured-projects__view-all {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: var(--space-2);
+    padding-block: var(--space-2);
+    color: var(--color-text-strong);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    text-decoration: none;
+}
+
+.featured-projects__view-all:hover {
+    color: var(--color-accent-hover);
+}
+
+.featured-projects__view-all span:last-child {
+    transition: transform var(--transition-fast);
+}
+
+.featured-projects__view-all:hover span:last-child {
+    transform: translateX(0.25rem);
+}
+
+@media (max-width: 48rem) {
+    .featured-projects__header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: var(--space-3);
+        margin-bottom: var(--space-5);
+        padding-inline: 0;
+    }
+
+    .featured-projects__view-all {
+        align-self: flex-start;
+    }
 }

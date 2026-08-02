@@ -1,10 +1,20 @@
 /**
- * Featured projects section outer layout.
+ * Compact featured projects section layout.
  */
 
 .featured-projects {
     position: relative;
     overflow: hidden;
+    padding-top: 0;
+    padding-bottom: 2rem;
+}
+
+/*
+ * Override the global .section padding for this homepage section.
+ */
+.featured-projects.section {
+    padding-top: 0;
+    padding-bottom: 2rem;
 }
 
 .featured-projects::before {
@@ -34,4 +44,10 @@
 .featured-projects > .container {
     position: relative;
     z-index: 1;
+}
+
+.featured-projects__viewport {
+    position: relative;
+    min-width: 0;
+    overflow: hidden;
 }
