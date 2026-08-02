@@ -6,41 +6,53 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+
+get_header();
 ?>
 
-<!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<main id="main-content" class="site-main">
 
-<head>
-    <meta charset="<?php bloginfo( 'charset' ); ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div class="container">
 
-    <?php wp_head(); ?>
-</head>
+        <?php if ( have_posts() ) : ?>
 
-<body <?php body_class(); ?>>
+            <?php while ( have_posts() ) : ?>
 
-<?php wp_body_open(); ?>
+                <?php the_post(); ?>
 
-<main class="site-main">
+                <article <?php post_class( 'content-entry' ); ?>>
 
-    <div style="max-width: 900px; margin: 100px auto; padding: 40px;">
+                    <h1 class="content-entry__title">
+                        <?php the_title(); ?>
+                    </h1>
 
-        <p>MyPortfolio Theme</p>
+                    <div class="content-entry__content">
+                        <?php the_content(); ?>
+                    </div>
 
-        <h1>
-            <?php bloginfo( 'name' ); ?>
-        </h1>
+                </article>
 
-        <p>
-            The custom WordPress theme is active and working correctly.
-        </p>
+            <?php endwhile; ?>
+
+        <?php else : ?>
+
+            <section class="content-empty">
+
+                <h1>
+                    <?php esc_html_e( 'Nothing found', 'myportfolio' ); ?>
+                </h1>
+
+                <p>
+                    <?php esc_html_e( 'No content is currently available.', 'myportfolio' ); ?>
+                </p>
+
+            </section>
+
+        <?php endif; ?>
 
     </div>
 
 </main>
 
-<?php wp_footer(); ?>
-
-</body>
-</html>
+<?php
+get_footer();
