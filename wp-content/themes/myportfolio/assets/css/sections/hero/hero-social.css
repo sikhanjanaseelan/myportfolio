@@ -1,0 +1,42 @@
+/**
+ * Hero professional profile links.
+ */
+
+.hero__socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-7);
+    margin-top: var(--space-7);
+}
+
+.hero__social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--color-text-strong);
+    font-weight: var(--font-weight-medium);
+    text-decoration: none;
+}
+
+.hero__social-link:hover {
+    color: var(--color-primary);
+}
+
+.hero__social-icon {
+    display: inline-flex;
+    width: 1.8rem;
+    height: 1.8rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+    font-size: 0.7rem;
+    font-weight: var(--font-weight-bold);
+}
+
+@media (max-width: 38rem) {
+    .hero__socials {
+        gap: var(--space-4);
+    }
+}

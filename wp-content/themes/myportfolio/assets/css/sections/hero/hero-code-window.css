@@ -1,0 +1,23 @@
+/**
+ * Hero code-window placement.
+ *
+ * The reusable code-window component itself remains in:
+ * assets/css/components/code-window.css
+ */
+
+.hero__visual {
+    min-width: 0;
+}
+
+.hero__visual .code-window {
+    box-shadow:
+        0 30px 80px rgb(23 49 38 / 18%),
+        var(--shadow-lg);
+}
+
+@media (max-width: 78rem) {
+    .hero__visual {
+        width: 100%;
+        max-width: 58rem;
+    }
+}

@@ -1,0 +1,21 @@
+/**
+ * Hero primary and secondary actions.
+ */
+
+.hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-7);
+}
+
+@media (max-width: 38rem) {
+    .hero__actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .hero__actions .button {
+        width: 100%;
+    }
+}

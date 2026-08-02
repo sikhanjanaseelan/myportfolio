@@ -1,0 +1,90 @@
+/**
+ * Hero outer structure and main responsive layout.
+ */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    padding-block:
+        clamp(3.5rem, 7vw, 6.5rem)
+        clamp(3rem, 6vw, 5rem);
+    background:
+        linear-gradient(
+            135deg,
+            var(--color-cream-50),
+            var(--color-cream-100)
+        );
+}
+
+.hero__background {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(2px);
+}
+
+.hero__background--one {
+    top: 10%;
+    right: 28%;
+    width: 24rem;
+    height: 24rem;
+    background: rgb(217 121 24 / 7%);
+}
+
+.hero__background--two {
+    right: -8rem;
+    bottom: -7rem;
+    width: 32rem;
+    height: 32rem;
+    background: rgb(95 143 117 / 8%);
+}
+
+.hero__layout {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns:
+        minmax(30rem, 0.95fr)
+        minmax(34rem, 1.05fr);
+    gap: clamp(2.5rem, 4vw, 4.5rem);
+    align-items: center;
+}
+
+.hero__content {
+    min-width: 0;
+    max-width: 46rem;
+}
+
+/*
+ * Standard 14-inch laptops.
+ */
+@media (max-width: 90rem) {
+    .hero__layout {
+        grid-template-columns:
+            minmax(0, 0.95fr)
+            minmax(30rem, 1.05fr);
+        gap: var(--space-8);
+    }
+}
+
+/*
+ * Tablet and smaller laptops.
+ */
+@media (max-width: 78rem) {
+    .hero__layout {
+        grid-template-columns: 1fr;
+    }
+
+    .hero__content {
+        max-width: 55rem;
+    }
+}
+
+/*
+ * Mobile.
+ */
+@media (max-width: 38rem) {
+    .hero {
+        padding-top: var(--space-9);
+    }
+}
