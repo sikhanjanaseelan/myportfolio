@@ -21,6 +21,13 @@
 @import url("./layout/container.css");
 @import url("./layout/section.css");
 
+/* Components */
+@import url("./components/buttons.css");
+@import url("./components/badges.css");
+@import url("./components/section-heading.css");
+@import url("./components/grid.css");
+@import url("./components/project-card.css");
+
 /* Utilities */
 @import url("./utilities/helpers.css");
 @import url("./utilities/accessibility.css");
