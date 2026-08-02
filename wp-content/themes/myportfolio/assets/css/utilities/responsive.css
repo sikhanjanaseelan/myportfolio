@@ -1,0 +1,35 @@
+.show-mobile {
+    display: none;
+}
+
+@media (max-width: 48rem) {
+    .hide-mobile {
+        display: none !important;
+    }
+
+    .show-mobile {
+        display: initial;
+    }
+
+    .container {
+        width: min(
+            calc(100% - 1.25rem),
+            var(--container-default)
+        );
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}}
+}

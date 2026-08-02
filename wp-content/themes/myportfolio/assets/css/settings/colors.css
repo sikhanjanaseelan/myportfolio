@@ -1,0 +1,61 @@
+:root {
+    /*
+     * Brand colors
+     */
+    --color-primary-900: #173126;
+    --color-primary-800: #203f31;
+    --color-primary-700: #2d5543;
+    --color-primary-600: #3f6e58;
+    --color-primary-500: #5f8f75;
+    --color-primary-300: #a9c6b5;
+    --color-primary-100: #e8f0eb;
+
+    --color-accent-700: #a94f15;
+    --color-accent-600: #c8661c;
+    --color-accent-500: #d97918;
+    --color-accent-300: #eeb47d;
+    --color-accent-100: #faead8;
+
+    /*
+     * Warm neutral colors
+     */
+    --color-cream-50: #fdfbf8;
+    --color-cream-100: #fbf8f3;
+    --color-cream-200: #f5efe7;
+    --color-cream-300: #e9ded1;
+
+    /*
+     * Text colors
+     */
+    --color-text-strong: #1c2430;
+    --color-text-default: #344054;
+    --color-text-soft: #667085;
+    --color-text-muted: #98a2b3;
+
+    /*
+     * Surfaces and borders
+     */
+    --color-background: var(--color-cream-100);
+    --color-surface: #ffffff;
+    --color-surface-soft: var(--color-cream-200);
+    --color-border: #e4ddd3;
+    --color-border-strong: #d4c8b9;
+
+    /*
+     * Feedback colors
+     */
+    --color-success: #24784d;
+    --color-warning: #b7791f;
+    --color-error: #b42318;
+    --color-info: #3567a8;
+
+    /*
+     * Common aliases
+     */
+    --color-primary: var(--color-primary-800);
+    --color-primary-hover: var(--color-primary-900);
+    --color-accent: var(--color-accent-500);
+    --color-accent-hover: var(--color-accent-600);
+    --color-white: #ffffff;
+    --color-black: #000000;
+}

@@ -1,0 +1,33 @@
+.section {
+    position: relative;
+    padding-block: var(--section-space-default);
+}
+
+.section--small {
+    padding-block: var(--section-space-small);
+}
+
+.section--large {
+    padding-block: var(--section-space-large);
+}
+
+.section--surface {
+    background: var(--color-surface);
+}
+
+.section--soft {
+    background: var(--color-surface-soft);
+}
+
+.section--primary {
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
+.section--flush-top {
+    padding-top: 0;
+}
+
+.section--flush-bottom {
+    padding-bottom: 0;
+}
