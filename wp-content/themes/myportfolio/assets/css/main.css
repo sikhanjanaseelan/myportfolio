@@ -35,6 +35,8 @@
 /* Sections */
 @import url("./sections/hero.css");
 @import url("./sections/featured-projects.css");
+@import url("./sections/engineering-capabilities.css");
+@import url("./sections/home-dashboard.css");
 
 /* Utilities */
 @import url("./utilities/helpers.css");
