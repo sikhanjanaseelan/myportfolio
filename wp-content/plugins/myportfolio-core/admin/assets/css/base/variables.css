@@ -1,0 +1,126 @@
+/**
+ * MyPortfolio Core admin design tokens.
+ *
+ * All admin components should use these variables instead of
+ * hardcoded colors, spacing, radii, shadows, or transitions.
+ */
+
+.myportfolio-core-admin {
+    /* Brand colors */
+    --mpc-color-primary: #5b4bff;
+    --mpc-color-primary-hover: #4939e6;
+    --mpc-color-primary-soft: #f1efff;
+    --mpc-color-primary-border: #cfc8ff;
+
+    /* Neutral colors */
+    --mpc-color-background: #f6f8fc;
+    --mpc-color-surface: #ffffff;
+    --mpc-color-surface-soft: #f9fafc;
+    --mpc-color-surface-muted: #f1f4f8;
+
+    /* Text colors */
+    --mpc-color-heading: #16213e;
+    --mpc-color-text: #4b5563;
+    --mpc-color-text-soft: #6b7280;
+    --mpc-color-text-muted: #8a93a5;
+    --mpc-color-white: #ffffff;
+
+    /* Border colors */
+    --mpc-color-border: #e2e8f0;
+    --mpc-color-border-strong: #cbd5e1;
+
+    /* State colors */
+    --mpc-color-success: #22c55e;
+    --mpc-color-success-soft: #ecfdf3;
+
+    --mpc-color-warning: #f59e0b;
+    --mpc-color-warning-soft: #fffbeb;
+
+    --mpc-color-danger: #ef4444;
+    --mpc-color-danger-soft: #fef2f2;
+
+    --mpc-color-info: #0ea5e9;
+    --mpc-color-info-soft: #f0f9ff;
+
+    /* Typography */
+    --mpc-font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Oxygen,
+        Ubuntu,
+        Cantarell,
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+
+    --mpc-font-family-code:
+        "SFMono-Regular",
+        Consolas,
+        "Liberation Mono",
+        Menlo,
+        monospace;
+
+    --mpc-font-size-xs: 0.75rem;
+    --mpc-font-size-sm: 0.8125rem;
+    --mpc-font-size-base: 0.875rem;
+    --mpc-font-size-md: 1rem;
+    --mpc-font-size-lg: 1.125rem;
+    --mpc-font-size-xl: 1.5rem;
+
+    --mpc-font-weight-regular: 400;
+    --mpc-font-weight-medium: 500;
+    --mpc-font-weight-semibold: 600;
+    --mpc-font-weight-bold: 700;
+
+    --mpc-line-height-tight: 1.25;
+    --mpc-line-height-base: 1.5;
+    --mpc-line-height-relaxed: 1.7;
+
+    /* Spacing scale */
+    --mpc-space-1: 0.25rem;
+    --mpc-space-2: 0.5rem;
+    --mpc-space-3: 0.75rem;
+    --mpc-space-4: 1rem;
+    --mpc-space-5: 1.25rem;
+    --mpc-space-6: 1.5rem;
+    --mpc-space-7: 2rem;
+    --mpc-space-8: 2.5rem;
+    --mpc-space-9: 3rem;
+    --mpc-space-10: 4rem;
+
+    /* Border radius */
+    --mpc-radius-sm: 0.5rem;
+    --mpc-radius-md: 0.75rem;
+    --mpc-radius-lg: 1.125rem;
+    --mpc-radius-pill: 999px;
+
+    /* Shadows */
+    --mpc-shadow-xs:
+        0 1px 2px rgb(15 23 42 / 4%);
+
+    --mpc-shadow-sm:
+        0 6px 20px rgb(15 23 42 / 6%);
+
+    --mpc-shadow-md:
+        0 12px 32px rgb(15 23 42 / 8%);
+
+    --mpc-shadow-lg:
+        0 22px 50px rgb(15 23 42 / 12%);
+
+    /* Transitions */
+    --mpc-transition-fast: 150ms ease;
+    --mpc-transition-base: 220ms ease;
+    --mpc-transition-slow: 320ms ease;
+
+    /* Layout */
+    --mpc-content-width: 90rem;
+    --mpc-sidebar-width: 15rem;
+    --mpc-header-height: 4.5rem;
+
+    /* Layering */
+    --mpc-z-header: 20;
+    --mpc-z-dropdown: 50;
+    --mpc-z-modal: 100;
+}
