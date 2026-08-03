@@ -1,44 +1,140 @@
 <?php
 /**
- * Projects Module Bootstrap
+ * Projects module bootstrap.
  *
  * @package MyPortfolioCore
  */
 
 defined( 'ABSPATH' ) || exit;
 
-class MPC_Projects {
+/**
+ * Initialises the Projects module.
+ */
+final class MPC_Projects {
 
-    /**
-     * Initialize module.
-     */
-    public static function init() {
+	/**
+	 * Initialise the module.
+	 *
+	 * @return void
+	 */
+	public static function init(): void {
 
-        self::includes();
+		self::includes();
 
-    }
+		add_filter(
+			'template_include',
+			array( __CLASS__, 'load_project_template' )
+		);
 
-    /**
-     * Load module classes.
-     */
-    private static function includes() {
+		add_action(
+			'wp_enqueue_scripts',
+			array( __CLASS__, 'enqueue_public_assets' )
+		);
+	}
 
-        require_once __DIR__ . '/class-project-cpt.php';
-        require_once __DIR__ . '/class-project-taxonomies.php';
-        require_once __DIR__ . '/class-project-meta.php';
-        require_once __DIR__ . '/class-project-save.php';
-        require_once __DIR__ . '/class-project-columns.php';
-        require_once __DIR__ . '/class-project-admin.php';
-        require_once __DIR__ . '/class-project-assets.php';
+	/**
+	 * Load Project module classes.
+	 *
+	 * @return void
+	 */
+	private static function includes(): void {
 
-        MPC_Project_CPT::init();
-        MPC_Project_Taxonomies::init();
-        MPC_Project_Meta::init();
-        MPC_Project_Save::init();
-        MPC_Project_Columns::init();
-        MPC_Project_Admin::init();
-        MPC_Project_Assets::init();
+		require_once __DIR__ . '/class-project-cpt.php';
+		require_once __DIR__ . '/class-project-taxonomies.php';
+		require_once __DIR__ . '/class-project-meta.php';
+		require_once __DIR__ . '/class-project-save.php';
+		require_once __DIR__ . '/class-project-columns.php';
+		require_once __DIR__ . '/class-project-admin.php';
+		require_once __DIR__ . '/class-project-assets.php';
 
-    }
+		MPC_Project_CPT::init();
+		MPC_Project_Taxonomies::init();
+		MPC_Project_Meta::init();
+		MPC_Project_Save::init();
+		MPC_Project_Columns::init();
+		MPC_Project_Admin::init();
+		MPC_Project_Assets::init();
+	}
 
+	/**
+	 * Load Project frontend templates.
+	 *
+	 * The active theme can override these templates by creating:
+	 *
+	 * myportfolio-core/archive-project.php
+	 * myportfolio-core/single-project.php
+	 *
+	 * @param string $template Current WordPress template path.
+	 * @return string
+	 */
+	public static function load_project_template(
+		string $template
+	): string {
+
+		if ( is_post_type_archive( MPC_Project_CPT::POST_TYPE ) ) {
+
+			$theme_template = locate_template(
+				'myportfolio-core/archive-project.php'
+			);
+
+			if ( $theme_template ) {
+				return $theme_template;
+			}
+
+			$plugin_template = __DIR__
+				. '/templates/archive-project.php';
+
+			if ( file_exists( $plugin_template ) ) {
+				return $plugin_template;
+			}
+		}
+
+		if ( is_singular( MPC_Project_CPT::POST_TYPE ) ) {
+
+			$theme_template = locate_template(
+				'myportfolio-core/single-project.php'
+			);
+
+			if ( $theme_template ) {
+				return $theme_template;
+			}
+
+			$plugin_template = __DIR__
+				. '/templates/single-project.php';
+
+			if ( file_exists( $plugin_template ) ) {
+				return $plugin_template;
+			}
+		}
+
+		return $template;
+	}
+
+	/**
+	 * Load Project frontend styles.
+	 *
+	 * @return void
+	 */
+	public static function enqueue_public_assets(): void {
+
+		if (
+			! is_post_type_archive( MPC_Project_CPT::POST_TYPE )
+			&& ! is_singular( MPC_Project_CPT::POST_TYPE )
+		) {
+			return;
+		}
+
+		$css_file = MYPORTFOLIO_CORE_PATH
+			. 'public/assets/css/projects.css';
+
+		wp_enqueue_style(
+			'myportfolio-core-projects',
+			MYPORTFOLIO_CORE_URL
+				. 'public/assets/css/projects.css',
+			array(),
+			file_exists( $css_file )
+				? (string) filemtime( $css_file )
+				: MYPORTFOLIO_CORE_VERSION
+		);
+	}
 }
