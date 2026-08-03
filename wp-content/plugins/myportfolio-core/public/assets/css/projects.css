@@ -1,98 +1,190 @@
 /**
  * MyPortfolio Core
  * Projects frontend styles
+ *
+ * Uses the active portfolio theme design tokens.
  */
 
-.mpc-projects-archive {
-    --mpc-project-color-primary: #5b4bff;
-    --mpc-project-color-primary-dark: #4939e6;
-    --mpc-project-color-heading: #16213e;
-    --mpc-project-color-text: #566075;
-    --mpc-project-color-muted: #7a8498;
-    --mpc-project-color-border: #e2e7f0;
-    --mpc-project-color-surface: #ffffff;
-    --mpc-project-color-background: #f7f8fc;
-    --mpc-project-radius: 18px;
+/* ==========================================================
+   Archive foundation
+========================================================== */
 
-    background: var(--mpc-project-color-background);
-    color: var(--mpc-project-color-text);
+.mpc-projects-archive {
+    min-height: 100vh;
+    background: var(--color-background, #fbf8f3);
+    color: var(--color-text-default, #344054);
+    font-family:
+        var(--font-family-body, "Inter", "Segoe UI", Arial, sans-serif);
 }
 
 .mpc-projects-container {
-    width: min(1180px, calc(100% - 40px));
+    width: min(
+        var(--container-default, 75rem),
+        calc(100% - 2.5rem)
+    );
     margin-inline: auto;
 }
 
+/* ==========================================================
+   Archive hero
+========================================================== */
+
 .mpc-projects-hero {
-    padding: 84px 0 58px;
+    position: relative;
+    overflow: hidden;
+    padding:
+        var(--section-space-default, clamp(4.5rem, 8vw, 7rem))
+        0
+        var(--space-9, 3rem);
+}
+
+.mpc-projects-hero::after {
+    position: absolute;
+    top: -10rem;
+    right: -8rem;
+    width: 25rem;
+    height: 25rem;
+    border-radius: 50%;
     background:
         radial-gradient(
-            circle at top right,
-            rgb(91 75 255 / 12%),
-            transparent 38%
-        ),
-        var(--mpc-project-color-background);
+            circle,
+            rgb(169 198 181 / 34%),
+            rgb(232 240 235 / 0%) 70%
+        );
+    content: "";
+    pointer-events: none;
+}
+
+.mpc-projects-hero .mpc-projects-container {
+    position: relative;
+    z-index: 1;
 }
 
 .mpc-projects-eyebrow {
-    display: inline-block;
-    margin-bottom: 12px;
-    color: var(--mpc-project-color-primary);
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.09em;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2, 0.5rem);
+    margin-bottom: var(--space-4, 1rem);
+    color: var(--color-accent, #d97918);
+    font-size: var(--font-size-xs, 0.75rem);
+    font-weight: var(--font-weight-bold, 700);
+    letter-spacing: var(--letter-spacing-wide, 0.08em);
     text-transform: uppercase;
 }
 
+.mpc-projects-eyebrow::before {
+    width: 2.25rem;
+    height: 1px;
+    background: currentcolor;
+    content: "";
+}
+
 .mpc-projects-title {
-    max-width: 760px;
+    max-width: 48rem;
     margin: 0;
-    color: var(--mpc-project-color-heading);
-    font-size: clamp(36px, 5vw, 64px);
-    font-weight: 700;
-    line-height: 1.05;
+    color: var(--color-primary, #203f31);
+    font-family:
+        var(--font-family-heading, "DM Serif Display", Georgia, serif);
+    font-size: clamp(2.5rem, 6vw, 4.75rem);
+    font-weight: var(--font-weight-regular, 400);
+    letter-spacing: var(--letter-spacing-tight, -0.03em);
+    line-height: var(--line-height-tight, 1.1);
 }
 
 .mpc-projects-intro {
-    max-width: 720px;
-    margin: 22px 0 0;
-    color: var(--mpc-project-color-text);
-    font-size: 17px;
-    line-height: 1.75;
+    max-width: 44rem;
+    margin: var(--space-6, 1.5rem) 0 0;
+    color: var(--color-text-soft, #667085);
+    font-size: var(--font-size-md, 1.125rem);
+    line-height: var(--line-height-relaxed, 1.75);
 }
 
+/* ==========================================================
+   Filters
+========================================================== */
+
+.mpc-projects-filters {
+    padding-bottom: var(--space-8, 2.5rem);
+}
+
+.mpc-projects-filter-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2, 0.5rem);
+}
+
+.mpc-projects-filter {
+    display: inline-flex;
+    min-height: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--space-4, 1rem);
+    border: 1px solid var(--color-border, #e4ddd3);
+    border-radius: var(--radius-pill, 999px);
+    background: var(--color-surface, #ffffff);
+    color: var(--color-text-default, #344054);
+    font-size: var(--font-size-sm, 0.875rem);
+    font-weight: var(--font-weight-medium, 500);
+    text-decoration: none;
+    transition:
+        border-color var(--transition-fast, 150ms ease),
+        background var(--transition-fast, 150ms ease),
+        color var(--transition-fast, 150ms ease);
+}
+
+.mpc-projects-filter:hover,
+.mpc-projects-filter:focus-visible,
+.mpc-projects-filter.is-active {
+    border-color: var(--color-primary, #203f31);
+    background: var(--color-primary, #203f31);
+    color: var(--color-white, #ffffff);
+}
+
+/* ==========================================================
+   Archive content
+========================================================== */
+
 .mpc-projects-content {
-    padding: 28px 0 90px;
+    padding: 0 0 var(--section-space-default, 7rem);
 }
 
 .mpc-projects-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 28px;
+    gap: var(--space-7, 2rem);
 }
 
+/* ==========================================================
+   Project card
+========================================================== */
+
 .mpc-project-card {
+    display: flex;
+    min-width: 0;
     overflow: hidden;
+    flex-direction: column;
     margin: 0;
-    border: 1px solid var(--mpc-project-color-border);
-    border-radius: var(--mpc-project-radius);
-    background: var(--mpc-project-color-surface);
-    box-shadow: 0 12px 36px rgb(20 32 62 / 7%);
+    border: 1px solid var(--color-border, #e4ddd3);
+    border-radius: var(--radius-lg, 1.5rem);
+    background: var(--color-surface, #ffffff);
+    box-shadow: var(--shadow-sm, 0 8px 24px rgb(28 36 48 / 6%));
     transition:
-        transform 180ms ease,
-        box-shadow 180ms ease;
+        border-color var(--transition-base, 250ms ease),
+        box-shadow var(--transition-base, 250ms ease),
+        transform var(--transition-base, 250ms ease);
 }
 
 .mpc-project-card:hover {
-    box-shadow: 0 20px 44px rgb(20 32 62 / 12%);
-    transform: translateY(-4px);
+    border-color: var(--color-primary-300, #a9c6b5);
+    box-shadow: var(--shadow-md, 0 18px 48px rgb(28 36 48 / 9%));
+    transform: translateY(-0.35rem);
 }
 
 .mpc-project-card__media {
     position: relative;
     display: block;
     overflow: hidden;
-    background: #edf0f7;
+    background: var(--color-surface-soft, #f5efe7);
 }
 
 .mpc-project-card__image,
@@ -104,7 +196,7 @@
 
 .mpc-project-card__image {
     object-fit: cover;
-    transition: transform 300ms ease;
+    transition: transform var(--transition-slow, 400ms ease);
 }
 
 .mpc-project-card:hover .mpc-project-card__image {
@@ -115,79 +207,100 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--mpc-project-color-muted);
+    color: var(--color-primary-500, #5f8f75);
 }
 
 .mpc-project-card__placeholder .dashicons {
     width: auto;
     height: auto;
-    font-size: 42px;
+    font-size: 2.75rem;
+    line-height: 1;
 }
 
 .mpc-project-card__status {
     position: absolute;
-    top: 14px;
-    right: 14px;
-    padding: 7px 11px;
-    border-radius: 999px;
+    top: var(--space-4, 1rem);
+    right: var(--space-4, 1rem);
+    padding:
+        var(--space-2, 0.5rem)
+        var(--space-3, 0.75rem);
+    border: 1px solid rgb(255 255 255 / 65%);
+    border-radius: var(--radius-pill, 999px);
     background: rgb(255 255 255 / 92%);
-    color: var(--mpc-project-color-heading);
-    font-size: 11px;
-    font-weight: 700;
-    box-shadow: 0 6px 18px rgb(20 32 62 / 10%);
-    backdrop-filter: blur(8px);
+    color: var(--color-primary, #203f31);
+    font-size: var(--font-size-xs, 0.75rem);
+    font-weight: var(--font-weight-semibold, 600);
+    box-shadow: var(--shadow-xs, 0 1px 2px rgb(28 36 48 / 4%));
+    backdrop-filter: blur(0.75rem);
 }
 
 .mpc-project-card__body {
-    padding: 24px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: var(--space-6, 1.5rem);
 }
 
-.mpc-project-card__categories,
-.mpc-project-card__technologies {
+.mpc-project-card__categories {
     display: flex;
     flex-wrap: wrap;
-    gap: 7px;
+    gap: var(--space-2, 0.5rem);
 }
 
 .mpc-project-card__category {
-    color: var(--mpc-project-color-primary);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
+    color: var(--color-accent-700, #a94f15);
+    font-size: var(--font-size-xs, 0.75rem);
+    font-weight: var(--font-weight-bold, 700);
+    letter-spacing: var(--letter-spacing-wide, 0.08em);
     text-transform: uppercase;
 }
 
 .mpc-project-card__title {
-    margin: 11px 0 0;
-    font-size: 21px;
-    line-height: 1.3;
+    margin: var(--space-3, 0.75rem) 0 0;
+    font-family:
+        var(--font-family-heading, "DM Serif Display", Georgia, serif);
+    font-size: var(--font-size-xl, 1.5rem);
+    font-weight: var(--font-weight-regular, 400);
+    line-height: var(--line-height-heading, 1.2);
 }
 
 .mpc-project-card__title a {
-    color: var(--mpc-project-color-heading);
+    color: var(--color-primary, #203f31);
     text-decoration: none;
 }
 
-.mpc-project-card__title a:hover {
-    color: var(--mpc-project-color-primary);
+.mpc-project-card__title a:hover,
+.mpc-project-card__title a:focus-visible {
+    color: var(--color-primary-hover, #173126);
 }
 
-.mpc-project-card__client {
-    margin: 10px 0 0;
-    color: var(--mpc-project-color-text);
-    font-size: 13px;
+.mpc-project-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap:
+        var(--space-3, 0.75rem)
+        var(--space-5, 1.25rem);
+    margin-top: var(--space-4, 1rem);
+    color: var(--color-text-soft, #667085);
+    font-size: var(--font-size-xs, 0.75rem);
 }
 
-.mpc-project-card__client span {
-    color: var(--mpc-project-color-muted);
-    font-weight: 600;
+.mpc-project-card__meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2, 0.5rem);
+}
+
+.mpc-project-card__meta strong {
+    color: var(--color-text-strong, #1c2430);
+    font-weight: var(--font-weight-semibold, 600);
 }
 
 .mpc-project-card__excerpt {
-    margin-top: 14px;
-    color: var(--mpc-project-color-text);
-    font-size: 14px;
-    line-height: 1.7;
+    margin-top: var(--space-4, 1rem);
+    color: var(--color-text-default, #344054);
+    font-size: var(--font-size-sm, 0.875rem);
+    line-height: var(--line-height-relaxed, 1.75);
 }
 
 .mpc-project-card__excerpt p {
@@ -195,84 +308,145 @@
 }
 
 .mpc-project-card__technologies {
-    margin-top: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2, 0.5rem);
+    margin-top: var(--space-5, 1.25rem);
 }
 
 .mpc-project-card__technology {
-    padding: 6px 9px;
-    border: 1px solid var(--mpc-project-color-border);
-    border-radius: 999px;
-    background: #f8f9fd;
-    color: var(--mpc-project-color-text);
-    font-size: 11px;
-    font-weight: 600;
+    display: inline-flex;
+    min-height: 1.875rem;
+    align-items: center;
+    padding: 0 var(--space-3, 0.75rem);
+    border: 1px solid var(--color-border, #e4ddd3);
+    border-radius: var(--radius-pill, 999px);
+    background: var(--color-cream-50, #fdfbf8);
+    color: var(--color-text-default, #344054);
+    font-size: var(--font-size-xs, 0.75rem);
+    font-weight: var(--font-weight-medium, 500);
 }
 
 .mpc-project-card__link {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    margin-top: 22px;
-    color: var(--mpc-project-color-primary);
-    font-size: 13px;
-    font-weight: 700;
+    align-self: flex-start;
+    gap: var(--space-2, 0.5rem);
+    margin-top: auto;
+    padding-top: var(--space-6, 1.5rem);
+    color: var(--color-primary, #203f31);
+    font-size: var(--font-size-sm, 0.875rem);
+    font-weight: var(--font-weight-semibold, 600);
     text-decoration: none;
 }
 
-.mpc-project-card__link:hover {
-    color: var(--mpc-project-color-primary-dark);
+.mpc-project-card__link span {
+    transition: transform var(--transition-fast, 150ms ease);
 }
 
+.mpc-project-card__link:hover {
+    color: var(--color-accent-700, #a94f15);
+}
+
+.mpc-project-card__link:hover span {
+    transform: translateX(0.25rem);
+}
+
+/* ==========================================================
+   Pagination
+========================================================== */
+
 .mpc-projects-pagination {
-    margin-top: 54px;
+    margin-top: var(--space-10, 4rem);
 }
 
 .mpc-projects-pagination .nav-links {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 8px;
+    gap: var(--space-2, 0.5rem);
 }
 
 .mpc-projects-pagination .page-numbers {
     display: inline-flex;
-    min-width: 42px;
-    height: 42px;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
     align-items: center;
     justify-content: center;
-    padding-inline: 13px;
-    border: 1px solid var(--mpc-project-color-border);
-    border-radius: 10px;
-    background: var(--mpc-project-color-surface);
-    color: var(--mpc-project-color-heading);
-    font-size: 13px;
-    font-weight: 600;
+    padding: 0 var(--space-3, 0.75rem);
+    border: 1px solid var(--color-border, #e4ddd3);
+    border-radius: var(--radius-sm, 0.625rem);
+    background: var(--color-surface, #ffffff);
+    color: var(--color-primary, #203f31);
+    font-size: var(--font-size-sm, 0.875rem);
+    font-weight: var(--font-weight-semibold, 600);
     text-decoration: none;
+    transition:
+        border-color var(--transition-fast, 150ms ease),
+        background var(--transition-fast, 150ms ease),
+        color var(--transition-fast, 150ms ease);
 }
 
 .mpc-projects-pagination .page-numbers.current,
 .mpc-projects-pagination .page-numbers:hover {
-    border-color: var(--mpc-project-color-primary);
-    background: var(--mpc-project-color-primary);
-    color: #ffffff;
+    border-color: var(--color-primary, #203f31);
+    background: var(--color-primary, #203f31);
+    color: var(--color-white, #ffffff);
 }
 
+/* ==========================================================
+   Empty state
+========================================================== */
+
 .mpc-projects-empty {
-    padding: 72px 24px;
-    border: 1px dashed var(--mpc-project-color-border);
-    border-radius: var(--mpc-project-radius);
-    background: var(--mpc-project-color-surface);
+    display: flex;
+    min-height: 22rem;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: var(--space-3, 0.75rem);
+    padding: var(--space-9, 3rem);
+    border: 1px dashed var(--color-border-strong, #d4c8b9);
+    border-radius: var(--radius-lg, 1.5rem);
+    background: var(--color-surface, #ffffff);
     text-align: center;
 }
 
+.mpc-projects-empty__icon {
+    display: inline-flex;
+    width: 4rem;
+    height: 4rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md, 1rem);
+    background: var(--color-primary-100, #e8f0eb);
+    color: var(--color-primary, #203f31);
+}
+
+.mpc-projects-empty__icon .dashicons {
+    width: auto;
+    height: auto;
+    font-size: 1.75rem;
+    line-height: 1;
+}
+
 .mpc-projects-empty h2 {
-    margin: 0;
-    color: var(--mpc-project-color-heading);
+    margin: var(--space-2, 0.5rem) 0 0;
+    color: var(--color-primary, #203f31);
+    font-family:
+        var(--font-family-heading, "DM Serif Display", Georgia, serif);
+    font-size: var(--font-size-2xl, 2rem);
+    font-weight: var(--font-weight-regular, 400);
 }
 
 .mpc-projects-empty p {
-    margin: 12px 0 0;
+    margin: 0;
+    color: var(--color-text-soft, #667085);
 }
+
+/* ==========================================================
+   Responsive
+========================================================== */
 
 @media (max-width: 1024px) {
     .mpc-projects-grid {
@@ -282,18 +456,48 @@
 
 @media (max-width: 680px) {
     .mpc-projects-container {
-        width: min(100% - 28px, 1180px);
+        width: min(
+            var(--container-default, 75rem),
+            calc(100% - 1.75rem)
+        );
     }
 
     .mpc-projects-hero {
-        padding: 58px 0 40px;
+        padding:
+            var(--space-10, 4rem)
+            0
+            var(--space-8, 2.5rem);
+    }
+
+    .mpc-projects-title {
+        font-size: clamp(2.25rem, 11vw, 3.25rem);
+    }
+
+    .mpc-projects-intro {
+        font-size: var(--font-size-base, 1rem);
     }
 
     .mpc-projects-grid {
         grid-template-columns: 1fr;
     }
 
+    .mpc-project-card__body {
+        padding: var(--space-5, 1.25rem);
+    }
+
     .mpc-projects-content {
-        padding-bottom: 64px;
+        padding-bottom: var(--space-10, 4rem);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mpc-project-card,
+    .mpc-project-card__image,
+    .mpc-project-card__link span {
+        transition: none;
+    }
+
+    .mpc-project-card:hover {
+        transform: none;
     }
 }

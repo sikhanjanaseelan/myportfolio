@@ -57,14 +57,14 @@ final class MPC_Projects {
 	}
 
 	/**
-	 * Load Project frontend templates.
+	 * Load frontend Project templates.
 	 *
-	 * The active theme can override these templates by creating:
+	 * The active theme can override these by creating:
 	 *
 	 * myportfolio-core/archive-project.php
 	 * myportfolio-core/single-project.php
 	 *
-	 * @param string $template Current WordPress template path.
+	 * @param string $template Current WordPress template.
 	 * @return string
 	 */
 	public static function load_project_template(
@@ -111,7 +111,7 @@ final class MPC_Projects {
 	}
 
 	/**
-	 * Load Project frontend styles.
+	 * Load Project frontend assets.
 	 *
 	 * @return void
 	 */

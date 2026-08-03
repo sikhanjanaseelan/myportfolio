@@ -8,6 +8,13 @@
 defined( 'ABSPATH' ) || exit;
 
 get_header();
+
+$project_categories = get_terms(
+	array(
+		'taxonomy'   => 'project_category',
+		'hide_empty' => true,
+	)
+);
 ?>
 
 <main
@@ -24,13 +31,13 @@ get_header();
 			</span>
 
 			<h1 class="mpc-projects-title">
-				<?php post_type_archive_title(); ?>
+				<?php esc_html_e( 'Projects built with purpose.', 'myportfolio-core' ); ?>
 			</h1>
 
 			<p class="mpc-projects-intro">
 				<?php
 				esc_html_e(
-					'A collection of WordPress, web-development and digital-product projects built with a focus on usability, performance and maintainable code.',
+					'A selection of WordPress platforms, custom web applications and digital experiences focused on usability, performance and maintainable development.',
 					'myportfolio-core'
 				);
 				?>
@@ -39,6 +46,51 @@ get_header();
 		</div>
 
 	</section>
+
+	<?php if ( $project_categories && ! is_wp_error( $project_categories ) ) : ?>
+
+		<section class="mpc-projects-filters">
+
+			<div class="mpc-projects-container">
+
+				<div
+					class="mpc-projects-filter-list"
+					aria-label="<?php esc_attr_e( 'Project categories', 'myportfolio-core' ); ?>"
+				>
+
+					<a
+						class="mpc-projects-filter is-active"
+						href="<?php echo esc_url( get_post_type_archive_link( MPC_Project_CPT::POST_TYPE ) ); ?>"
+					>
+						<?php esc_html_e( 'All Projects', 'myportfolio-core' ); ?>
+					</a>
+
+					<?php foreach ( $project_categories as $category ) : ?>
+
+						<?php
+						$category_link = get_term_link( $category );
+
+						if ( is_wp_error( $category_link ) ) {
+							continue;
+						}
+						?>
+
+						<a
+							class="mpc-projects-filter"
+							href="<?php echo esc_url( $category_link ); ?>"
+						>
+							<?php echo esc_html( $category->name ); ?>
+						</a>
+
+					<?php endforeach; ?>
+
+				</div>
+
+			</div>
+
+		</section>
+
+	<?php endif; ?>
 
 	<section class="mpc-projects-content">
 
@@ -58,6 +110,12 @@ get_header();
 						$client = (string) get_post_meta(
 							$project_id,
 							'_mpc_project_client',
+							true
+						);
+
+						$year = (string) get_post_meta(
+							$project_id,
+							'_mpc_project_year',
 							true
 						);
 
@@ -167,17 +225,35 @@ get_header();
 
 								</h2>
 
-								<?php if ( $client ) : ?>
+								<?php if ( $client || $year ) : ?>
 
-									<p class="mpc-project-card__client">
+									<div class="mpc-project-card__meta">
 
-										<span>
-											<?php esc_html_e( 'Client:', 'myportfolio-core' ); ?>
-										</span>
+										<?php if ( $client ) : ?>
 
-										<?php echo esc_html( $client ); ?>
+											<span>
+												<strong>
+													<?php esc_html_e( 'Client', 'myportfolio-core' ); ?>
+												</strong>
 
-									</p>
+												<?php echo esc_html( $client ); ?>
+											</span>
+
+										<?php endif; ?>
+
+										<?php if ( $year ) : ?>
+
+											<span>
+												<strong>
+													<?php esc_html_e( 'Year', 'myportfolio-core' ); ?>
+												</strong>
+
+												<?php echo esc_html( $year ); ?>
+											</span>
+
+										<?php endif; ?>
+
+									</div>
 
 								<?php endif; ?>
 
@@ -190,7 +266,9 @@ get_header();
 										echo wp_kses_post(
 											wpautop(
 												wp_trim_words(
-													get_the_content(),
+													wp_strip_all_tags(
+														get_the_content()
+													),
 													24
 												)
 											)
@@ -230,7 +308,7 @@ get_header();
 									class="mpc-project-card__link"
 									href="<?php the_permalink(); ?>"
 								>
-									<?php esc_html_e( 'View Project', 'myportfolio-core' ); ?>
+									<?php esc_html_e( 'View Case Study', 'myportfolio-core' ); ?>
 
 									<span aria-hidden="true">→</span>
 								</a>
@@ -270,14 +348,21 @@ get_header();
 
 				<div class="mpc-projects-empty">
 
+					<span
+						class="mpc-projects-empty__icon"
+						aria-hidden="true"
+					>
+						<span class="dashicons dashicons-portfolio"></span>
+					</span>
+
 					<h2>
-						<?php esc_html_e( 'No projects found', 'myportfolio-core' ); ?>
+						<?php esc_html_e( 'No projects published yet', 'myportfolio-core' ); ?>
 					</h2>
 
 					<p>
 						<?php
 						esc_html_e(
-							'Projects will appear here after they are published.',
+							'Published portfolio projects will appear here.',
 							'myportfolio-core'
 						);
 						?>
