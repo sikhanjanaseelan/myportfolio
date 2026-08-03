@@ -19,9 +19,9 @@ final class MyPortfolio_Core_Plugin {
 	 */
 	public function run(): void {
 
-		/*
-		 * Future initialisation.
-		 */
-
+		if ( is_admin() ) {
+			$admin_assets = new MyPortfolio_Core_Admin_Assets();
+			$admin_assets->register();
+		}
 	}
 }

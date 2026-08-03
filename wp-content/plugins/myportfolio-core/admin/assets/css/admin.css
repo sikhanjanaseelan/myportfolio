@@ -1,0 +1,15 @@
+/**
+ * MyPortfolio Core admin styles.
+ */
+
+.myportfolio-core-admin {
+    --mpc-color-primary: #5b4bff;
+    --mpc-color-primary-dark: #4638d9;
+    --mpc-color-background: #f5f7fb;
+    --mpc-color-surface: #ffffff;
+    --mpc-color-text: #182033;
+    --mpc-color-text-soft: #687086;
+    --mpc-color-border: #dfe4ee;
+    --mpc-radius: 0.75rem;
+    --mpc-shadow: 0 10px 30px rgb(31 41 55 / 8%);
+}
