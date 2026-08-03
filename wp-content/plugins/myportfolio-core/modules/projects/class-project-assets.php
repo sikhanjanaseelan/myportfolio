@@ -31,7 +31,9 @@ final class MPC_Project_Assets {
 	 * @param string $hook_suffix Current admin page hook.
 	 * @return void
 	 */
-	public static function enqueue_assets( string $hook_suffix ): void {
+	public static function enqueue_assets(
+		string $hook_suffix
+	): void {
 
 		unset( $hook_suffix );
 
@@ -44,6 +46,10 @@ final class MPC_Project_Assets {
 
 		$js_file = MYPORTFOLIO_CORE_PATH
 			. 'modules/projects/assets/js/projects-admin.js';
+
+		wp_enqueue_media();
+
+		wp_enqueue_script( 'jquery-ui-sortable' );
 
 		wp_enqueue_style(
 			'myportfolio-core-projects-admin',
@@ -59,11 +65,37 @@ final class MPC_Project_Assets {
 			'myportfolio-core-projects-admin',
 			MYPORTFOLIO_CORE_URL
 				. 'modules/projects/assets/js/projects-admin.js',
-			array(),
+			array(
+				'jquery',
+				'jquery-ui-sortable',
+			),
 			file_exists( $js_file )
 				? (string) filemtime( $js_file )
 				: MYPORTFOLIO_CORE_VERSION,
 			true
+		);
+
+		wp_localize_script(
+			'myportfolio-core-projects-admin',
+			'myportfolioCoreProjects',
+			array(
+				'mediaTitle'  => __(
+					'Select Project Gallery Images',
+					'myportfolio-core'
+				),
+				'mediaButton' => __(
+					'Use Selected Images',
+					'myportfolio-core'
+				),
+				'removeText'  => __(
+					'Remove image',
+					'myportfolio-core'
+				),
+				'dragText'    => __(
+					'Drag to reorder',
+					'myportfolio-core'
+				),
+			)
 		);
 	}
 
@@ -80,7 +112,10 @@ final class MPC_Project_Assets {
 			return false;
 		}
 
-		if ( MPC_Project_CPT::POST_TYPE === $screen->post_type ) {
+		if (
+			MPC_Project_CPT::POST_TYPE
+			=== $screen->post_type
+		) {
 			return true;
 		}
 
@@ -91,7 +126,7 @@ final class MPC_Project_Assets {
 		);
 
 		return in_array(
-			$screen->taxonomy,
+			(string) $screen->taxonomy,
 			$project_taxonomies,
 			true
 		);

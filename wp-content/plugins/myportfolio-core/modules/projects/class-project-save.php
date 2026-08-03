@@ -102,7 +102,17 @@ final class MPC_Project_Save {
 			'mpc_project_case_url',
 			'_mpc_project_case_url'
 		);
+self::save_gallery_field(
+	$post_id,
+	'mpc_project_gallery',
+	'_mpc_project_gallery'
+);
 
+self::save_url_field(
+	$post_id,
+	'mpc_project_video_url',
+	'_mpc_project_video_url'
+);
 		self::save_integer_field(
 			$post_id,
 			'mpc_project_sort_order',
@@ -302,7 +312,51 @@ final class MPC_Project_Save {
 			$value
 		);
 	}
+/**
+ * Save an ordered attachment gallery.
+ *
+ * @param int    $post_id  Current post ID.
+ * @param string $field    Request field name.
+ * @param string $meta_key Post meta key.
+ * @return void
+ */
+private static function save_gallery_field(
+	int $post_id,
+	string $field,
+	string $meta_key
+): void {
 
+	if ( ! isset( $_POST[ $field ] ) ) {
+		delete_post_meta( $post_id, $meta_key );
+		return;
+	}
+
+	$raw_value = sanitize_text_field(
+		wp_unslash( $_POST[ $field ] )
+	);
+
+	$attachment_ids = array_filter(
+		array_map(
+			'absint',
+			explode( ',', $raw_value )
+		)
+	);
+
+	$attachment_ids = array_values(
+		array_unique( $attachment_ids )
+	);
+
+	if ( empty( $attachment_ids ) ) {
+		delete_post_meta( $post_id, $meta_key );
+		return;
+	}
+
+	update_post_meta(
+		$post_id,
+		$meta_key,
+		implode( ',', $attachment_ids )
+	);
+}
 	/**
 	 * Update or delete an optional meta value.
 	 *
