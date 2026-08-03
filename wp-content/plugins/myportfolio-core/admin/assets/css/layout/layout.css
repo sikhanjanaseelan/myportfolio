@@ -1,0 +1,116 @@
+/**
+ * MyPortfolio Core
+ * Admin Layout
+ */
+
+/* ==========================================================
+   Main Admin Wrapper
+========================================================== */
+
+.myportfolio-core-admin{
+
+    max-width:var(--mpc-content-width);
+
+    margin:0 auto;
+
+    padding:var(--mpc-space-7);
+
+}
+
+/* ==========================================================
+   Dashboard Sections
+========================================================== */
+
+.mpc-dashboard-section{
+
+    margin-top:var(--mpc-space-7);
+
+}
+
+/* ==========================================================
+   Dashboard Grid
+========================================================== */
+
+.mpc-dashboard-grid{
+
+    display:grid;
+
+    gap:var(--mpc-space-5);
+
+    margin-top:var(--mpc-space-6);
+
+}
+
+/* ==========================================================
+   Two Columns
+========================================================== */
+
+.mpc-grid-2{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,minmax(0,1fr));
+
+    gap:var(--mpc-space-5);
+
+}
+
+/* ==========================================================
+   Three Columns
+========================================================== */
+
+.mpc-grid-3{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,minmax(0,1fr));
+
+    gap:var(--mpc-space-5);
+
+}
+
+/* ==========================================================
+   Four Columns
+========================================================== */
+
+.mpc-grid-4{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,minmax(0,1fr));
+
+    gap:var(--mpc-space-5);
+
+}
+
+/* ==========================================================
+   Responsive
+========================================================== */
+
+@media(max-width:1024px){
+
+    .mpc-grid-4{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:782px){
+
+    .myportfolio-core-admin{
+
+        padding:var(--mpc-space-5);
+
+    }
+
+    .mpc-grid-2,
+    .mpc-grid-3,
+    .mpc-grid-4{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
