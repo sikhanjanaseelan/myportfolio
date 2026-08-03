@@ -113,6 +113,43 @@ self::save_url_field(
 	'mpc_project_video_url',
 	'_mpc_project_video_url'
 );
+
+self::save_text_field(
+	$post_id,
+	'mpc_project_seo_title',
+	'_mpc_project_seo_title'
+);
+
+self::save_textarea_field(
+	$post_id,
+	'mpc_project_seo_description',
+	'_mpc_project_seo_description'
+);
+
+self::save_url_field(
+	$post_id,
+	'mpc_project_canonical_url',
+	'_mpc_project_canonical_url'
+);
+
+self::save_select_field(
+	$post_id,
+	'mpc_project_robots',
+	'_mpc_project_robots',
+	array(
+		'index-follow',
+		'noindex-follow',
+		'index-nofollow',
+		'noindex-nofollow',
+	)
+);
+
+self::save_integer_field(
+	$post_id,
+	'mpc_project_og_image_id',
+	'_mpc_project_og_image_id'
+);
+
 		self::save_integer_field(
 			$post_id,
 			'mpc_project_sort_order',
@@ -204,12 +241,46 @@ self::save_url_field(
 			wp_unslash( $_POST[ $field ] )
 		);
 
+
+
 		self::update_or_delete(
 			$post_id,
 			$meta_key,
 			$value
 		);
 	}
+
+
+
+	/**
+ * Save a textarea field.
+ *
+ * @param int    $post_id  Current post ID.
+ * @param string $field    Request field name.
+ * @param string $meta_key Post meta key.
+ * @return void
+ */
+private static function save_textarea_field(
+	int $post_id,
+	string $field,
+	string $meta_key
+): void {
+
+	if ( ! isset( $_POST[ $field ] ) ) {
+		delete_post_meta( $post_id, $meta_key );
+		return;
+	}
+
+	$value = sanitize_textarea_field(
+		wp_unslash( $_POST[ $field ] )
+	);
+
+	self::update_or_delete(
+		$post_id,
+		$meta_key,
+		$value
+	);
+}
 
 	/**
 	 * Save a URL field.

@@ -330,6 +330,169 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateGalleryState();
 
+    /**
+ * SEO character counters and preview.
+ */
+const seoTitle = workspace.querySelector(
+    '#mpc-project-seo-title'
+);
+
+const seoDescription = workspace.querySelector(
+    '#mpc-project-seo-description'
+);
+
+const seoTitlePreview = workspace.querySelector(
+    '[data-mpc-seo-preview-title]'
+);
+
+const seoDescriptionPreview = workspace.querySelector(
+    '[data-mpc-seo-preview-description]'
+);
+
+const updateCharacterCount = (field) => {
+    if (!field) {
+        return;
+    }
+
+    const counter = workspace.querySelector(
+        `[data-mpc-count-for="${field.id}"]`
+    );
+
+    if (counter) {
+        counter.textContent = String(field.value.length);
+    }
+};
+
+if (seoTitle) {
+    seoTitle.addEventListener('input', () => {
+        updateCharacterCount(seoTitle);
+
+        if (seoTitlePreview) {
+            seoTitlePreview.textContent = (
+                seoTitle.value.trim()
+                || 'Project SEO title preview'
+            );
+        }
+    });
+}
+
+if (seoDescription) {
+    seoDescription.addEventListener('input', () => {
+        updateCharacterCount(seoDescription);
+
+        if (seoDescriptionPreview) {
+            seoDescriptionPreview.textContent = (
+                seoDescription.value.trim()
+                || 'Your project meta description will appear here.'
+            );
+        }
+    });
+}
+
+/**
+ * Open Graph image manager.
+ */
+const ogImageField = workspace.querySelector(
+    '.mpc-project-og-image-value'
+);
+
+const ogImageContainer = workspace.querySelector(
+    '.mpc-project-og-image'
+);
+
+const ogImagePreview = workspace.querySelector(
+    '.mpc-project-og-image__preview'
+);
+
+const ogImageSelectButton = workspace.querySelector(
+    '.mpc-project-og-image-select'
+);
+
+const ogImageRemoveButton = workspace.querySelector(
+    '.mpc-project-og-image-remove'
+);
+
+let ogImageFrame = null;
+
+if (ogImageSelectButton) {
+    ogImageSelectButton.addEventListener('click', () => {
+        if (
+            typeof window.wp === 'undefined'
+            || !window.wp.media
+        ) {
+            return;
+        }
+
+        if (!ogImageFrame) {
+            ogImageFrame = window.wp.media({
+                title: myportfolioCoreProjects.ogMediaTitle,
+                button: {
+                    text: myportfolioCoreProjects.ogMediaButton,
+                },
+                library: {
+                    type: 'image',
+                },
+                multiple: false,
+            });
+
+            ogImageFrame.on('select', () => {
+                const attachment = ogImageFrame
+                    .state()
+                    .get('selection')
+                    .first()
+                    .toJSON();
+
+                const previewUrl = (
+                    attachment.sizes
+                    && attachment.sizes.medium
+                )
+                    ? attachment.sizes.medium.url
+                    : attachment.url;
+
+                if (ogImageField) {
+                    ogImageField.value = String(attachment.id);
+                }
+
+                if (ogImagePreview) {
+                    ogImagePreview.innerHTML = `
+                        <img src="${previewUrl}" alt="">
+                    `;
+                }
+
+                if (ogImageContainer) {
+                    ogImageContainer.classList.remove('is-empty');
+                    ogImageContainer.classList.add('has-image');
+                }
+
+                if (ogImageRemoveButton) {
+                    ogImageRemoveButton.hidden = false;
+                }
+            });
+        }
+
+        ogImageFrame.open();
+    });
+}
+
+if (ogImageRemoveButton) {
+    ogImageRemoveButton.addEventListener('click', () => {
+        if (ogImageField) {
+            ogImageField.value = '';
+        }
+
+        if (ogImagePreview) {
+            ogImagePreview.innerHTML = '';
+        }
+
+        if (ogImageContainer) {
+            ogImageContainer.classList.remove('has-image');
+            ogImageContainer.classList.add('is-empty');
+        }
+
+        ogImageRemoveButton.hidden = true;
+    });
+}
+
     document.documentElement.classList.add(
         'myportfolio-core-projects-ready'
     );

@@ -95,6 +95,14 @@ final class MPC_Project_Assets {
 					'Drag to reorder',
 					'myportfolio-core'
 				),
+				'ogMediaTitle'  => __(
+	'Select Social Preview Image',
+	'myportfolio-core'
+),
+'ogMediaButton' => __(
+	'Use This Image',
+	'myportfolio-core'
+),
 			)
 		);
 	}
