@@ -111,3 +111,50 @@
         width: auto;
     }
 }
+
+
+/* ==========================================================
+   Project metaboxes
+========================================================== */
+
+.post-type-portfolio_project .postbox {
+    border: 1px solid var(--mpc-color-border);
+    border-radius: var(--mpc-radius-md);
+    background: var(--mpc-color-surface);
+    box-shadow: var(--mpc-shadow-xs);
+}
+
+.post-type-portfolio_project .postbox .postbox-header {
+    border-bottom: 1px solid var(--mpc-color-border);
+}
+
+.post-type-portfolio_project .postbox .hndle {
+    padding: var(--mpc-space-4) var(--mpc-space-5);
+    color: var(--mpc-color-heading);
+    font-size: var(--mpc-font-size-md);
+    font-weight: var(--mpc-font-weight-semibold);
+}
+
+.post-type-portfolio_project .postbox .inside {
+    margin: 0;
+    padding: var(--mpc-space-5);
+}
+
+.mpc-project-metabox {
+    min-width: 0;
+}
+
+.mpc-project-field-spacing {
+    margin-top: var(--mpc-space-5);
+}
+
+#side-sortables .mpc-project-metabox .mpc-input,
+#side-sortables .mpc-project-metabox .mpc-select {
+    width: 100%;
+}
+
+@media screen and (max-width: 782px) {
+    .post-type-portfolio_project .postbox .inside {
+        padding: var(--mpc-space-4);
+    }
+}
