@@ -4,8 +4,8 @@
  * All admin components should use these variables instead of
  * hardcoded colors, spacing, radii, shadows, or transitions.
  */
-
-.myportfolio-core-admin {
+.myportfolio-core-admin,
+body.mpc-project-editor-screen {
     /* Brand colors */
     --mpc-color-primary: #5b4bff;
     --mpc-color-primary-hover: #4939e6;

@@ -8,9 +8,9 @@
 ========================================================== */
 
 .post-type-portfolio_project .wp-list-table {
+    overflow: hidden;
     border: 1px solid var(--mpc-color-border);
     border-radius: var(--mpc-radius-md);
-    overflow: hidden;
     background: var(--mpc-color-surface);
     box-shadow: var(--mpc-shadow-xs);
 }
@@ -27,8 +27,18 @@
     width: 18rem;
 }
 
-.post-type-portfolio_project .column-project_type {
-    width: 10rem;
+.post-type-portfolio_project .column-project_status {
+    width: 8.5rem;
+}
+
+.post-type-portfolio_project .column-project_featured {
+    width: 5rem;
+    text-align: center;
+}
+
+.post-type-portfolio_project .column-project_order {
+    width: 4.5rem;
+    text-align: center;
 }
 
 .mpc-project-list-thumbnail {
@@ -67,8 +77,8 @@
 
 .mpc-project-list-term {
     display: inline-flex;
-    align-items: center;
     min-height: 1.6rem;
+    align-items: center;
     padding-inline: var(--mpc-space-2);
     border-radius: var(--mpc-radius-pill);
     background: var(--mpc-color-primary-soft);
@@ -80,101 +90,6 @@
 
 .mpc-project-list-empty {
     color: var(--mpc-color-text-muted);
-}
-
-/* ==========================================================
-   Project editor preparation
-========================================================== */
-
-.post-type-portfolio_project #poststuff {
-    min-width: 0;
-}
-
-.post-type-portfolio_project #titlediv #title {
-    min-height: 3rem;
-    padding-inline: var(--mpc-space-4);
-    border-color: var(--mpc-color-border-strong);
-    border-radius: var(--mpc-radius-sm);
-    font-size: var(--mpc-font-size-lg);
-}
-
-.post-type-portfolio_project #titlediv #title:focus {
-    border-color: var(--mpc-color-primary);
-    box-shadow: 0 0 0 3px rgb(91 75 255 / 14%);
-}
-
-@media screen and (max-width: 782px) {
-    .post-type-portfolio_project .column-project_thumbnail,
-    .post-type-portfolio_project .column-project_category,
-    .post-type-portfolio_project .column-technology,
-    .post-type-portfolio_project .column-project_type {
-        width: auto;
-    }
-}
-
-
-/* ==========================================================
-   Project metaboxes
-========================================================== */
-
-.post-type-portfolio_project .postbox {
-    border: 1px solid var(--mpc-color-border);
-    border-radius: var(--mpc-radius-md);
-    background: var(--mpc-color-surface);
-    box-shadow: var(--mpc-shadow-xs);
-}
-
-.post-type-portfolio_project .postbox .postbox-header {
-    border-bottom: 1px solid var(--mpc-color-border);
-}
-
-.post-type-portfolio_project .postbox .hndle {
-    padding: var(--mpc-space-4) var(--mpc-space-5);
-    color: var(--mpc-color-heading);
-    font-size: var(--mpc-font-size-md);
-    font-weight: var(--mpc-font-weight-semibold);
-}
-
-.post-type-portfolio_project .postbox .inside {
-    margin: 0;
-    padding: var(--mpc-space-5);
-}
-
-.mpc-project-metabox {
-    min-width: 0;
-}
-
-.mpc-project-field-spacing {
-    margin-top: var(--mpc-space-5);
-}
-
-#side-sortables .mpc-project-metabox .mpc-input,
-#side-sortables .mpc-project-metabox .mpc-select {
-    width: 100%;
-}
-
-@media screen and (max-width: 782px) {
-    .post-type-portfolio_project .postbox .inside {
-        padding: var(--mpc-space-4);
-    }
-}
-
-/* ==========================================================
-   Project status and display columns
-========================================================== */
-
-.post-type-portfolio_project .column-project_status {
-    width: 8.5rem;
-}
-
-.post-type-portfolio_project .column-project_featured {
-    width: 5rem;
-    text-align: center;
-}
-
-.post-type-portfolio_project .column-project_order {
-    width: 4.5rem;
-    text-align: center;
 }
 
 .mpc-project-status {
@@ -234,11 +149,318 @@
     color: var(--mpc-color-text-muted);
 }
 
+/* ==========================================================
+   Project editor screen
+========================================================== */
+
+body.mpc-project-editor-screen {
+    background: var(--mpc-color-background);
+}
+
+.mpc-project-editor-screen #wpcontent {
+    background: var(--mpc-color-background);
+}
+
+.mpc-project-editor-screen #poststuff {
+    min-width: 0;
+}
+
+.mpc-project-editor-screen #post-body-content {
+    margin-bottom: var(--mpc-space-5);
+}
+
+.mpc-project-editor-screen #titlediv #title {
+    min-height: 3.25rem;
+    padding-inline: var(--mpc-space-4);
+    border: 1px solid var(--mpc-color-border-strong);
+    border-radius: var(--mpc-radius-md);
+    background: var(--mpc-color-surface);
+    color: var(--mpc-color-heading);
+    font-size: var(--mpc-font-size-lg);
+    box-shadow: var(--mpc-shadow-xs);
+}
+
+.mpc-project-editor-screen #titlediv #title:focus {
+    border-color: var(--mpc-color-primary);
+    box-shadow: 0 0 0 3px rgb(91 75 255 / 14%);
+}
+
+.mpc-project-editor-screen #postdivrich {
+    overflow: hidden;
+    border: 1px solid var(--mpc-color-border);
+    border-radius: var(--mpc-radius-md);
+    background: var(--mpc-color-surface);
+    box-shadow: var(--mpc-shadow-xs);
+}
+
+.mpc-project-editor-screen #mpc-project-workspace {
+    overflow: visible;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.mpc-project-editor-screen #mpc-project-workspace > .postbox-header {
+    display: none;
+}
+
+.mpc-project-editor-screen #mpc-project-workspace > .inside {
+    margin: 0;
+    padding: 0;
+}
+
+/* ==========================================================
+   Workspace shell
+========================================================== */
+
+.mpc-project-workspace {
+    overflow: hidden;
+    border: 1px solid var(--mpc-color-border);
+    border-radius: var(--mpc-radius-lg);
+    background: var(--mpc-color-surface);
+    box-shadow: var(--mpc-shadow-sm);
+}
+
+.mpc-project-tabs {
+    display: flex;
+    overflow-x: auto;
+    border-bottom: 1px solid var(--mpc-color-border);
+    background: var(--mpc-color-surface-soft);
+    scrollbar-width: thin;
+}
+
+.mpc-project-tab {
+    position: relative;
+    display: inline-flex;
+    min-height: 3.5rem;
+    align-items: center;
+    justify-content: center;
+    gap: var(--mpc-space-2);
+    padding: 0 var(--mpc-space-5);
+    border: 0;
+    border-right: 1px solid var(--mpc-color-border);
+    background: transparent;
+    color: var(--mpc-color-text-soft);
+    cursor: pointer;
+    font-size: var(--mpc-font-size-sm);
+    font-weight: var(--mpc-font-weight-semibold);
+    white-space: nowrap;
+    transition:
+        background var(--mpc-transition-fast),
+        color var(--mpc-transition-fast);
+}
+
+.mpc-project-tab:hover {
+    background: var(--mpc-color-surface);
+    color: var(--mpc-color-heading);
+}
+
+.mpc-project-tab.is-active {
+    background: var(--mpc-color-surface);
+    color: var(--mpc-color-primary);
+}
+
+.mpc-project-tab.is-active::after {
+    position: absolute;
+    right: var(--mpc-space-4);
+    bottom: -1px;
+    left: var(--mpc-space-4);
+    height: 3px;
+    border-radius: var(--mpc-radius-pill);
+    background: var(--mpc-color-primary);
+    content: "";
+}
+
+.mpc-project-tab .dashicons {
+    width: auto;
+    height: auto;
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.mpc-project-panels {
+    min-width: 0;
+}
+
+.mpc-project-panel {
+    min-width: 0;
+    padding: var(--mpc-space-7);
+    animation: mpc-project-panel-enter 180ms ease;
+}
+
+.mpc-project-panel[hidden] {
+    display: none;
+}
+
+.mpc-project-panel__header {
+    margin-bottom: var(--mpc-space-6);
+    padding-bottom: var(--mpc-space-4);
+    border-bottom: 1px solid var(--mpc-color-border);
+}
+
+.mpc-project-panel__header h3 {
+    margin: 0;
+    color: var(--mpc-color-heading);
+    font-size: var(--mpc-font-size-lg);
+    font-weight: var(--mpc-font-weight-semibold);
+}
+
+.mpc-project-panel__header p {
+    max-width: 46rem;
+    margin: var(--mpc-space-2) 0 0;
+    color: var(--mpc-color-text-soft);
+    font-size: var(--mpc-font-size-sm);
+    line-height: var(--mpc-line-height-relaxed);
+}
+
+/* ==========================================================
+   Workspace form layout
+========================================================== */
+
+.mpc-project-workspace .mpc-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--mpc-space-5);
+}
+
+.mpc-project-workspace .mpc-form-field {
+    min-width: 0;
+}
+
+.mpc-project-workspace .mpc-form-field--full {
+    grid-column: 1 / -1;
+}
+
+.mpc-project-workspace .mpc-form-label {
+    display: block;
+    margin-bottom: var(--mpc-space-2);
+    color: var(--mpc-color-heading);
+    font-size: var(--mpc-font-size-sm);
+    font-weight: var(--mpc-font-weight-semibold);
+}
+
+.mpc-project-workspace .mpc-input,
+.mpc-project-workspace .mpc-select,
+.mpc-project-workspace .mpc-textarea {
+    width: 100%;
+    max-width: none;
+    border: 1px solid var(--mpc-color-border-strong);
+    border-radius: var(--mpc-radius-sm);
+    background: var(--mpc-color-surface);
+    color: var(--mpc-color-text);
+    box-shadow: none;
+}
+
+.mpc-project-workspace .mpc-input,
+.mpc-project-workspace .mpc-select {
+    min-height: 2.75rem;
+    padding-inline: var(--mpc-space-3);
+}
+
+.mpc-project-workspace .mpc-input:focus,
+.mpc-project-workspace .mpc-select:focus,
+.mpc-project-workspace .mpc-textarea:focus {
+    border-color: var(--mpc-color-primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgb(91 75 255 / 14%);
+}
+
+/* ==========================================================
+   WordPress sidebar polish
+========================================================== */
+
+.mpc-project-editor-screen #postbox-container-1 .postbox {
+    overflow: hidden;
+    border: 1px solid var(--mpc-color-border);
+    border-radius: var(--mpc-radius-md);
+    background: var(--mpc-color-surface);
+    box-shadow: var(--mpc-shadow-xs);
+}
+
+.mpc-project-editor-screen #postbox-container-1 .postbox-header {
+    border-bottom: 1px solid var(--mpc-color-border);
+}
+
+.mpc-project-editor-screen #postbox-container-1 .hndle {
+    color: var(--mpc-color-heading);
+    font-weight: var(--mpc-font-weight-semibold);
+}
+
+.mpc-project-editor-screen #major-publishing-actions {
+    border-top: 1px solid var(--mpc-color-border);
+    background: var(--mpc-color-surface-soft);
+}
+
+.mpc-project-editor-screen #publish {
+    min-height: 2.5rem;
+    border-color: var(--mpc-color-primary);
+    border-radius: var(--mpc-radius-sm);
+    background: var(--mpc-color-primary);
+    font-weight: var(--mpc-font-weight-semibold);
+}
+
+.mpc-project-editor-screen #publish:hover {
+    border-color: var(--mpc-color-primary-hover);
+    background: var(--mpc-color-primary-hover);
+}
+
+/* ==========================================================
+   Animations
+========================================================== */
+
+@keyframes mpc-project-panel-enter {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================
+   Responsive
+========================================================== */
+
+@media screen and (max-width: 960px) {
+    .mpc-project-workspace .mpc-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mpc-project-workspace .mpc-form-field--full {
+        grid-column: auto;
+    }
+
+    .mpc-project-panel {
+        padding: var(--mpc-space-5);
+    }
+}
+
 @media screen and (max-width: 782px) {
+    .mpc-project-tab {
+        min-height: 3.25rem;
+        padding-inline: var(--mpc-space-4);
+    }
+
+    .mpc-project-panel {
+        padding: var(--mpc-space-4);
+    }
+
+    .post-type-portfolio_project .column-project_thumbnail,
+    .post-type-portfolio_project .column-project_category,
+    .post-type-portfolio_project .column-technology,
     .post-type-portfolio_project .column-project_status,
     .post-type-portfolio_project .column-project_featured,
     .post-type-portfolio_project .column-project_order {
         width: auto;
         text-align: left;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mpc-project-panel {
+        animation: none;
     }
 }
