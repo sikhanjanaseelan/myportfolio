@@ -1,0 +1,113 @@
+/**
+ * MyPortfolio Core
+ * Projects admin styles
+ */
+
+/* ==========================================================
+   Projects list table
+========================================================== */
+
+.post-type-portfolio_project .wp-list-table {
+    border: 1px solid var(--mpc-color-border);
+    border-radius: var(--mpc-radius-md);
+    overflow: hidden;
+    background: var(--mpc-color-surface);
+    box-shadow: var(--mpc-shadow-xs);
+}
+
+.post-type-portfolio_project .column-project_thumbnail {
+    width: 5rem;
+}
+
+.post-type-portfolio_project .column-project_category {
+    width: 12rem;
+}
+
+.post-type-portfolio_project .column-technology {
+    width: 18rem;
+}
+
+.post-type-portfolio_project .column-project_type {
+    width: 10rem;
+}
+
+.mpc-project-list-thumbnail {
+    display: block;
+    width: 4rem;
+    height: 3rem;
+    border: 1px solid var(--mpc-color-border);
+    border-radius: var(--mpc-radius-sm);
+    object-fit: cover;
+}
+
+.mpc-project-list-placeholder {
+    display: inline-flex;
+    width: 4rem;
+    height: 3rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--mpc-color-border);
+    border-radius: var(--mpc-radius-sm);
+    background: var(--mpc-color-surface-muted);
+    color: var(--mpc-color-text-muted);
+}
+
+.mpc-project-list-placeholder .dashicons {
+    width: auto;
+    height: auto;
+    font-size: 1.25rem;
+    line-height: 1;
+}
+
+.mpc-project-list-terms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--mpc-space-1);
+}
+
+.mpc-project-list-term {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.6rem;
+    padding-inline: var(--mpc-space-2);
+    border-radius: var(--mpc-radius-pill);
+    background: var(--mpc-color-primary-soft);
+    color: var(--mpc-color-primary);
+    font-size: var(--mpc-font-size-xs);
+    font-weight: var(--mpc-font-weight-medium);
+    line-height: 1;
+}
+
+.mpc-project-list-empty {
+    color: var(--mpc-color-text-muted);
+}
+
+/* ==========================================================
+   Project editor preparation
+========================================================== */
+
+.post-type-portfolio_project #poststuff {
+    min-width: 0;
+}
+
+.post-type-portfolio_project #titlediv #title {
+    min-height: 3rem;
+    padding-inline: var(--mpc-space-4);
+    border-color: var(--mpc-color-border-strong);
+    border-radius: var(--mpc-radius-sm);
+    font-size: var(--mpc-font-size-lg);
+}
+
+.post-type-portfolio_project #titlediv #title:focus {
+    border-color: var(--mpc-color-primary);
+    box-shadow: 0 0 0 3px rgb(91 75 255 / 14%);
+}
+
+@media screen and (max-width: 782px) {
+    .post-type-portfolio_project .column-project_thumbnail,
+    .post-type-portfolio_project .column-project_category,
+    .post-type-portfolio_project .column-technology,
+    .post-type-portfolio_project .column-project_type {
+        width: auto;
+    }
+}
