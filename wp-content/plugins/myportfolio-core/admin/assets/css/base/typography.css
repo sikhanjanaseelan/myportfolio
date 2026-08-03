@@ -1,0 +1,172 @@
+/**
+ * MyPortfolio Core
+ * Admin Typography
+ */
+
+/* ==========================================================
+   Dashboard Heading
+========================================================== */
+
+.mpc-dashboard-title{
+
+    margin:0;
+
+    color:var(--mpc-color-heading);
+
+    font-size:var(--mpc-font-size-xl);
+
+    font-weight:var(--mpc-font-weight-bold);
+
+    line-height:1.2;
+
+}
+
+/* ==========================================================
+   Dashboard Description
+========================================================== */
+
+.mpc-dashboard-description{
+
+    margin-top:var(--mpc-space-2);
+
+    color:var(--mpc-color-text-soft);
+
+    font-size:var(--mpc-font-size-base);
+
+    line-height:var(--mpc-line-height-relaxed);
+
+}
+
+/* ==========================================================
+   Section Title
+========================================================== */
+
+.mpc-section-title{
+
+    margin:0;
+
+    color:var(--mpc-color-heading);
+
+    font-size:var(--mpc-font-size-lg);
+
+    font-weight:var(--mpc-font-weight-semibold);
+
+    line-height:1.3;
+
+}
+
+/* ==========================================================
+   Card Title
+========================================================== */
+
+.mpc-card-title{
+
+    margin:0;
+
+    color:var(--mpc-color-heading);
+
+    font-size:var(--mpc-font-size-md);
+
+    font-weight:var(--mpc-font-weight-semibold);
+
+    line-height:1.4;
+
+}
+
+/* ==========================================================
+   Card Description
+========================================================== */
+
+.mpc-card-description{
+
+    margin-top:var(--mpc-space-2);
+
+    color:var(--mpc-color-text-soft);
+
+    font-size:var(--mpc-font-size-sm);
+
+    line-height:var(--mpc-line-height-relaxed);
+
+}
+
+/* ==========================================================
+   Statistic Number
+========================================================== */
+
+.mpc-stat-value{
+
+    color:var(--mpc-color-heading);
+
+    font-size:2rem;
+
+    font-weight:var(--mpc-font-weight-bold);
+
+    line-height:1;
+
+}
+
+/* ==========================================================
+   Statistic Label
+========================================================== */
+
+.mpc-stat-label{
+
+    margin-top:var(--mpc-space-2);
+
+    color:var(--mpc-color-text-soft);
+
+    font-size:var(--mpc-font-size-sm);
+
+    font-weight:var(--mpc-font-weight-medium);
+
+}
+
+/* ==========================================================
+   Form Labels
+========================================================== */
+
+.mpc-label{
+
+    display:block;
+
+    margin-bottom:var(--mpc-space-2);
+
+    color:var(--mpc-color-heading);
+
+    font-size:var(--mpc-font-size-sm);
+
+    font-weight:var(--mpc-font-weight-semibold);
+
+}
+
+/* ==========================================================
+   Helper Text
+========================================================== */
+
+.mpc-helper{
+
+    margin-top:var(--mpc-space-2);
+
+    color:var(--mpc-color-text-muted);
+
+    font-size:var(--mpc-font-size-xs);
+
+    line-height:var(--mpc-line-height-relaxed);
+
+}
+
+/* ==========================================================
+   Badge Text
+========================================================== */
+
+.mpc-badge{
+
+    font-size:var(--mpc-font-size-xs);
+
+    font-weight:var(--mpc-font-weight-semibold);
+
+    letter-spacing:.04em;
+
+    text-transform:uppercase;
+
+}
