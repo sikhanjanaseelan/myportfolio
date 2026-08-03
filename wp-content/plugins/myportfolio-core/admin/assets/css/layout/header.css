@@ -1,0 +1,101 @@
+/**
+ * MyPortfolio Core
+ * Admin page header
+ */
+
+.mpc-dashboard-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--mpc-space-6);
+    padding: var(--mpc-space-6);
+    border: 1px solid var(--mpc-color-border);
+    border-radius: var(--mpc-radius-lg);
+    background: var(--mpc-color-surface);
+    box-shadow: var(--mpc-shadow-xs);
+}
+
+.mpc-dashboard-header__content {
+    min-width: 0;
+}
+
+.mpc-dashboard-header__actions {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: var(--mpc-space-3);
+}
+
+.mpc-dashboard-version {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+}
+
+.mpc-version-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2rem;
+    padding: var(--mpc-space-2) var(--mpc-space-3);
+    border: 1px solid var(--mpc-color-primary-border);
+    border-radius: var(--mpc-radius-pill);
+    background: var(--mpc-color-primary-soft);
+    color: var(--mpc-color-primary);
+    font-size: var(--mpc-font-size-xs);
+    font-weight: var(--mpc-font-weight-semibold);
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.mpc-page-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--mpc-space-5);
+    margin-bottom: var(--mpc-space-6);
+}
+
+.mpc-page-header__content {
+    min-width: 0;
+}
+
+.mpc-page-header__title {
+    margin: 0;
+    color: var(--mpc-color-heading);
+    font-size: var(--mpc-font-size-xl);
+    font-weight: var(--mpc-font-weight-bold);
+    line-height: var(--mpc-line-height-tight);
+}
+
+.mpc-page-header__description {
+    max-width: 46rem;
+    margin-top: var(--mpc-space-2);
+    color: var(--mpc-color-text-soft);
+    font-size: var(--mpc-font-size-base);
+    line-height: var(--mpc-line-height-relaxed);
+}
+
+.mpc-page-header__actions {
+    display: flex;
+    flex: 0 0 auto;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--mpc-space-3);
+}
+
+@media (max-width: 782px) {
+    .mpc-dashboard-header,
+    .mpc-page-header {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .mpc-dashboard-version,
+    .mpc-dashboard-header__actions,
+    .mpc-page-header__actions {
+        align-self: flex-start;
+        justify-content: flex-start;
+    }
+}
