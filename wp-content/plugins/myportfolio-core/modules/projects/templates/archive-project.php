@@ -107,6 +107,27 @@ $project_categories = get_terms(
 
 						$project_id = get_the_ID();
 
+                        $card_image_id = get_post_thumbnail_id( $project_id );
+
+if ( ! $card_image_id ) {
+	$gallery_value = (string) get_post_meta(
+		$project_id,
+		'_mpc_project_gallery',
+		true
+	);
+
+	$gallery_ids = array_filter(
+		array_map(
+			'absint',
+			explode( ',', $gallery_value )
+		)
+	);
+
+	if ( ! empty( $gallery_ids ) ) {
+		$card_image_id = reset( $gallery_ids );
+	}
+}
+
 						$client = (string) get_post_meta(
 							$project_id,
 							'_mpc_project_client',
@@ -147,30 +168,33 @@ $project_categories = get_terms(
 								aria-label="<?php echo esc_attr( get_the_title() ); ?>"
 							>
 
-								<?php if ( has_post_thumbnail() ) : ?>
+								<?php if ( $card_image_id ) : ?>
 
-									<?php
-									the_post_thumbnail(
-										'large',
-										array(
-											'class'   => 'mpc-project-card__image',
-											'loading' => 'lazy',
-										)
-									);
-									?>
+	<?php
+	echo wp_get_attachment_image(
+		$card_image_id,
+		'large',
+		false,
+		array(
+			'class'   => 'mpc-project-card__image',
+			'loading' => 'lazy',
+			'alt'     => get_the_title(),
+		)
+	);
+	?>
 
-								<?php else : ?>
+<?php else : ?>
 
-									<span class="mpc-project-card__placeholder">
+	<span class="mpc-project-card__placeholder">
 
-										<span
-											class="dashicons dashicons-portfolio"
-											aria-hidden="true"
-										></span>
+		<span
+			class="dashicons dashicons-portfolio"
+			aria-hidden="true"
+		></span>
 
-									</span>
+	</span>
 
-								<?php endif; ?>
+<?php endif; ?>
 
 								<?php if ( $status ) : ?>
 
