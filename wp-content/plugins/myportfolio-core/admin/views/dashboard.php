@@ -60,7 +60,7 @@ defined( 'ABSPATH' ) || exit;
 
 			</div>
 
-			<div class="mpc-dashboard-stats">
+			<div class="mpc-overview-grid">
 
 				<article class="mpc-stat-card">
 

@@ -7,13 +7,16 @@
    Base Button
 ========================================================== */
 
-.mpc-button{
+.myportfolio-core-admin .mpc-button,
+.myportfolio-core-admin a.mpc-button,
+.myportfolio-core-admin button.mpc-button {
+
     display:inline-flex;
     align-items:center;
     justify-content:center;
     gap:var(--mpc-space-2);
 
-    min-height:2.75rem;
+    min-height:44px;
 
     padding:0 var(--mpc-space-5);
 
@@ -21,49 +24,93 @@
 
     border-radius:var(--mpc-radius-md);
 
+    background:transparent;
+
     cursor:pointer;
 
     text-decoration:none;
 
     font-size:var(--mpc-font-size-sm);
 
-    font-weight:var(--mpc-font-weight-semibold);
+    font-weight:600;
 
     line-height:1;
 
+    white-space:nowrap;
+
     transition:
-        background var(--mpc-transition-fast),
-        color var(--mpc-transition-fast),
-        border-color var(--mpc-transition-fast),
-        box-shadow var(--mpc-transition-fast),
-        transform var(--mpc-transition-fast);
+        background .25s ease,
+        border-color .25s ease,
+        color .25s ease,
+        box-shadow .25s ease,
+        transform .25s ease;
+
+}
+
+.myportfolio-core-admin .mpc-button:hover,
+.myportfolio-core-admin a.mpc-button:hover{
+
+    text-decoration:none;
+
+    transform:translateY(-1px);
+
+}
+
+.myportfolio-core-admin .mpc-button:focus{
+
+    outline:none;
+
 }
 
 /* ==========================================================
-   Hover
+   Icons
 ========================================================== */
 
-.mpc-button:hover{
-    transform:translateY(-1px);
+.myportfolio-core-admin .mpc-button .dashicons{
+
+    width:auto;
+
+    height:auto;
+
+    font-size:16px;
+
+    line-height:1;
+
+    color:inherit;
+
 }
 
 /* ==========================================================
    Primary
 ========================================================== */
 
-.mpc-button--primary{
+.myportfolio-core-admin .mpc-button--primary,
+.myportfolio-core-admin a.mpc-button--primary,
+.myportfolio-core-admin button.mpc-button--primary{
 
     background:var(--mpc-color-primary);
 
-    color:var(--mpc-color-white);
+    border-color:var(--mpc-color-primary);
+
+    color:#ffffff !important;
 
 }
 
-.mpc-button--primary:hover{
+.myportfolio-core-admin .mpc-button--primary .dashicons{
+
+    color:#ffffff;
+
+}
+
+.myportfolio-core-admin .mpc-button--primary:hover,
+.myportfolio-core-admin a.mpc-button--primary:hover,
+.myportfolio-core-admin button.mpc-button--primary:hover{
 
     background:var(--mpc-color-primary-hover);
 
-    color:var(--mpc-color-white);
+    border-color:var(--mpc-color-primary-hover);
+
+    color:#ffffff !important;
 
 }
 
@@ -71,21 +118,24 @@
    Secondary
 ========================================================== */
 
-.mpc-button--secondary{
+.myportfolio-core-admin .mpc-button--secondary,
+.myportfolio-core-admin a.mpc-button--secondary{
 
-    border-color:var(--mpc-color-border);
+    background:#ffffff;
 
-    background:var(--mpc-color-surface);
+    border:1px solid var(--mpc-color-border);
 
     color:var(--mpc-color-heading);
 
 }
 
-.mpc-button--secondary:hover{
+.myportfolio-core-admin .mpc-button--secondary:hover{
+
+    background:var(--mpc-color-primary-soft);
 
     border-color:var(--mpc-color-primary-border);
 
-    background:var(--mpc-color-primary-soft);
+    color:var(--mpc-color-heading);
 
 }
 
@@ -93,17 +143,17 @@
    Outline
 ========================================================== */
 
-.mpc-button--outline{
-
-    border-color:var(--mpc-color-primary);
+.myportfolio-core-admin .mpc-button--outline{
 
     background:transparent;
+
+    border-color:var(--mpc-color-primary);
 
     color:var(--mpc-color-primary);
 
 }
 
-.mpc-button--outline:hover{
+.myportfolio-core-admin .mpc-button--outline:hover{
 
     background:var(--mpc-color-primary-soft);
 
@@ -113,7 +163,7 @@
    Ghost
 ========================================================== */
 
-.mpc-button--ghost{
+.myportfolio-core-admin .mpc-button--ghost{
 
     background:transparent;
 
@@ -121,9 +171,9 @@
 
 }
 
-.mpc-button--ghost:hover{
+.myportfolio-core-admin .mpc-button--ghost:hover{
 
-    background:var(--mpc-color-surface-muted);
+    background:var(--mpc-color-surface-soft);
 
 }
 
@@ -131,17 +181,13 @@
    Success
 ========================================================== */
 
-.mpc-button--success{
+.myportfolio-core-admin .mpc-button--success{
 
     background:var(--mpc-color-success);
 
+    border-color:var(--mpc-color-success);
+
     color:#fff;
-
-}
-
-.mpc-button--success:hover{
-
-    filter:brightness(.95);
 
 }
 
@@ -149,17 +195,13 @@
    Danger
 ========================================================== */
 
-.mpc-button--danger{
+.myportfolio-core-admin .mpc-button--danger{
 
     background:var(--mpc-color-danger);
 
+    border-color:var(--mpc-color-danger);
+
     color:#fff;
-
-}
-
-.mpc-button--danger:hover{
-
-    filter:brightness(.95);
 
 }
 
@@ -167,31 +209,33 @@
    Sizes
 ========================================================== */
 
-.mpc-button--sm{
+.myportfolio-core-admin .mpc-button--sm{
 
-    min-height:2.2rem;
+    min-height:36px;
 
     padding:0 var(--mpc-space-3);
 
-    font-size:var(--mpc-font-size-xs);
+    font-size:12px;
 
 }
 
-.mpc-button--lg{
+.myportfolio-core-admin .mpc-button--lg{
 
-    min-height:3.25rem;
+    min-height:52px;
 
     padding:0 var(--mpc-space-6);
 
 }
 
 /* ==========================================================
-   Icon Button
+   Icon Only
 ========================================================== */
 
-.mpc-button--icon{
+.myportfolio-core-admin .mpc-button--icon{
 
-    width:2.75rem;
+    width:44px;
+
+    min-width:44px;
 
     padding:0;
 
@@ -201,8 +245,8 @@
    Disabled
 ========================================================== */
 
-.mpc-button:disabled,
-.mpc-button.is-disabled{
+.myportfolio-core-admin .mpc-button:disabled,
+.myportfolio-core-admin .mpc-button.is-disabled{
 
     opacity:.6;
 
@@ -216,12 +260,9 @@
    Focus
 ========================================================== */
 
-.mpc-button:focus-visible{
+.myportfolio-core-admin .mpc-button:focus-visible{
 
-    outline:none;
-
-    box-shadow:
-        0 0 0 3px rgb(91 75 255 / 18%);
+    box-shadow:0 0 0 3px rgba(91,75,255,.18);
 
 }
 
@@ -231,7 +272,7 @@
 
 @media(max-width:782px){
 
-    .mpc-button{
+    .myportfolio-core-admin .mpc-button{
 
         width:100%;
 
