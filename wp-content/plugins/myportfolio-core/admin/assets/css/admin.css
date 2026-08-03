@@ -1,15 +1,37 @@
 /**
- * MyPortfolio Core admin styles.
+ * MyPortfolio Core
+ * Admin Design System
  */
 
-.myportfolio-core-admin {
-    --mpc-color-primary: #5b4bff;
-    --mpc-color-primary-dark: #4638d9;
-    --mpc-color-background: #f5f7fb;
-    --mpc-color-surface: #ffffff;
-    --mpc-color-text: #182033;
-    --mpc-color-text-soft: #687086;
-    --mpc-color-border: #dfe4ee;
-    --mpc-radius: 0.75rem;
-    --mpc-shadow: 0 10px 30px rgb(31 41 55 / 8%);
-}
+/* ==========================================================
+   Base
+========================================================== */
+
+@import url("./base/variables.css");
+@import url("./base/reset.css");
+@import url("./base/typography.css");
+
+/* ==========================================================
+   Layout
+========================================================== */
+
+@import url("./layout/layout.css");
+@import url("./layout/header.css");
+@import url("./layout/grid.css");
+
+/* ==========================================================
+   Components
+========================================================== */
+
+@import url("./components/cards.css");
+@import url("./components/buttons.css");
+@import url("./components/badges.css");
+@import url("./components/forms.css");
+@import url("./components/tables.css");
+@import url("./components/empty-state.css");
+
+/* ==========================================================
+   Pages
+========================================================== */
+
+@import url("./pages/dashboard.css");
