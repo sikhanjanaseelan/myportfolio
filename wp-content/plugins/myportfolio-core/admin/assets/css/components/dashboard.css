@@ -1,0 +1,113 @@
+/**
+ * MyPortfolio Core
+ * Dashboard Page
+ */
+
+/* ==========================================================
+   Dashboard Wrapper
+========================================================== */
+
+.mpc-dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mpc-space-7);
+}
+
+/* ==========================================================
+   Statistics
+========================================================== */
+
+.mpc-dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--mpc-space-5);
+}
+
+/* ==========================================================
+   Main Content
+========================================================== */
+
+.mpc-dashboard-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--mpc-space-5);
+}
+
+/* ==========================================================
+   Quick Actions
+========================================================== */
+
+.mpc-dashboard-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mpc-space-3);
+}
+
+.mpc-dashboard-actions .mpc-button {
+    justify-content: flex-start;
+}
+
+/* ==========================================================
+   Recent Activity
+========================================================== */
+
+.mpc-dashboard-activity {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mpc-space-4);
+}
+
+/* ==========================================================
+   Status List
+========================================================== */
+
+.mpc-status-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mpc-space-3);
+}
+
+.mpc-status-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: var(--mpc-space-2);
+    border-bottom: 1px solid var(--mpc-color-border);
+}
+
+.mpc-status-item:last-child {
+    border-bottom: 0;
+}
+
+.mpc-status-label {
+    color: var(--mpc-color-text);
+}
+
+.mpc-status-value {
+    font-weight: var(--mpc-font-weight-semibold);
+    color: var(--mpc-color-success);
+}
+
+/* ==========================================================
+   Responsive
+========================================================== */
+
+@media (max-width: 1024px) {
+
+    .mpc-dashboard-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .mpc-dashboard-content {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 782px) {
+
+    .mpc-dashboard-stats {
+        grid-template-columns: 1fr;
+    }
+
+}
