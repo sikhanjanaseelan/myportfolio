@@ -1,0 +1,122 @@
+/**
+ * MyPortfolio Core
+ * Reusable admin grid utilities
+ */
+
+.mpc-grid {
+    display: grid;
+    min-width: 0;
+    gap: var(--mpc-space-5);
+}
+
+.mpc-grid--2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.mpc-grid--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.mpc-grid--4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.mpc-grid--5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.mpc-grid--sidebar {
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(17rem, 0.32fr);
+}
+
+.mpc-grid--wide-sidebar {
+    grid-template-columns:
+        minmax(0, 1.3fr)
+        minmax(20rem, 0.7fr);
+}
+
+.mpc-grid--content {
+    grid-template-columns:
+        minmax(0, 1.45fr)
+        minmax(18rem, 0.55fr);
+}
+
+.mpc-grid--auto {
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(min(100%, 15rem), 1fr)
+        );
+}
+
+.mpc-grid--stats {
+    grid-template-columns:
+        repeat(
+            4,
+            minmax(0, 1fr)
+        );
+}
+
+.mpc-grid__item {
+    min-width: 0;
+}
+
+.mpc-stack {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: var(--mpc-space-5);
+}
+
+.mpc-cluster {
+    display: flex;
+    min-width: 0;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--mpc-space-3);
+}
+
+.mpc-cluster--between {
+    justify-content: space-between;
+}
+
+.mpc-cluster--end {
+    justify-content: flex-end;
+}
+
+@media (max-width: 1200px) {
+    .mpc-grid--5 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .mpc-grid--4,
+    .mpc-grid--stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .mpc-grid--sidebar,
+    .mpc-grid--wide-sidebar,
+    .mpc-grid--content {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 782px) {
+    .mpc-grid--2,
+    .mpc-grid--3,
+    .mpc-grid--4,
+    .mpc-grid--5,
+    .mpc-grid--stats {
+        grid-template-columns: 1fr;
+    }
+
+    .mpc-cluster,
+    .mpc-cluster--between,
+    .mpc-cluster--end {
+        align-items: stretch;
+        justify-content: flex-start;
+        flex-direction: column;
+    }
+}
