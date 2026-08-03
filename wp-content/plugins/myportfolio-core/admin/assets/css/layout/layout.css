@@ -7,14 +7,11 @@
    Main Admin Wrapper
 ========================================================== */
 
-.myportfolio-core-admin{
-
-    max-width:var(--mpc-content-width);
-
-    margin:0 auto;
-
-    padding:var(--mpc-space-7);
-
+.myportfolio-core-admin {
+    width: auto;
+    max-width: var(--mpc-content-width);
+    margin: 0;
+    padding: var(--mpc-space-7);
 }
 
 /* ==========================================================
