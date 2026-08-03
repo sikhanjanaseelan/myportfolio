@@ -1,0 +1,90 @@
+/**
+ * MyPortfolio Core
+ * Admin Reset
+ */
+
+.myportfolio-core-admin,
+.myportfolio-core-admin * ,
+.myportfolio-core-admin *::before,
+.myportfolio-core-admin *::after{
+    box-sizing:border-box;
+}
+
+.myportfolio-core-admin{
+
+    margin:0;
+
+    color:var(--mpc-color-text);
+
+    background:var(--mpc-color-background);
+
+    font-family:var(--mpc-font-family);
+
+    font-size:var(--mpc-font-size-base);
+
+    line-height:var(--mpc-line-height-base);
+
+    -webkit-font-smoothing:antialiased;
+
+    text-rendering:optimizeLegibility;
+
+}
+
+.myportfolio-core-admin h1,
+.myportfolio-core-admin h2,
+.myportfolio-core-admin h3,
+.myportfolio-core-admin h4,
+.myportfolio-core-admin h5,
+.myportfolio-core-admin h6{
+
+    margin:0;
+
+    color:var(--mpc-color-heading);
+
+    font-weight:var(--mpc-font-weight-semibold);
+
+}
+
+.myportfolio-core-admin p{
+
+    margin:0;
+
+}
+
+.myportfolio-core-admin ul,
+.myportfolio-core-admin ol{
+
+    margin:0;
+
+    padding:0;
+
+    list-style:none;
+
+}
+
+.myportfolio-core-admin a{
+
+    color:inherit;
+
+    text-decoration:none;
+
+}
+
+.myportfolio-core-admin img{
+
+    display:block;
+
+    max-width:100%;
+
+    height:auto;
+
+}
+
+.myportfolio-core-admin button,
+.myportfolio-core-admin input,
+.myportfolio-core-admin select,
+.myportfolio-core-admin textarea{
+
+    font:inherit;
+
+}
