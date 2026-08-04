@@ -2,6 +2,8 @@
 /**
  * Single Project case-study template.
  *
+ * Closely follows the approved single-project reference layout.
+ *
  * @package MyPortfolioCore
  */
 
@@ -14,1326 +16,301 @@ while ( have_posts() ) :
 
 	$project_id = get_the_ID();
 
-	/*
-	 * Overview.
-	 */
-	$client = (string) get_post_meta(
-		$project_id,
-		'_mpc_project_client',
-		true
-	);
+	$get_meta = static function ( string $key ) use ( $project_id ): string {
+		return (string) get_post_meta( $project_id, $key, true );
+	};
 
-	$role = (string) get_post_meta(
-		$project_id,
-		'_mpc_project_role',
-		true
-	);
+	$client   = $get_meta( '_mpc_project_client' );
+	$role     = $get_meta( '_mpc_project_role' );
+	$industry = $get_meta( '_mpc_project_industry' );
+	$duration = $get_meta( '_mpc_project_duration' );
+	$year     = $get_meta( '_mpc_project_year' );
+	$status   = $get_meta( '_mpc_project_status' );
 
-	$industry = (string) get_post_meta(
-		$project_id,
-		'_mpc_project_industry',
-		true
-	);
+	$challenge = $get_meta( '_mpc_project_challenge' );
+	$solution  = $get_meta( '_mpc_project_solution' );
+	$outcome   = $get_meta( '_mpc_project_outcome' );
 
-	$duration = (string) get_post_meta(
-		$project_id,
-		'_mpc_project_duration',
-		true
-	);
+	$features   = get_post_meta( $project_id, '_mpc_project_features', true );
+	$statistics = get_post_meta( $project_id, '_mpc_project_statistics', true );
+	$features   = is_array( $features ) ? $features : array();
+	$statistics = is_array( $statistics ) ? $statistics : array();
 
-	$year = (string) get_post_meta(
-		$project_id,
-		'_mpc_project_year',
-		true
-	);
+	$live_url   = $get_meta( '_mpc_project_live_url' );
+	$github_url = $get_meta( '_mpc_project_github_url' );
+	$case_url   = $get_meta( '_mpc_project_case_url' );
+	$video_url  = $get_meta( '_mpc_project_video_url' );
 
-	$status = (string) get_post_meta(
-		$project_id,
-		'_mpc_project_status',
-		true
-	);
-
-	/*
-	 * Content.
-	 */
-	$challenge = (string) get_post_meta(
-		$project_id,
-		'_mpc_project_challenge',
-		true
-	);
-
-	$solution = (string) get_post_meta(
-		$project_id,
-		'_mpc_project_solution',
-		true
-	);
-
-	$outcome = (string) get_post_meta(
-		$project_id,
-		'_mpc_project_outcome',
-		true
-	);
-
-	$features = get_post_meta(
-		$project_id,
-		'_mpc_project_features',
-		true
-	);
-
-	$statistics = get_post_meta(
-		$project_id,
-		'_mpc_project_statistics',
-		true
-	);
-
-	if ( ! is_array( $features ) ) {
-		$features = array();
-	}
-
-	if ( ! is_array( $statistics ) ) {
-		$statistics = array();
-	}
-
-	/*
-	 * Links.
-	 */
-	$live_url = (string) get_post_meta(
-		$project_id,
-		'_mpc_project_live_url',
-		true
-	);
-
-	$github_url = (string) get_post_meta(
-		$project_id,
-		'_mpc_project_github_url',
-		true
-	);
-
-	$case_url = (string) get_post_meta(
-		$project_id,
-		'_mpc_project_case_url',
-		true
-	);
-
-	$video_url = (string) get_post_meta(
-		$project_id,
-		'_mpc_project_video_url',
-		true
-	);
-
-	/*
-	 * Gallery.
-	 */
-	$gallery_value = (string) get_post_meta(
-		$project_id,
-		'_mpc_project_gallery',
-		true
-	);
-
-	$gallery_ids = array_values(
+	$gallery_value = $get_meta( '_mpc_project_gallery' );
+	$gallery_ids   = array_values(
 		array_filter(
-			array_map(
-				'absint',
-				explode( ',', $gallery_value )
-			)
+			array_map( 'absint', explode( ',', $gallery_value ) )
 		)
 	);
 
-	/*
-	 * Testimonial.
-	 */
-	$testimonial_quote = (string) get_post_meta(
-		$project_id,
-		'_mpc_project_testimonial_quote',
-		true
-	);
+	$testimonial_quote    = $get_meta( '_mpc_project_testimonial_quote' );
+	$testimonial_name     = $get_meta( '_mpc_project_testimonial_name' );
+	$testimonial_position = $get_meta( '_mpc_project_testimonial_position' );
+	$testimonial_company  = $get_meta( '_mpc_project_testimonial_company' );
+	$testimonial_rating   = absint( get_post_meta( $project_id, '_mpc_project_testimonial_rating', true ) );
+	$testimonial_photo_id = absint( get_post_meta( $project_id, '_mpc_project_testimonial_photo_id', true ) );
 
-	$testimonial_name = (string) get_post_meta(
-		$project_id,
-		'_mpc_project_testimonial_name',
-		true
-	);
+	$pdf_id       = absint( get_post_meta( $project_id, '_mpc_project_case_study_pdf_id', true ) );
+	$pdf_url      = $pdf_id ? wp_get_attachment_url( $pdf_id ) : '';
+	$pdf_filename = $pdf_url ? wp_basename( $pdf_url ) : '';
 
-	$testimonial_position = (string) get_post_meta(
-		$project_id,
-		'_mpc_project_testimonial_position',
-		true
-	);
+	$categories    = get_the_terms( $project_id, 'project_category' );
+	$project_types = get_the_terms( $project_id, 'project_type' );
+	$technologies  = get_the_terms( $project_id, 'technology' );
 
-	$testimonial_company = (string) get_post_meta(
-		$project_id,
-		'_mpc_project_testimonial_company',
-		true
-	);
+	$categories    = is_wp_error( $categories ) ? array() : (array) $categories;
+	$project_types = is_wp_error( $project_types ) ? array() : (array) $project_types;
+	$technologies  = is_wp_error( $technologies ) ? array() : (array) $technologies;
 
-	$testimonial_rating = absint(
-		get_post_meta(
-			$project_id,
-			'_mpc_project_testimonial_rating',
-			true
-		)
-	);
+	$hero_image_id = get_post_thumbnail_id( $project_id );
 
-	$testimonial_photo_id = absint(
-		get_post_meta(
-			$project_id,
-			'_mpc_project_testimonial_photo_id',
-			true
-		)
-	);
-
-	/*
-	 * PDF.
-	 */
-	$pdf_id = absint(
-		get_post_meta(
-			$project_id,
-			'_mpc_project_case_study_pdf_id',
-			true
-		)
-	);
-
-	$pdf_url = $pdf_id
-		? wp_get_attachment_url( $pdf_id )
-		: '';
-
-	/*
-	 * Taxonomies.
-	 */
-	$categories = get_the_terms(
-		$project_id,
-		'project_category'
-	);
-
-	$project_types = get_the_terms(
-		$project_id,
-		'project_type'
-	);
-
-	$technologies = get_the_terms(
-		$project_id,
-		'technology'
-	);
-
-	/*
-	 * Main project image:
-	 *
-	 * 1. Featured Image.
-	 * 2. First gallery image.
-	 */
-	$hero_image_id = get_post_thumbnail_id(
-		$project_id
-	);
-
-	if (
-		! $hero_image_id
-		&& ! empty( $gallery_ids )
-	) {
-		$hero_image_id = (int) reset(
-			$gallery_ids
-		);
+	if ( ! $hero_image_id && $gallery_ids ) {
+		$hero_image_id = (int) reset( $gallery_ids );
 	}
 
-	/*
-	 * Keep all gallery images in the thumbnail strip,
-	 * but avoid duplicating the hero image in the main gallery.
-	 */
-	$main_gallery_ids = array_values(
-		array_filter(
-			$gallery_ids,
-			static function ( int $attachment_id ) use ( $hero_image_id ): bool {
-				return $attachment_id !== $hero_image_id;
-			}
-		)
-	);
+	$archive_url      = get_post_type_archive_link( MPC_Project_CPT::POST_TYPE );
+	$primary_category = $categories ? $categories[0]->name : '';
+	$project_type     = $project_types ? implode( ', ', wp_list_pluck( $project_types, 'name' ) ) : '';
 
-	$archive_url = get_post_type_archive_link(
-		MPC_Project_CPT::POST_TYPE
-	);
-
-	/*
-	 * Dynamic section navigation.
-	 */
-	$navigation_items = array();
+	$section_links = array();
 
 	if ( trim( get_the_content() ) ) {
-		$navigation_items['overview'] = __(
-			'Overview',
-			'myportfolio-core'
-		);
+		$section_links['overview'] = __( 'Overview', 'myportfolio-core' );
 	}
-
 	if ( $challenge ) {
-		$navigation_items['challenge'] = __(
-			'Challenge',
-			'myportfolio-core'
-		);
+		$section_links['challenge'] = __( 'The Challenge', 'myportfolio-core' );
 	}
-
 	if ( $solution ) {
-		$navigation_items['solution'] = __(
-			'Solution',
-			'myportfolio-core'
-		);
+		$section_links['solution'] = __( 'Our Solution', 'myportfolio-core' );
 	}
-
-	if ( $outcome || $statistics ) {
-		$navigation_items['results'] = __(
-			'Results',
-			'myportfolio-core'
-		);
-	}
-
 	if ( $features ) {
-		$navigation_items['features'] = __(
-			'Features',
-			'myportfolio-core'
-		);
+		$section_links['features'] = __( 'Key Features', 'myportfolio-core' );
 	}
-
-	if ( $main_gallery_ids ) {
-		$navigation_items['gallery'] = __(
-			'Gallery',
-			'myportfolio-core'
-		);
+	if ( $outcome || $statistics ) {
+		$section_links['results'] = __( 'Results & Impact', 'myportfolio-core' );
 	}
-
-	if (
-		$technologies
-		&& ! is_wp_error( $technologies )
-	) {
-		$navigation_items['technologies'] = __(
-			'Technologies',
-			'myportfolio-core'
-		);
+	if ( $technologies ) {
+		$section_links['technologies'] = __( 'Technologies Used', 'myportfolio-core' );
 	}
-
+	if ( $gallery_ids ) {
+		$section_links['screenshots'] = __( 'Screenshots', 'myportfolio-core' );
+	}
 	if ( $testimonial_quote ) {
-		$navigation_items['testimonial'] = __(
-			'Testimonial',
-			'myportfolio-core'
-		);
+		$section_links['testimonial'] = __( 'Testimonial', 'myportfolio-core' );
 	}
-
-	$section_number = 1;
 	?>
 
-	<main
-		id="primary"
-		class="mpc-case-study"
-	>
+	<main id="primary" class="mpc-project-detail">
 
-		<section class="mpc-case-study__hero">
+		<div class="mpc-project-detail__container">
 
-			<div class="mpc-case-study__container">
-
+			<nav class="mpc-project-detail__breadcrumb" aria-label="<?php esc_attr_e( 'Breadcrumb', 'myportfolio-core' ); ?>">
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Home', 'myportfolio-core' ); ?></a>
+				<span aria-hidden="true">›</span>
 				<?php if ( $archive_url ) : ?>
-
-					<nav
-						class="mpc-case-study__breadcrumb"
-						aria-label="<?php esc_attr_e( 'Breadcrumb', 'myportfolio-core' ); ?>"
-					>
-						<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
-							<?php esc_html_e( 'Home', 'myportfolio-core' ); ?>
-						</a>
-
-						<span aria-hidden="true">/</span>
-
-						<a href="<?php echo esc_url( $archive_url ); ?>">
-							<?php esc_html_e( 'Projects', 'myportfolio-core' ); ?>
-						</a>
-
-						<span aria-hidden="true">/</span>
-
-						<span>
-							<?php the_title(); ?>
-						</span>
-					</nav>
-
+					<a href="<?php echo esc_url( $archive_url ); ?>"><?php esc_html_e( 'Projects', 'myportfolio-core' ); ?></a>
+					<span aria-hidden="true">›</span>
 				<?php endif; ?>
+				<span><?php the_title(); ?></span>
+			</nav>
 
-				<div class="mpc-case-study__hero-layout">
+			<section class="mpc-project-detail__hero">
 
-					<div class="mpc-case-study__hero-copy">
+				<div class="mpc-project-detail__hero-copy">
 
-						<?php
-						if (
-							$categories
-							&& ! is_wp_error( $categories )
-						) :
-							?>
+					<?php if ( $primary_category ) : ?>
+						<span class="mpc-project-detail__eyebrow"><?php echo esc_html( $primary_category ); ?></span>
+					<?php endif; ?>
 
-							<div class="mpc-case-study__category-list">
+					<h1 class="mpc-project-detail__title"><?php the_title(); ?></h1>
 
-								<?php foreach ( $categories as $category ) : ?>
+					<?php if ( has_excerpt() ) : ?>
+						<div class="mpc-project-detail__excerpt"><?php the_excerpt(); ?></div>
+					<?php endif; ?>
 
-									<span class="mpc-case-study__category">
-										<?php echo esc_html( $category->name ); ?>
-									</span>
+					<?php if ( $technologies ) : ?>
+						<div class="mpc-project-detail__tags">
+							<?php foreach ( array_slice( $technologies, 0, 5 ) as $technology ) : ?>
+								<span><?php echo esc_html( $technology->name ); ?></span>
+							<?php endforeach; ?>
+						</div>
+					<?php endif; ?>
 
-								<?php endforeach; ?>
+					<?php if ( $live_url || $github_url || $case_url ) : ?>
+						<div class="mpc-project-detail__actions">
+							<?php if ( $live_url ) : ?>
+								<a class="mpc-project-detail__button mpc-project-detail__button--primary" href="<?php echo esc_url( $live_url ); ?>" target="_blank" rel="noopener noreferrer">
+									<?php esc_html_e( 'Live Website', 'myportfolio-core' ); ?><span aria-hidden="true">↗</span>
+								</a>
+							<?php endif; ?>
+							<?php if ( $github_url ) : ?>
+								<a class="mpc-project-detail__button" href="<?php echo esc_url( $github_url ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'GitHub', 'myportfolio-core' ); ?></a>
+							<?php endif; ?>
+							<?php if ( $case_url ) : ?>
+								<a class="mpc-project-detail__button" href="<?php echo esc_url( $case_url ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Case Study', 'myportfolio-core' ); ?></a>
+							<?php endif; ?>
+						</div>
+					<?php endif; ?>
 
-							</div>
-
-						<?php endif; ?>
-
-						<h1 class="mpc-case-study__title">
-							<?php the_title(); ?>
-						</h1>
-
-						<?php if ( has_excerpt() ) : ?>
-
-							<div class="mpc-case-study__intro">
-								<?php the_excerpt(); ?>
-							</div>
-
-						<?php endif; ?>
-
-						<?php
-						if (
-							$technologies
-							&& ! is_wp_error( $technologies )
-						) :
-							?>
-
-							<div class="mpc-case-study__hero-tags">
-
-								<?php foreach ( $technologies as $technology ) : ?>
-
-									<span>
-										<?php echo esc_html( $technology->name ); ?>
-									</span>
-
-								<?php endforeach; ?>
-
-							</div>
-
-						<?php endif; ?>
-
-						<?php if ( $live_url || $github_url || $case_url || $pdf_url ) : ?>
-
-							<div class="mpc-case-study__hero-actions">
-
-								<?php if ( $live_url ) : ?>
-
-									<a
-										class="mpc-case-study__button mpc-case-study__button--primary"
-										href="<?php echo esc_url( $live_url ); ?>"
-										target="_blank"
-										rel="noopener noreferrer"
-									>
-										<?php esc_html_e( 'Visit Website', 'myportfolio-core' ); ?>
-
-										<span aria-hidden="true">↗</span>
-									</a>
-
-								<?php endif; ?>
-
-								<?php if ( $github_url ) : ?>
-
-									<a
-										class="mpc-case-study__button mpc-case-study__button--outline"
-										href="<?php echo esc_url( $github_url ); ?>"
-										target="_blank"
-										rel="noopener noreferrer"
-									>
-										<?php esc_html_e( 'GitHub', 'myportfolio-core' ); ?>
-									</a>
-
-								<?php endif; ?>
-
-								<?php if ( $case_url ) : ?>
-
-									<a
-										class="mpc-case-study__button mpc-case-study__button--outline"
-										href="<?php echo esc_url( $case_url ); ?>"
-										target="_blank"
-										rel="noopener noreferrer"
-									>
-										<?php esc_html_e( 'Case Study', 'myportfolio-core' ); ?>
-									</a>
-
-								<?php endif; ?>
-
-								<?php if ( $pdf_url ) : ?>
-
-									<a
-										class="mpc-case-study__button mpc-case-study__button--outline"
-										href="<?php echo esc_url( $pdf_url ); ?>"
-										target="_blank"
-										rel="noopener noreferrer"
-									>
-										<?php esc_html_e( 'Download PDF', 'myportfolio-core' ); ?>
-									</a>
-
-								<?php endif; ?>
-
-							</div>
-
-						<?php endif; ?>
-
-					</div>
-
-					<div class="mpc-case-study__project-meta">
-
-						<?php if ( $client ) : ?>
-
-							<div class="mpc-case-study__meta-item">
-								<span><?php esc_html_e( 'Client', 'myportfolio-core' ); ?></span>
-								<strong><?php echo esc_html( $client ); ?></strong>
-							</div>
-
-						<?php endif; ?>
-
-						<?php if ( $role ) : ?>
-
-							<div class="mpc-case-study__meta-item">
-								<span><?php esc_html_e( 'My Role', 'myportfolio-core' ); ?></span>
-								<strong><?php echo esc_html( $role ); ?></strong>
-							</div>
-
-						<?php endif; ?>
-
+					<div class="mpc-project-detail__meta-card">
 						<?php if ( $duration ) : ?>
-
-							<div class="mpc-case-study__meta-item">
-								<span><?php esc_html_e( 'Duration', 'myportfolio-core' ); ?></span>
-								<strong><?php echo esc_html( $duration ); ?></strong>
-							</div>
-
+							<div class="mpc-project-detail__meta-item"><span class="mpc-project-detail__meta-icon" aria-hidden="true">◷</span><small><?php esc_html_e( 'Duration', 'myportfolio-core' ); ?></small><strong><?php echo esc_html( $duration ); ?></strong></div>
 						<?php endif; ?>
-
+						<?php if ( $project_type ) : ?>
+							<div class="mpc-project-detail__meta-item"><span class="mpc-project-detail__meta-icon" aria-hidden="true">&lt;/&gt;</span><small><?php esc_html_e( 'Type', 'myportfolio-core' ); ?></small><strong><?php echo esc_html( $project_type ); ?></strong></div>
+						<?php endif; ?>
+						<?php if ( $client ) : ?>
+							<div class="mpc-project-detail__meta-item"><span class="mpc-project-detail__meta-icon" aria-hidden="true">◎</span><small><?php esc_html_e( 'Client', 'myportfolio-core' ); ?></small><strong><?php echo esc_html( $client ); ?></strong></div>
+						<?php endif; ?>
 						<?php if ( $year ) : ?>
-
-							<div class="mpc-case-study__meta-item">
-								<span><?php esc_html_e( 'Year', 'myportfolio-core' ); ?></span>
-								<strong><?php echo esc_html( $year ); ?></strong>
-							</div>
-
+							<div class="mpc-project-detail__meta-item"><span class="mpc-project-detail__meta-icon" aria-hidden="true">◉</span><small><?php esc_html_e( 'Year', 'myportfolio-core' ); ?></small><strong><?php echo esc_html( $year ); ?></strong></div>
 						<?php endif; ?>
-
-						<?php if ( $industry ) : ?>
-
-							<div class="mpc-case-study__meta-item">
-								<span><?php esc_html_e( 'Industry', 'myportfolio-core' ); ?></span>
-								<strong><?php echo esc_html( $industry ); ?></strong>
-							</div>
-
-						<?php endif; ?>
-
-						<?php
-						if (
-							$project_types
-							&& ! is_wp_error( $project_types )
-						) :
-							?>
-
-							<div class="mpc-case-study__meta-item">
-
-								<span>
-									<?php esc_html_e( 'Project Type', 'myportfolio-core' ); ?>
-								</span>
-
-								<strong>
-									<?php
-									echo esc_html(
-										implode(
-											', ',
-											wp_list_pluck(
-												$project_types,
-												'name'
-											)
-										)
-									);
-									?>
-								</strong>
-
-							</div>
-
-						<?php endif; ?>
-
 					</div>
 
 				</div>
 
-			</div>
-
-		</section>
-
-		<?php if ( $hero_image_id ) : ?>
-
-			<section class="mpc-case-study__visual">
-
-				<div class="mpc-case-study__container">
-
-					<figure class="mpc-case-study__main-image">
-
-						<?php
-						echo wp_get_attachment_image(
-							$hero_image_id,
-							'full',
-							false,
-							array(
-								'class'   => 'mpc-case-study__main-image-element',
-								'loading' => 'eager',
-								'alt'     => get_the_title(),
-							)
-						);
-						?>
-
-					</figure>
+				<div class="mpc-project-detail__visual">
+					<?php if ( $hero_image_id ) : ?>
+						<figure class="mpc-project-detail__frame">
+							<?php
+							echo wp_get_attachment_image(
+								$hero_image_id,
+								'full',
+								false,
+								array(
+									'class'   => 'mpc-project-detail__hero-image',
+									'loading' => 'eager',
+									'alt'     => get_the_title(),
+								)
+							);
+							?>
+						</figure>
+					<?php endif; ?>
 
 					<?php if ( $gallery_ids ) : ?>
-
-						<div class="mpc-case-study__thumbnail-strip">
-
-							<?php foreach ( $gallery_ids as $gallery_id ) : ?>
-
-								<?php
-								$full_image_url = wp_get_attachment_image_url(
-									$gallery_id,
-									'full'
-								);
-
-								if ( ! $full_image_url ) {
-									continue;
-								}
-								?>
-
-								<a
-									class="mpc-case-study__thumbnail"
-									href="<?php echo esc_url( $full_image_url ); ?>"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									<?php
-									echo wp_get_attachment_image(
-										$gallery_id,
-										'medium',
-										false,
-										array(
-											'class'   => 'mpc-case-study__thumbnail-image',
-											'loading' => 'lazy',
-											'alt'     => '',
-										)
-									);
-									?>
+						<div class="mpc-project-detail__thumbs">
+							<?php foreach ( array_slice( $gallery_ids, 0, 5 ) as $gallery_id ) : ?>
+								<?php $full_url = wp_get_attachment_image_url( $gallery_id, 'full' ); ?>
+								<?php if ( ! $full_url ) : continue; endif; ?>
+								<a href="<?php echo esc_url( $full_url ); ?>" target="_blank" rel="noopener noreferrer">
+									<?php echo wp_get_attachment_image( $gallery_id, 'medium', false, array( 'class' => 'mpc-project-detail__thumb-image', 'loading' => 'lazy', 'alt' => '' ) ); ?>
 								</a>
-
 							<?php endforeach; ?>
-
 						</div>
-
 					<?php endif; ?>
-
 				</div>
 
 			</section>
 
-		<?php endif; ?>
-
-		<section class="mpc-case-study__main">
-
-			<div class="mpc-case-study__container">
-
-				<div class="mpc-case-study__main-layout">
-
-					<?php if ( $navigation_items ) : ?>
-
-						<aside class="mpc-case-study__sidebar">
-
-							<div class="mpc-case-study__sidebar-card">
-
-								<span class="mpc-case-study__sidebar-title">
-									<?php esc_html_e( 'In this case study', 'myportfolio-core' ); ?>
-								</span>
-
-								<nav aria-label="<?php esc_attr_e( 'Case study sections', 'myportfolio-core' ); ?>">
-
-									<?php foreach ( $navigation_items as $item_id => $item_label ) : ?>
-
-										<a href="#<?php echo esc_attr( $item_id ); ?>">
-											<span aria-hidden="true"></span>
-
-											<?php echo esc_html( $item_label ); ?>
-										</a>
-
-									<?php endforeach; ?>
-
-								</nav>
-
-							</div>
-
-						</aside>
-
+			<section class="mpc-project-detail__story-card">
+				<aside class="mpc-project-detail__story-sidebar">
+					<?php if ( $section_links ) : ?>
+						<nav class="mpc-project-detail__story-nav" aria-label="<?php esc_attr_e( 'Case study sections', 'myportfolio-core' ); ?>">
+							<?php foreach ( $section_links as $section_id => $section_label ) : ?>
+								<a href="#<?php echo esc_attr( $section_id ); ?>"><?php echo esc_html( $section_label ); ?></a>
+							<?php endforeach; ?>
+						</nav>
 					<?php endif; ?>
 
-					<div class="mpc-case-study__content">
+					<?php if ( $pdf_url ) : ?>
+						<div class="mpc-project-detail__pdf">
+							<span class="mpc-project-detail__pdf-icon" aria-hidden="true">▧</span>
+							<div><strong><?php esc_html_e( 'Project Case Study', 'myportfolio-core' ); ?></strong><small><?php echo esc_html( $pdf_filename ?: __( 'PDF document', 'myportfolio-core' ) ); ?></small></div>
+							<a href="<?php echo esc_url( $pdf_url ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Download PDF', 'myportfolio-core' ); ?><span aria-hidden="true">↓</span></a>
+						</div>
+					<?php endif; ?>
+				</aside>
 
-						<?php if ( trim( get_the_content() ) ) : ?>
+				<div class="mpc-project-detail__story-content">
+					<?php if ( trim( get_the_content() ) ) : ?>
+						<section id="overview" class="mpc-project-detail__overview">
+							<h2><?php esc_html_e( 'Project Overview', 'myportfolio-core' ); ?></h2>
+							<div class="mpc-project-detail__prose"><?php the_content(); ?></div>
+						</section>
+					<?php endif; ?>
 
-							<section
-								id="overview"
-								class="mpc-case-study__section"
-							>
-
-								<div class="mpc-case-study__section-heading">
-
-									<span class="mpc-case-study__section-index">
-										<?php echo esc_html( str_pad( (string) $section_number, 2, '0', STR_PAD_LEFT ) ); ?>
-									</span>
-
-									<h2>
-										<?php esc_html_e( 'Project Overview', 'myportfolio-core' ); ?>
-									</h2>
-
-								</div>
-
-								<div class="mpc-case-study__prose">
-									<?php the_content(); ?>
-								</div>
-
-							</section>
-
-							<?php $section_number++; ?>
-
-						<?php endif; ?>
-
+					<div class="mpc-project-detail__columns">
 						<?php if ( $challenge ) : ?>
-
-							<section
-								id="challenge"
-								class="mpc-case-study__section"
-							>
-
-								<div class="mpc-case-study__section-heading">
-
-									<span class="mpc-case-study__section-index">
-										<?php echo esc_html( str_pad( (string) $section_number, 2, '0', STR_PAD_LEFT ) ); ?>
-									</span>
-
-									<h2>
-										<?php esc_html_e( 'The Challenge', 'myportfolio-core' ); ?>
-									</h2>
-
-								</div>
-
-								<div class="mpc-case-study__prose">
-									<?php echo wp_kses_post( wpautop( $challenge ) ); ?>
-								</div>
-
-							</section>
-
-							<?php $section_number++; ?>
-
+							<article id="challenge" class="mpc-project-detail__story-column"><span class="mpc-project-detail__round-icon mpc-project-detail__round-icon--orange" aria-hidden="true">◫</span><h3><?php esc_html_e( 'The Challenge', 'myportfolio-core' ); ?></h3><div class="mpc-project-detail__prose"><?php echo wp_kses_post( wpautop( $challenge ) ); ?></div></article>
 						<?php endif; ?>
-
 						<?php if ( $solution ) : ?>
-
-							<section
-								id="solution"
-								class="mpc-case-study__section"
-							>
-
-								<div class="mpc-case-study__section-heading">
-
-									<span class="mpc-case-study__section-index">
-										<?php echo esc_html( str_pad( (string) $section_number, 2, '0', STR_PAD_LEFT ) ); ?>
-									</span>
-
-									<h2>
-										<?php esc_html_e( 'The Solution', 'myportfolio-core' ); ?>
-									</h2>
-
-								</div>
-
-								<div class="mpc-case-study__prose">
-									<?php echo wp_kses_post( wpautop( $solution ) ); ?>
-								</div>
-
-							</section>
-
-							<?php $section_number++; ?>
-
+							<article id="solution" class="mpc-project-detail__story-column"><span class="mpc-project-detail__round-icon mpc-project-detail__round-icon--green" aria-hidden="true">◎</span><h3><?php esc_html_e( 'Our Solution', 'myportfolio-core' ); ?></h3><div class="mpc-project-detail__prose"><?php echo wp_kses_post( wpautop( $solution ) ); ?></div></article>
 						<?php endif; ?>
-
-						<?php if ( $outcome || $statistics ) : ?>
-
-							<section
-								id="results"
-								class="mpc-case-study__section"
-							>
-
-								<div class="mpc-case-study__section-heading">
-
-									<span class="mpc-case-study__section-index">
-										<?php echo esc_html( str_pad( (string) $section_number, 2, '0', STR_PAD_LEFT ) ); ?>
-									</span>
-
-									<h2>
-										<?php esc_html_e( 'Results and Outcome', 'myportfolio-core' ); ?>
-									</h2>
-
-								</div>
-
-								<?php if ( $outcome ) : ?>
-
-									<div class="mpc-case-study__prose">
-										<?php echo wp_kses_post( wpautop( $outcome ) ); ?>
-									</div>
-
-								<?php endif; ?>
-
-								<?php if ( $statistics ) : ?>
-
-									<div class="mpc-case-study__metrics">
-
-										<?php foreach ( $statistics as $statistic ) : ?>
-
-											<?php
-											$value = isset( $statistic['value'] )
-												? (string) $statistic['value']
-												: '';
-
-											$label = isset( $statistic['label'] )
-												? (string) $statistic['label']
-												: '';
-
-											if ( '' === $value && '' === $label ) {
-												continue;
-											}
-											?>
-
-											<article class="mpc-case-study__metric">
-
-												<strong>
-													<?php echo esc_html( $value ); ?>
-												</strong>
-
-												<span>
-													<?php echo esc_html( $label ); ?>
-												</span>
-
-											</article>
-
-										<?php endforeach; ?>
-
-									</div>
-
-								<?php endif; ?>
-
-							</section>
-
-							<?php $section_number++; ?>
-
+						<?php if ( $outcome ) : ?>
+							<article id="results" class="mpc-project-detail__story-column"><span class="mpc-project-detail__round-icon mpc-project-detail__round-icon--pink" aria-hidden="true">⌂</span><h3><?php esc_html_e( 'The Outcome', 'myportfolio-core' ); ?></h3><div class="mpc-project-detail__prose"><?php echo wp_kses_post( wpautop( $outcome ) ); ?></div></article>
 						<?php endif; ?>
-
-						<?php if ( $features ) : ?>
-
-							<section
-								id="features"
-								class="mpc-case-study__section"
-							>
-
-								<div class="mpc-case-study__section-heading">
-
-									<span class="mpc-case-study__section-index">
-										<?php echo esc_html( str_pad( (string) $section_number, 2, '0', STR_PAD_LEFT ) ); ?>
-									</span>
-
-									<h2>
-										<?php esc_html_e( 'Key Features', 'myportfolio-core' ); ?>
-									</h2>
-
-								</div>
-
-								<div class="mpc-case-study__feature-grid">
-
-									<?php foreach ( $features as $feature ) : ?>
-
-										<?php
-										$feature_title = isset( $feature['title'] )
-											? (string) $feature['title']
-											: '';
-
-										if ( '' === $feature_title ) {
-											continue;
-										}
-										?>
-
-										<article class="mpc-case-study__feature-card">
-
-											<span
-												class="mpc-case-study__feature-icon"
-												aria-hidden="true"
-											>
-												✓
-											</span>
-
-											<span>
-												<?php echo esc_html( $feature_title ); ?>
-											</span>
-
-										</article>
-
-									<?php endforeach; ?>
-
-								</div>
-
-							</section>
-
-							<?php $section_number++; ?>
-
-						<?php endif; ?>
-
-						<?php if ( $main_gallery_ids ) : ?>
-
-							<section
-								id="gallery"
-								class="mpc-case-study__section"
-							>
-
-								<div class="mpc-case-study__section-heading">
-
-									<span class="mpc-case-study__section-index">
-										<?php echo esc_html( str_pad( (string) $section_number, 2, '0', STR_PAD_LEFT ) ); ?>
-									</span>
-
-									<h2>
-										<?php esc_html_e( 'Project Gallery', 'myportfolio-core' ); ?>
-									</h2>
-
-								</div>
-
-								<div class="mpc-case-study__gallery">
-
-									<?php foreach ( $main_gallery_ids as $gallery_id ) : ?>
-
-										<?php
-										$full_image_url = wp_get_attachment_image_url(
-											$gallery_id,
-											'full'
-										);
-
-										if ( ! $full_image_url ) {
-											continue;
-										}
-										?>
-
-										<a
-											class="mpc-case-study__gallery-card"
-											href="<?php echo esc_url( $full_image_url ); ?>"
-											target="_blank"
-											rel="noopener noreferrer"
-										>
-											<?php
-											echo wp_get_attachment_image(
-												$gallery_id,
-												'large',
-												false,
-												array(
-													'class'   => 'mpc-case-study__gallery-image',
-													'loading' => 'lazy',
-													'alt'     => '',
-												)
-											);
-											?>
-										</a>
-
-									<?php endforeach; ?>
-
-								</div>
-
-							</section>
-
-							<?php $section_number++; ?>
-
-						<?php endif; ?>
-
-						<?php
-						if (
-							$technologies
-							&& ! is_wp_error( $technologies )
-						) :
-							?>
-
-							<section
-								id="technologies"
-								class="mpc-case-study__section"
-							>
-
-								<div class="mpc-case-study__section-heading">
-
-									<span class="mpc-case-study__section-index">
-										<?php echo esc_html( str_pad( (string) $section_number, 2, '0', STR_PAD_LEFT ) ); ?>
-									</span>
-
-									<h2>
-										<?php esc_html_e( 'Technologies Used', 'myportfolio-core' ); ?>
-									</h2>
-
-								</div>
-
-								<div class="mpc-case-study__technology-grid">
-
-									<?php foreach ( $technologies as $technology ) : ?>
-
-										<span>
-											<?php echo esc_html( $technology->name ); ?>
-										</span>
-
-									<?php endforeach; ?>
-
-								</div>
-
-							</section>
-
-							<?php $section_number++; ?>
-
-						<?php endif; ?>
-
-						<?php if ( $video_url ) : ?>
-
-							<section class="mpc-case-study__section">
-
-								<div class="mpc-case-study__section-heading">
-
-									<span class="mpc-case-study__section-index">
-										<?php echo esc_html( str_pad( (string) $section_number, 2, '0', STR_PAD_LEFT ) ); ?>
-									</span>
-
-									<h2>
-										<?php esc_html_e( 'Project Video', 'myportfolio-core' ); ?>
-									</h2>
-
-								</div>
-
-								<div class="mpc-case-study__video">
-
-									<?php
-									$video_embed = wp_oembed_get(
-										$video_url
-									);
-
-									if ( $video_embed ) {
-										echo wp_kses_post( $video_embed );
-									} else {
-										?>
-
-										<a
-											href="<?php echo esc_url( $video_url ); ?>"
-											target="_blank"
-											rel="noopener noreferrer"
-										>
-											<?php esc_html_e( 'Watch Project Video', 'myportfolio-core' ); ?>
-										</a>
-
-										<?php
-									}
-									?>
-
-								</div>
-
-							</section>
-
-							<?php $section_number++; ?>
-
-						<?php endif; ?>
-
-						<?php if ( $testimonial_quote ) : ?>
-
-							<section
-								id="testimonial"
-								class="mpc-case-study__section"
-							>
-
-								<div class="mpc-case-study__testimonial">
-
-									<div class="mpc-case-study__testimonial-rating">
-										<?php
-										echo esc_html(
-											str_repeat(
-												'★',
-												max(
-													1,
-													min(
-														5,
-														$testimonial_rating
-													)
-												)
-											)
-										);
-										?>
-									</div>
-
-									<blockquote>
-										<?php echo esc_html( $testimonial_quote ); ?>
-									</blockquote>
-
-									<div class="mpc-case-study__testimonial-person">
-
-										<?php if ( $testimonial_photo_id ) : ?>
-
-											<?php
-											echo wp_get_attachment_image(
-												$testimonial_photo_id,
-												'thumbnail',
-												false,
-												array(
-													'class' => 'mpc-case-study__testimonial-photo',
-													'alt'   => $testimonial_name,
-												)
-											);
-											?>
-
-										<?php endif; ?>
-
-										<div>
-
-											<?php if ( $testimonial_name ) : ?>
-
-												<strong>
-													<?php echo esc_html( $testimonial_name ); ?>
-												</strong>
-
-											<?php endif; ?>
-
-											<?php if ( $testimonial_position || $testimonial_company ) : ?>
-
-												<span>
-													<?php
-													echo esc_html(
-														implode(
-															', ',
-															array_filter(
-																array(
-																	$testimonial_position,
-																	$testimonial_company,
-																)
-															)
-														)
-													);
-													?>
-												</span>
-
-											<?php endif; ?>
-
-										</div>
-
-									</div>
-
-								</div>
-
-							</section>
-
-						<?php endif; ?>
-
 					</div>
 
-				</div>
-
-			</div>
-
-		</section>
-
-		<?php
-		$related_term_ids = array();
-
-		if (
-			$categories
-			&& ! is_wp_error( $categories )
-		) {
-			$related_term_ids = wp_list_pluck(
-				$categories,
-				'term_id'
-			);
-		}
-
-		$related_args = array(
-			'post_type'           => MPC_Project_CPT::POST_TYPE,
-			'post_status'         => 'publish',
-			'posts_per_page'      => 3,
-			'post__not_in'        => array( $project_id ),
-			'ignore_sticky_posts' => true,
-			'no_found_rows'       => true,
-		);
-
-		if ( $related_term_ids ) {
-			$related_args['tax_query'] = array(
-				array(
-					'taxonomy' => 'project_category',
-					'field'    => 'term_id',
-					'terms'    => $related_term_ids,
-				),
-			);
-		}
-
-		$related_projects = new WP_Query(
-			$related_args
-		);
-		?>
-
-		<?php if ( $related_projects->have_posts() ) : ?>
-
-			<section class="mpc-case-study__related">
-
-				<div class="mpc-case-study__container">
-
-					<header class="mpc-case-study__related-heading">
-
-						<div>
-							<span>
-								<?php esc_html_e( 'More work', 'myportfolio-core' ); ?>
-							</span>
-
-							<h2>
-								<?php esc_html_e( 'Related Projects', 'myportfolio-core' ); ?>
-							</h2>
+					<?php if ( $statistics ) : ?>
+						<div class="mpc-project-detail__stats">
+							<?php foreach ( $statistics as $statistic ) : ?>
+								<?php $value = isset( $statistic['value'] ) ? (string) $statistic['value'] : ''; $label = isset( $statistic['label'] ) ? (string) $statistic['label'] : ''; if ( '' === $value && '' === $label ) : continue; endif; ?>
+								<div class="mpc-project-detail__stat"><span class="mpc-project-detail__stat-icon" aria-hidden="true">↗</span><div><strong><?php echo esc_html( $value ); ?></strong><small><?php echo esc_html( $label ); ?></small></div></div>
+							<?php endforeach; ?>
 						</div>
-
-						<?php if ( $archive_url ) : ?>
-
-							<a href="<?php echo esc_url( $archive_url ); ?>">
-								<?php esc_html_e( 'View all projects', 'myportfolio-core' ); ?>
-
-								<span aria-hidden="true">→</span>
-							</a>
-
-						<?php endif; ?>
-
-					</header>
-
-					<div class="mpc-case-study__related-grid">
-
-						<?php while ( $related_projects->have_posts() ) : ?>
-
-							<?php
-							$related_projects->the_post();
-
-							$related_id = get_the_ID();
-
-							$related_image_id = get_post_thumbnail_id(
-								$related_id
-							);
-
-							if ( ! $related_image_id ) {
-
-								$related_gallery_value = (string) get_post_meta(
-									$related_id,
-									'_mpc_project_gallery',
-									true
-								);
-
-								$related_gallery_ids = array_filter(
-									array_map(
-										'absint',
-										explode(
-											',',
-											$related_gallery_value
-										)
-									)
-								);
-
-								if ( $related_gallery_ids ) {
-									$related_image_id = (int) reset(
-										$related_gallery_ids
-									);
-								}
-							}
-							?>
-
-							<article class="mpc-case-study__related-card">
-
-								<a
-									class="mpc-case-study__related-image-wrap"
-									href="<?php the_permalink(); ?>"
-								>
-
-									<?php if ( $related_image_id ) : ?>
-
-										<?php
-										echo wp_get_attachment_image(
-											$related_image_id,
-											'large',
-											false,
-											array(
-												'class'   => 'mpc-case-study__related-image',
-												'loading' => 'lazy',
-												'alt'     => get_the_title(),
-											)
-										);
-										?>
-
-									<?php else : ?>
-
-										<span class="mpc-case-study__related-placeholder"></span>
-
-									<?php endif; ?>
-
-								</a>
-
-								<div class="mpc-case-study__related-card-body">
-
-									<h3>
-										<a href="<?php the_permalink(); ?>">
-											<?php the_title(); ?>
-										</a>
-									</h3>
-
-									<a
-										class="mpc-case-study__related-link"
-										href="<?php the_permalink(); ?>"
-									>
-										<?php esc_html_e( 'View Case Study', 'myportfolio-core' ); ?>
-
-										<span aria-hidden="true">→</span>
-									</a>
-
-								</div>
-
-							</article>
-
-						<?php endwhile; ?>
-
-					</div>
-
+					<?php endif; ?>
 				</div>
-
 			</section>
 
-		<?php endif; ?>
+			<?php if ( $gallery_ids ) : ?>
+				<section id="screenshots" class="mpc-project-detail__screenshots">
+					<header class="mpc-project-detail__section-header"><h2><?php esc_html_e( 'Project Screenshots', 'myportfolio-core' ); ?></h2></header>
+					<div class="mpc-project-detail__screenshot-grid">
+						<?php foreach ( $gallery_ids as $gallery_id ) : ?>
+							<?php $full_url = wp_get_attachment_image_url( $gallery_id, 'full' ); ?>
+							<?php if ( ! $full_url ) : continue; endif; ?>
+							<a href="<?php echo esc_url( $full_url ); ?>" target="_blank" rel="noopener noreferrer"><?php echo wp_get_attachment_image( $gallery_id, 'large', false, array( 'class' => 'mpc-project-detail__screenshot-image', 'loading' => 'lazy', 'alt' => '' ) ); ?></a>
+						<?php endforeach; ?>
+					</div>
+				</section>
+			<?php endif; ?>
 
-		<?php wp_reset_postdata(); ?>
+			<section class="mpc-project-detail__bottom-grid">
+				<?php if ( $technologies ) : ?>
+					<article id="technologies" class="mpc-project-detail__bottom-card"><h2><?php esc_html_e( 'Technologies Used', 'myportfolio-core' ); ?></h2><div class="mpc-project-detail__technology-list"><?php foreach ( $technologies as $technology ) : ?><span><?php echo esc_html( $technology->name ); ?></span><?php endforeach; ?></div></article>
+				<?php endif; ?>
 
-		<section class="mpc-case-study__cta">
+				<?php if ( $features ) : ?>
+					<article id="features" class="mpc-project-detail__bottom-card"><h2><?php esc_html_e( 'Key Features Implemented', 'myportfolio-core' ); ?></h2><ul class="mpc-project-detail__feature-list"><?php foreach ( $features as $feature ) : ?><?php $feature_title = isset( $feature['title'] ) ? (string) $feature['title'] : ''; if ( '' === $feature_title ) : continue; endif; ?><li><span aria-hidden="true">✓</span><?php echo esc_html( $feature_title ); ?></li><?php endforeach; ?></ul></article>
+				<?php endif; ?>
 
-			<div class="mpc-case-study__container">
+				<?php if ( $testimonial_quote ) : ?>
+					<article id="testimonial" class="mpc-project-detail__bottom-card mpc-project-detail__testimonial">
+						<span class="mpc-project-detail__quote-mark" aria-hidden="true">“</span><blockquote><?php echo esc_html( $testimonial_quote ); ?></blockquote>
+						<div class="mpc-project-detail__testimonial-person">
+							<?php if ( $testimonial_photo_id ) : ?><?php echo wp_get_attachment_image( $testimonial_photo_id, 'thumbnail', false, array( 'class' => 'mpc-project-detail__testimonial-photo', 'alt' => $testimonial_name ) ); ?><?php endif; ?>
+							<div><?php if ( $testimonial_name ) : ?><strong><?php echo esc_html( $testimonial_name ); ?></strong><?php endif; ?><?php if ( $testimonial_position || $testimonial_company ) : ?><small><?php echo esc_html( implode( ', ', array_filter( array( $testimonial_position, $testimonial_company ) ) ) ); ?></small><?php endif; ?></div>
+						</div>
+						<?php if ( $testimonial_rating ) : ?><div class="mpc-project-detail__stars"><?php echo esc_html( str_repeat( '★', min( 5, $testimonial_rating ) ) ); ?></div><?php endif; ?>
+					</article>
+				<?php endif; ?>
+			</section>
 
-				<div class="mpc-case-study__cta-inner">
+			<?php if ( $video_url ) : ?>
+				<section class="mpc-project-detail__video">
+					<?php $video_embed = wp_oembed_get( $video_url ); ?>
+					<?php if ( $video_embed ) : echo wp_kses_post( $video_embed ); else : ?><a href="<?php echo esc_url( $video_url ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Watch Project Video', 'myportfolio-core' ); ?></a><?php endif; ?>
+				</section>
+			<?php endif; ?>
 
-					<span>
-						<?php esc_html_e( 'Have a project in mind?', 'myportfolio-core' ); ?>
-					</span>
+		</div>
 
-					<h2>
-						<?php esc_html_e( 'Let’s create something meaningful together.', 'myportfolio-core' ); ?>
-					</h2>
-
-					<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">
-						<?php esc_html_e( 'Start a Conversation', 'myportfolio-core' ); ?>
-
-						<span aria-hidden="true">→</span>
-					</a>
-
+		<section class="mpc-project-detail__cta">
+			<div class="mpc-project-detail__container">
+				<div class="mpc-project-detail__cta-inner">
+					<div><span><?php esc_html_e( 'Have a project in mind?', 'myportfolio-core' ); ?></span><h2><?php esc_html_e( 'Let’s build something amazing together!', 'myportfolio-core' ); ?></h2><p><?php esc_html_e( 'I’m open to new opportunities and interesting projects.', 'myportfolio-core' ); ?></p></div>
+					<div class="mpc-project-detail__cta-actions"><a class="mpc-project-detail__cta-primary" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php esc_html_e( 'Hire Me', 'myportfolio-core' ); ?><span aria-hidden="true">→</span></a><a class="mpc-project-detail__cta-secondary" href="<?php echo esc_url( home_url( '/resume/' ) ); ?>"><?php esc_html_e( 'Download Resume', 'myportfolio-core' ); ?><span aria-hidden="true">↓</span></a></div>
 				</div>
-
 			</div>
-
 		</section>
 
 	</main>
 
 <?php endwhile; ?>
 
-<?php
-get_footer();
+<?php get_footer(); ?>
