@@ -9,6 +9,10 @@ defined( 'ABSPATH' ) || exit;
 
 get_header();
 
+$archive_url = get_post_type_archive_link(
+	MPC_Project_CPT::POST_TYPE
+);
+
 $project_categories = get_terms(
 	array(
 		'taxonomy'   => 'project_category',
@@ -47,7 +51,12 @@ $project_categories = get_terms(
 
 	</section>
 
-	<?php if ( $project_categories && ! is_wp_error( $project_categories ) ) : ?>
+	<?php
+	if (
+		$project_categories
+		&& ! is_wp_error( $project_categories )
+	) :
+		?>
 
 		<section class="mpc-projects-filters">
 
@@ -58,17 +67,23 @@ $project_categories = get_terms(
 					aria-label="<?php esc_attr_e( 'Project categories', 'myportfolio-core' ); ?>"
 				>
 
-					<a
-						class="mpc-projects-filter is-active"
-						href="<?php echo esc_url( get_post_type_archive_link( MPC_Project_CPT::POST_TYPE ) ); ?>"
-					>
-						<?php esc_html_e( 'All Projects', 'myportfolio-core' ); ?>
-					</a>
+					<?php if ( $archive_url ) : ?>
 
-					<?php foreach ( $project_categories as $category ) : ?>
+						<a
+							class="mpc-projects-filter is-active"
+							href="<?php echo esc_url( $archive_url ); ?>"
+						>
+							<?php esc_html_e( 'All Projects', 'myportfolio-core' ); ?>
+						</a>
+
+					<?php endif; ?>
+
+					<?php foreach ( $project_categories as $filter_category ) : ?>
 
 						<?php
-						$category_link = get_term_link( $category );
+						$category_link = get_term_link(
+							$filter_category
+						);
 
 						if ( is_wp_error( $category_link ) ) {
 							continue;
@@ -79,7 +94,7 @@ $project_categories = get_terms(
 							class="mpc-projects-filter"
 							href="<?php echo esc_url( $category_link ); ?>"
 						>
-							<?php echo esc_html( $category->name ); ?>
+							<?php echo esc_html( $filter_category->name ); ?>
 						</a>
 
 					<?php endforeach; ?>
@@ -107,27 +122,45 @@ $project_categories = get_terms(
 
 						$project_id = get_the_ID();
 
-                        $card_image_id = get_post_thumbnail_id( $project_id );
+						/*
+						 * Card image priority:
+						 *
+						 * 1. Featured image.
+						 * 2. First gallery image.
+						 * 3. Placeholder.
+						 */
+						$card_image_id = get_post_thumbnail_id(
+							$project_id
+						);
 
-if ( ! $card_image_id ) {
-	$gallery_value = (string) get_post_meta(
-		$project_id,
-		'_mpc_project_gallery',
-		true
-	);
+						if ( ! $card_image_id ) {
 
-	$gallery_ids = array_filter(
-		array_map(
-			'absint',
-			explode( ',', $gallery_value )
-		)
-	);
+							$gallery_value = (string) get_post_meta(
+								$project_id,
+								'_mpc_project_gallery',
+								true
+							);
 
-	if ( ! empty( $gallery_ids ) ) {
-		$card_image_id = reset( $gallery_ids );
-	}
-}
+							$gallery_ids = array_filter(
+								array_map(
+									'absint',
+									explode(
+										',',
+										$gallery_value
+									)
+								)
+							);
 
+							if ( ! empty( $gallery_ids ) ) {
+								$card_image_id = (int) reset(
+									$gallery_ids
+								);
+							}
+						}
+
+						/*
+						 * Project metadata.
+						 */
 						$client = (string) get_post_meta(
 							$project_id,
 							'_mpc_project_client',
@@ -146,14 +179,22 @@ if ( ! $card_image_id ) {
 							true
 						);
 
-						$technologies = get_the_terms(
-							$project_id,
-							'technology'
-						);
-
+						/*
+						 * Project taxonomies.
+						 */
 						$categories = get_the_terms(
 							$project_id,
 							'project_category'
+						);
+
+						$project_types = get_the_terms(
+							$project_id,
+							'project_type'
+						);
+
+						$technologies = get_the_terms(
+							$project_id,
+							'technology'
 						);
 						?>
 
@@ -170,31 +211,31 @@ if ( ! $card_image_id ) {
 
 								<?php if ( $card_image_id ) : ?>
 
-	<?php
-	echo wp_get_attachment_image(
-		$card_image_id,
-		'large',
-		false,
-		array(
-			'class'   => 'mpc-project-card__image',
-			'loading' => 'lazy',
-			'alt'     => get_the_title(),
-		)
-	);
-	?>
+									<?php
+									echo wp_get_attachment_image(
+										$card_image_id,
+										'large',
+										false,
+										array(
+											'class'   => 'mpc-project-card__image',
+											'loading' => 'lazy',
+											'alt'     => get_the_title(),
+										)
+									);
+									?>
 
-<?php else : ?>
+								<?php else : ?>
 
-	<span class="mpc-project-card__placeholder">
+									<span class="mpc-project-card__placeholder">
 
-		<span
-			class="dashicons dashicons-portfolio"
-			aria-hidden="true"
-		></span>
+										<span
+											class="dashicons dashicons-portfolio"
+											aria-hidden="true"
+										></span>
 
-	</span>
+									</span>
 
-<?php endif; ?>
+								<?php endif; ?>
 
 								<?php if ( $status ) : ?>
 
@@ -222,20 +263,61 @@ if ( ! $card_image_id ) {
 
 								<?php
 								if (
-									$categories
-									&& ! is_wp_error( $categories )
+									(
+										$categories
+										&& ! is_wp_error( $categories )
+									)
+									||
+									(
+										$project_types
+										&& ! is_wp_error( $project_types )
+									)
 								) :
 									?>
 
-									<div class="mpc-project-card__categories">
+									<div class="mpc-project-card__taxonomies">
 
-										<?php foreach ( $categories as $category ) : ?>
+										<?php
+										if (
+											$categories
+											&& ! is_wp_error( $categories )
+										) :
+											?>
 
-											<span class="mpc-project-card__category">
-												<?php echo esc_html( $category->name ); ?>
-											</span>
+											<div class="mpc-project-card__categories">
 
-										<?php endforeach; ?>
+												<?php foreach ( $categories as $category ) : ?>
+
+													<span class="mpc-project-card__category">
+														<?php echo esc_html( $category->name ); ?>
+													</span>
+
+												<?php endforeach; ?>
+
+											</div>
+
+										<?php endif; ?>
+
+										<?php
+										if (
+											$project_types
+											&& ! is_wp_error( $project_types )
+										) :
+											?>
+
+											<div class="mpc-project-card__types">
+
+												<?php foreach ( $project_types as $project_type ) : ?>
+
+													<span class="mpc-project-card__type">
+														<?php echo esc_html( $project_type->name ); ?>
+													</span>
+
+												<?php endforeach; ?>
+
+											</div>
+
+										<?php endif; ?>
 
 									</div>
 
@@ -256,11 +338,13 @@ if ( ! $card_image_id ) {
 										<?php if ( $client ) : ?>
 
 											<span>
+
 												<strong>
 													<?php esc_html_e( 'Client', 'myportfolio-core' ); ?>
 												</strong>
 
 												<?php echo esc_html( $client ); ?>
+
 											</span>
 
 										<?php endif; ?>
@@ -268,11 +352,13 @@ if ( ! $card_image_id ) {
 										<?php if ( $year ) : ?>
 
 											<span>
+
 												<strong>
 													<?php esc_html_e( 'Year', 'myportfolio-core' ); ?>
 												</strong>
 
 												<?php echo esc_html( $year ); ?>
+
 											</span>
 
 										<?php endif; ?>
@@ -285,8 +371,11 @@ if ( ! $card_image_id ) {
 
 									<?php
 									if ( has_excerpt() ) {
+
 										the_excerpt();
+
 									} else {
+
 										echo wp_kses_post(
 											wpautop(
 												wp_trim_words(
@@ -313,7 +402,11 @@ if ( ! $card_image_id ) {
 
 										<?php
 										foreach (
-											array_slice( $technologies, 0, 4 )
+											array_slice(
+												$technologies,
+												0,
+												5
+											)
 											as $technology
 										) :
 											?>

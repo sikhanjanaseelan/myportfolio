@@ -15,7 +15,7 @@ wp_nonce_field(
 /*
  * Overview metadata.
  */
-$client   = get_post_meta(
+$client = get_post_meta(
 	$post->ID,
 	'_mpc_project_client',
 	true
@@ -131,6 +131,21 @@ if ( ! $status ) {
 		<button
 			class="mpc-project-tab"
 			type="button"
+			data-mpc-tab="content"
+			aria-selected="false"
+			tabindex="-1"
+		>
+			<span
+				class="dashicons dashicons-welcome-write-blog"
+				aria-hidden="true"
+			></span>
+
+			<?php esc_html_e( 'Content', 'myportfolio-core' ); ?>
+		</button>
+
+		<button
+			class="mpc-project-tab"
+			type="button"
 			data-mpc-tab="links"
 			aria-selected="false"
 			tabindex="-1"
@@ -180,6 +195,8 @@ if ( ! $status ) {
 		<?php require __DIR__ . '/tab-overview.php'; ?>
 
 		<?php require __DIR__ . '/tab-media.php'; ?>
+
+		<?php require __DIR__ . '/tab-content.php'; ?>
 
 		<?php require __DIR__ . '/tab-links.php'; ?>
 

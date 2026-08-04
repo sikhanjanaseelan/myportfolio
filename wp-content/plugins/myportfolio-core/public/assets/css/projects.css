@@ -501,3 +501,34 @@
         transform: none;
     }
 }
+/* ==========================================================
+   Project card taxonomies
+========================================================== */
+
+.mpc-project-card__taxonomies {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2, 0.5rem);
+}
+
+.mpc-project-card__categories,
+.mpc-project-card__types {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2, 0.5rem);
+}
+
+.mpc-project-card__type {
+    display: inline-flex;
+    min-height: 1.75rem;
+    align-items: center;
+    padding: 0 var(--space-3, 0.75rem);
+    border: 1px solid var(--color-primary-300, #a9c6b5);
+    border-radius: var(--radius-pill, 999px);
+    background: var(--color-primary-100, #e8f0eb);
+    color: var(--color-primary, #203f31);
+    font-size: var(--font-size-xs, 0.75rem);
+    font-weight: var(--font-weight-semibold, 600);
+    line-height: 1;
+}
