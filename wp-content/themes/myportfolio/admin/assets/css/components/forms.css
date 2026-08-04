@@ -1,0 +1,590 @@
+/**
+ * MyPortfolio Core
+ * Reusable admin form components
+ */
+
+/* ==========================================================
+   Form layout
+========================================================== */
+
+.mpc-form {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: var(--mpc-space-6);
+}
+
+.mpc-form-section {
+    min-width: 0;
+    padding: var(--mpc-space-5);
+    border: 1px solid var(--mpc-color-border);
+    border-radius: var(--mpc-radius-md);
+    background: var(--mpc-color-surface);
+    box-shadow: var(--mpc-shadow-xs);
+}
+
+.mpc-form-section__header {
+    margin-bottom: var(--mpc-space-5);
+    padding-bottom: var(--mpc-space-4);
+    border-bottom: 1px solid var(--mpc-color-border);
+}
+
+.mpc-form-section__title {
+    margin: 0;
+    color: var(--mpc-color-heading);
+    font-size: var(--mpc-font-size-md);
+    font-weight: var(--mpc-font-weight-semibold);
+    line-height: var(--mpc-line-height-tight);
+}
+
+.mpc-form-section__description {
+    max-width: 46rem;
+    margin-top: var(--mpc-space-2);
+    color: var(--mpc-color-text-soft);
+    font-size: var(--mpc-font-size-sm);
+    line-height: var(--mpc-line-height-relaxed);
+}
+
+.mpc-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--mpc-space-5);
+}
+
+.mpc-form-grid--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.mpc-form-grid--single {
+    grid-template-columns: 1fr;
+}
+
+.mpc-form-field {
+    min-width: 0;
+}
+
+.mpc-form-field--full {
+    grid-column: 1 / -1;
+}
+
+/* ==========================================================
+   Labels and descriptions
+========================================================== */
+
+.mpc-form-label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--mpc-space-2);
+    margin-bottom: var(--mpc-space-2);
+    color: var(--mpc-color-heading);
+    font-size: var(--mpc-font-size-sm);
+    font-weight: var(--mpc-font-weight-semibold);
+    line-height: var(--mpc-line-height-tight);
+}
+
+.mpc-form-required {
+    color: var(--mpc-color-danger);
+}
+
+.mpc-form-description {
+    margin-top: var(--mpc-space-2);
+    color: var(--mpc-color-text-muted);
+    font-size: var(--mpc-font-size-xs);
+    line-height: var(--mpc-line-height-relaxed);
+}
+
+.mpc-form-message {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--mpc-space-2);
+    margin-top: var(--mpc-space-2);
+    font-size: var(--mpc-font-size-xs);
+    line-height: var(--mpc-line-height-base);
+}
+
+.mpc-form-message--error {
+    color: var(--mpc-color-danger);
+}
+
+.mpc-form-message--success {
+    color: var(--mpc-color-success);
+}
+
+.mpc-form-message--warning {
+    color: var(--mpc-color-warning);
+}
+
+/* ==========================================================
+   Text fields
+========================================================== */
+
+.mpc-input,
+.mpc-select,
+.mpc-textarea {
+    width: 100%;
+    max-width: none;
+    border: 1px solid var(--mpc-color-border-strong);
+    border-radius: var(--mpc-radius-sm);
+    background: var(--mpc-color-surface);
+    color: var(--mpc-color-text);
+    font-family: var(--mpc-font-family);
+    font-size: var(--mpc-font-size-base);
+    line-height: var(--mpc-line-height-base);
+    transition:
+        border-color var(--mpc-transition-fast),
+        box-shadow var(--mpc-transition-fast),
+        background var(--mpc-transition-fast);
+}
+
+.mpc-input,
+.mpc-select {
+    min-height: 2.75rem;
+    padding: 0 var(--mpc-space-3);
+}
+
+.mpc-textarea {
+    min-height: 8rem;
+    padding: var(--mpc-space-3);
+    resize: vertical;
+}
+
+.mpc-input::placeholder,
+.mpc-textarea::placeholder {
+    color: var(--mpc-color-text-muted);
+}
+
+.mpc-input:hover,
+.mpc-select:hover,
+.mpc-textarea:hover {
+    border-color: var(--mpc-color-primary-border);
+}
+
+.mpc-input:focus,
+.mpc-select:focus,
+.mpc-textarea:focus {
+    border-color: var(--mpc-color-primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgb(91 75 255 / 14%);
+}
+
+.mpc-input:disabled,
+.mpc-select:disabled,
+.mpc-textarea:disabled,
+.mpc-input[readonly],
+.mpc-textarea[readonly] {
+    border-color: var(--mpc-color-border);
+    background: var(--mpc-color-surface-muted);
+    color: var(--mpc-color-text-muted);
+    cursor: not-allowed;
+}
+
+.mpc-input.is-error,
+.mpc-select.is-error,
+.mpc-textarea.is-error {
+    border-color: var(--mpc-color-danger);
+    box-shadow: 0 0 0 3px rgb(239 68 68 / 10%);
+}
+
+.mpc-input.is-success,
+.mpc-select.is-success,
+.mpc-textarea.is-success {
+    border-color: var(--mpc-color-success);
+    box-shadow: 0 0 0 3px rgb(34 197 94 / 10%);
+}
+
+/* ==========================================================
+   Input groups
+========================================================== */
+
+.mpc-input-group {
+    display: flex;
+    min-width: 0;
+    align-items: stretch;
+}
+
+.mpc-input-group .mpc-input {
+    min-width: 0;
+    border-radius: 0;
+}
+
+.mpc-input-group .mpc-input:first-child {
+    border-radius:
+        var(--mpc-radius-sm)
+        0
+        0
+        var(--mpc-radius-sm);
+}
+
+.mpc-input-group .mpc-input:last-child {
+    border-radius:
+        0
+        var(--mpc-radius-sm)
+        var(--mpc-radius-sm)
+        0;
+}
+
+.mpc-input-group__prefix,
+.mpc-input-group__suffix {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    padding-inline: var(--mpc-space-3);
+    border: 1px solid var(--mpc-color-border-strong);
+    background: var(--mpc-color-surface-muted);
+    color: var(--mpc-color-text-soft);
+    font-size: var(--mpc-font-size-sm);
+    white-space: nowrap;
+}
+
+.mpc-input-group__prefix {
+    border-right: 0;
+    border-radius:
+        var(--mpc-radius-sm)
+        0
+        0
+        var(--mpc-radius-sm);
+}
+
+.mpc-input-group__suffix {
+    border-left: 0;
+    border-radius:
+        0
+        var(--mpc-radius-sm)
+        var(--mpc-radius-sm)
+        0;
+}
+
+/* ==========================================================
+   Checkbox and radio
+========================================================== */
+
+.mpc-choice-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mpc-space-3);
+}
+
+.mpc-choice {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: var(--mpc-space-3);
+    color: var(--mpc-color-text);
+    cursor: pointer;
+}
+
+.mpc-choice input[type="checkbox"],
+.mpc-choice input[type="radio"] {
+    width: 1.1rem;
+    height: 1.1rem;
+    flex: 0 0 auto;
+    margin: 0.12rem 0 0;
+    border: 1px solid var(--mpc-color-border-strong);
+    accent-color: var(--mpc-color-primary);
+}
+
+.mpc-choice__content {
+    min-width: 0;
+}
+
+.mpc-choice__label {
+    display: block;
+    color: var(--mpc-color-heading);
+    font-size: var(--mpc-font-size-sm);
+    font-weight: var(--mpc-font-weight-medium);
+}
+
+.mpc-choice__description {
+    display: block;
+    margin-top: var(--mpc-space-1);
+    color: var(--mpc-color-text-muted);
+    font-size: var(--mpc-font-size-xs);
+    line-height: var(--mpc-line-height-base);
+}
+
+/* ==========================================================
+   Toggle switch
+========================================================== */
+
+.mpc-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--mpc-space-3);
+    cursor: pointer;
+}
+
+.mpc-switch__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.mpc-switch__control {
+    position: relative;
+    display: inline-flex;
+    width: 2.75rem;
+    height: 1.5rem;
+    flex: 0 0 2.75rem;
+    align-items: center;
+    border-radius: var(--mpc-radius-pill);
+    background: var(--mpc-color-border-strong);
+    transition: background var(--mpc-transition-fast);
+}
+
+.mpc-switch__control::after {
+    position: absolute;
+    left: 0.2rem;
+    width: 1.1rem;
+    height: 1.1rem;
+    border-radius: 50%;
+    background: var(--mpc-color-white);
+    box-shadow: var(--mpc-shadow-xs);
+    content: "";
+    transition: transform var(--mpc-transition-fast);
+}
+
+.mpc-switch__input:checked + .mpc-switch__control {
+    background: var(--mpc-color-primary);
+}
+
+.mpc-switch__input:checked + .mpc-switch__control::after {
+    transform: translateX(1.25rem);
+}
+
+.mpc-switch__input:focus-visible + .mpc-switch__control {
+    box-shadow: 0 0 0 3px rgb(91 75 255 / 14%);
+}
+
+.mpc-switch__text {
+    color: var(--mpc-color-heading);
+    font-size: var(--mpc-font-size-sm);
+    font-weight: var(--mpc-font-weight-medium);
+}
+
+/* ==========================================================
+   Search field
+========================================================== */
+
+.mpc-search {
+    position: relative;
+    min-width: 0;
+}
+
+.mpc-search__icon {
+    position: absolute;
+    top: 50%;
+    left: var(--mpc-space-3);
+    display: inline-flex;
+    color: var(--mpc-color-text-muted);
+    pointer-events: none;
+    transform: translateY(-50%);
+}
+
+.mpc-search .mpc-input {
+    padding-left: 2.5rem;
+}
+
+/* ==========================================================
+   Upload field
+========================================================== */
+
+.mpc-upload {
+    display: flex;
+    min-height: 10rem;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: var(--mpc-space-3);
+    padding: var(--mpc-space-6);
+    border: 1px dashed var(--mpc-color-border-strong);
+    border-radius: var(--mpc-radius-md);
+    background: var(--mpc-color-surface-soft);
+    text-align: center;
+    transition:
+        border-color var(--mpc-transition-fast),
+        background var(--mpc-transition-fast);
+}
+
+.mpc-upload:hover,
+.mpc-upload.is-dragging {
+    border-color: var(--mpc-color-primary);
+    background: var(--mpc-color-primary-soft);
+}
+
+.mpc-upload__icon {
+    display: inline-flex;
+    width: 3rem;
+    height: 3rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--mpc-radius-md);
+    background: var(--mpc-color-primary-soft);
+    color: var(--mpc-color-primary);
+}
+
+.mpc-upload__title {
+    color: var(--mpc-color-heading);
+    font-size: var(--mpc-font-size-sm);
+    font-weight: var(--mpc-font-weight-semibold);
+}
+
+.mpc-upload__description {
+    max-width: 24rem;
+    color: var(--mpc-color-text-muted);
+    font-size: var(--mpc-font-size-xs);
+    line-height: var(--mpc-line-height-relaxed);
+}
+
+/* ==========================================================
+   Image preview
+========================================================== */
+
+.mpc-media-preview {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--mpc-color-border);
+    border-radius: var(--mpc-radius-md);
+    background: var(--mpc-color-surface-muted);
+}
+
+.mpc-media-preview img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.mpc-media-preview__actions {
+    position: absolute;
+    right: var(--mpc-space-3);
+    bottom: var(--mpc-space-3);
+    display: flex;
+    gap: var(--mpc-space-2);
+}
+
+/* ==========================================================
+   Repeater
+========================================================== */
+
+.mpc-repeater {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mpc-space-3);
+}
+
+.mpc-repeater__item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--mpc-space-3);
+    align-items: center;
+    padding: var(--mpc-space-3);
+    border: 1px solid var(--mpc-color-border);
+    border-radius: var(--mpc-radius-sm);
+    background: var(--mpc-color-surface-soft);
+}
+
+.mpc-repeater__handle {
+    cursor: grab;
+    color: var(--mpc-color-text-muted);
+}
+
+.mpc-repeater__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--mpc-space-2);
+}
+
+/* ==========================================================
+   Form footer and save bar
+========================================================== */
+
+.mpc-form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--mpc-space-3);
+    padding-top: var(--mpc-space-5);
+    border-top: 1px solid var(--mpc-color-border);
+}
+
+.mpc-save-bar {
+    position: sticky;
+    z-index: var(--mpc-z-header);
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--mpc-space-4);
+    margin-top: var(--mpc-space-6);
+    padding: var(--mpc-space-4) var(--mpc-space-5);
+    border: 1px solid var(--mpc-color-border);
+    border-radius: var(--mpc-radius-md);
+    background: rgb(255 255 255 / 94%);
+    box-shadow: var(--mpc-shadow-md);
+    backdrop-filter: blur(12px);
+}
+
+.mpc-save-bar__status {
+    color: var(--mpc-color-text-soft);
+    font-size: var(--mpc-font-size-sm);
+}
+
+.mpc-save-bar__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--mpc-space-3);
+}
+
+/* ==========================================================
+   Responsive
+========================================================== */
+
+@media (max-width: 1024px) {
+    .mpc-form-grid--3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 782px) {
+    .mpc-form-grid,
+    .mpc-form-grid--3 {
+        grid-template-columns: 1fr;
+    }
+
+    .mpc-form-field--full {
+        grid-column: auto;
+    }
+
+    .mpc-form-section {
+        padding: var(--mpc-space-4);
+    }
+
+    .mpc-input-group {
+        flex-direction: column;
+    }
+
+    .mpc-input-group .mpc-input,
+    .mpc-input-group .mpc-input:first-child,
+    .mpc-input-group .mpc-input:last-child,
+    .mpc-input-group__prefix,
+    .mpc-input-group__suffix {
+        border: 1px solid var(--mpc-color-border-strong);
+        border-radius: var(--mpc-radius-sm);
+    }
+
+    .mpc-save-bar {
+        position: static;
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .mpc-save-bar__actions,
+    .mpc-form-actions {
+        align-items: stretch;
+        justify-content: flex-start;
+        flex-direction: column;
+    }
+}

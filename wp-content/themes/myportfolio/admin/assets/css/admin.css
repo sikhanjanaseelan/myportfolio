@@ -1,0 +1,38 @@
+/**
+ * MyPortfolio Core
+ * Admin Design System
+ */
+
+/* ==========================================================
+   Base
+========================================================== */
+
+@import url("./base/variables.css");
+@import url("./base/reset.css");
+@import url("./base/typography.css");
+
+/* ==========================================================
+   Layout
+========================================================== */
+
+@import url("./layout/layout.css");
+@import url("./layout/header.css");
+@import url("./layout/grid.css");
+
+/* ==========================================================
+   Components
+========================================================== */
+
+@import url("./components/cards.css");
+@import url("./components/buttons.css");
+@import url("./components/badges.css");
+@import url("./components/forms.css");
+@import url("./components/tables.css");
+@import url("./components/empty-state.css");
+
+/* ==========================================================
+   Pages
+========================================================== */
+
+@import url("./pages/dashboard.css");
+

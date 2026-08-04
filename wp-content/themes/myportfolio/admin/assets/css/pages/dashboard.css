@@ -1,0 +1,174 @@
+/**
+ * MyPortfolio Core
+ * Dashboard page layout
+ */
+
+/* ==========================================================
+   Dashboard wrapper
+========================================================== */
+
+.myportfolio-core-admin .mpc-dashboard {
+    display: flex;
+    width: 100%;
+    min-width: 0;
+    flex-direction: column;
+    gap: var(--mpc-space-6);
+}
+
+.myportfolio-core-admin .mpc-dashboard-section {
+    width: 100%;
+    min-width: 0;
+    margin-top: 0;
+}
+
+.myportfolio-core-admin .mpc-dashboard-section > .mpc-cluster {
+    margin-bottom: var(--mpc-space-4);
+}
+
+/* ==========================================================
+   Portfolio overview statistics
+========================================================== */
+
+.myportfolio-core-admin .mpc-overview-grid {
+    display: grid;
+    width: 100%;
+    min-width: 0;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--mpc-space-4);
+}
+
+.myportfolio-core-admin .mpc-overview-grid > .mpc-stat-card {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    min-height: 8rem;
+    margin: 0;
+}
+
+/* ==========================================================
+   Main dashboard content
+========================================================== */
+
+.myportfolio-core-admin .mpc-dashboard-content {
+    display: grid;
+    width: 100%;
+    min-width: 0;
+    grid-template-columns:
+        minmax(0, 1.65fr)
+        minmax(17rem, 0.75fr);
+    gap: var(--mpc-space-5);
+    align-items: start;
+}
+
+.myportfolio-core-admin .mpc-dashboard-content > * {
+    min-width: 0;
+}
+
+/* ==========================================================
+   Quick actions
+========================================================== */
+
+.myportfolio-core-admin .mpc-dashboard-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--mpc-space-3);
+}
+
+.myportfolio-core-admin .mpc-dashboard-actions .mpc-button {
+    width: 100%;
+    min-width: 0;
+    justify-content: flex-start;
+}
+
+/* ==========================================================
+   System status
+========================================================== */
+
+.myportfolio-core-admin .mpc-status-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.myportfolio-core-admin .mpc-status-item {
+    display: flex;
+    min-height: 3rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--mpc-space-3);
+    padding-block: var(--mpc-space-3);
+    border-bottom: 1px solid var(--mpc-color-border);
+}
+
+.myportfolio-core-admin .mpc-status-item:first-child {
+    padding-top: 0;
+}
+
+.myportfolio-core-admin .mpc-status-item:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+.myportfolio-core-admin .mpc-status-label {
+    color: var(--mpc-color-text);
+    font-size: var(--mpc-font-size-sm);
+}
+
+.myportfolio-core-admin .mpc-status-value {
+    color: var(--mpc-color-success);
+    font-size: var(--mpc-font-size-sm);
+    font-weight: var(--mpc-font-weight-semibold);
+}
+
+/* ==========================================================
+   Dashicons
+========================================================== */
+
+.myportfolio-core-admin .mpc-stat-card__icon .dashicons {
+    width: auto;
+    height: auto;
+    font-size: 1.25rem;
+    line-height: 1;
+}
+
+.myportfolio-core-admin .mpc-button .dashicons {
+    width: auto;
+    height: auto;
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.myportfolio-core-admin .mpc-empty-state__icon .dashicons {
+    width: auto;
+    height: auto;
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+/* ==========================================================
+   Medium screens
+========================================================== */
+
+@media screen and (max-width: 1100px) {
+    .myportfolio-core-admin .mpc-overview-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .myportfolio-core-admin .mpc-dashboard-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================
+   Mobile
+========================================================== */
+
+@media screen and (max-width: 600px) {
+    .myportfolio-core-admin .mpc-dashboard {
+        gap: var(--mpc-space-5);
+    }
+
+    .myportfolio-core-admin .mpc-overview-grid,
+    .myportfolio-core-admin .mpc-dashboard-actions {
+        grid-template-columns: 1fr;
+    }
+}
