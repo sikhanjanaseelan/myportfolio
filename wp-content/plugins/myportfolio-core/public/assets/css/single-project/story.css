@@ -245,3 +245,42 @@
     color: var(--color-text-muted, #8b92a0);
     font-size: 0.65rem;
 }
+/* ==========================================================
+   Section focus indicator
+========================================================== */
+
+.mpc-project-detail__overview,
+.mpc-project-detail__story-column,
+.mpc-project-detail__screenshots,
+.mpc-project-detail__bottom-card {
+    position: relative;
+}
+
+.mpc-project-detail__section-focus {
+    animation:
+        mpc-section-focus
+        1.8s
+        ease;
+}
+
+@keyframes mpc-section-focus {
+
+    0% {
+        background: rgb(217 121 24 / 10%);
+        box-shadow:
+            0 0 0 3px
+            rgb(217 121 24 / 14%);
+    }
+
+    40% {
+        background: rgb(217 121 24 / 6%);
+        box-shadow:
+            0 0 0 3px
+            rgb(217 121 24 / 10%);
+    }
+
+    100% {
+        background: transparent;
+        box-shadow: none;
+    }
+}
