@@ -71,7 +71,11 @@ final class MPC_Projects {
 		string $template
 	): string {
 
-		if ( is_post_type_archive( MPC_Project_CPT::POST_TYPE ) ) {
+		if (
+			is_post_type_archive(
+				MPC_Project_CPT::POST_TYPE
+			)
+		) {
 
 			$theme_template = locate_template(
 				'myportfolio-core/archive-project.php'
@@ -89,7 +93,11 @@ final class MPC_Projects {
 			}
 		}
 
-		if ( is_singular( MPC_Project_CPT::POST_TYPE ) ) {
+		if (
+			is_singular(
+				MPC_Project_CPT::POST_TYPE
+			)
+		) {
 
 			$theme_template = locate_template(
 				'myportfolio-core/single-project.php'
@@ -118,22 +126,98 @@ final class MPC_Projects {
 	public static function enqueue_public_assets(): void {
 
 		if (
-			! is_post_type_archive( MPC_Project_CPT::POST_TYPE )
-			&& ! is_singular( MPC_Project_CPT::POST_TYPE )
+			! is_post_type_archive(
+				MPC_Project_CPT::POST_TYPE
+			)
+			&& ! is_singular(
+				MPC_Project_CPT::POST_TYPE
+			)
 		) {
 			return;
 		}
 
-		$css_file = MYPORTFOLIO_CORE_PATH
-			. 'public/assets/css/projects.css';
+		self::enqueue_style(
+			'myportfolio-core-projects',
+			'public/assets/css/projects.css'
+		);
+
+		if (
+			! is_singular(
+				MPC_Project_CPT::POST_TYPE
+			)
+		) {
+			return;
+		}
+
+		$single_styles = array(
+			'base',
+			'hero',
+			'story',
+			'screenshots',
+			'details',
+			'slider',
+			'similar-projects',
+			'cta',
+			'responsive',
+		);
+
+		$dependency = 'myportfolio-core-projects';
+
+		foreach ( $single_styles as $style_name ) {
+
+			$handle = 'myportfolio-core-project-'
+				. $style_name;
+
+			self::enqueue_style(
+				$handle,
+				'public/assets/css/single-project/'
+					. $style_name
+					. '.css',
+				array( $dependency )
+			);
+
+			$dependency = $handle;
+		}
+
+		$js_file = MYPORTFOLIO_CORE_PATH
+			. 'public/assets/js/single-project.js';
+
+		wp_enqueue_script(
+			'myportfolio-core-single-project',
+			MYPORTFOLIO_CORE_URL
+				. 'public/assets/js/single-project.js',
+			array(),
+			file_exists( $js_file )
+				? (string) filemtime( $js_file )
+				: MYPORTFOLIO_CORE_VERSION,
+			true
+		);
+	}
+
+	/**
+	 * Enqueue one plugin stylesheet.
+	 *
+	 * @param string        $handle        WordPress style handle.
+	 * @param string        $relative_path File path relative to plugin root.
+	 * @param array<string> $dependencies  Style dependencies.
+	 * @return void
+	 */
+	private static function enqueue_style(
+		string $handle,
+		string $relative_path,
+		array $dependencies = array()
+	): void {
+
+		$file_path = MYPORTFOLIO_CORE_PATH
+			. $relative_path;
 
 		wp_enqueue_style(
-			'myportfolio-core-projects',
+			$handle,
 			MYPORTFOLIO_CORE_URL
-				. 'public/assets/css/projects.css',
-			array(),
-			file_exists( $css_file )
-				? (string) filemtime( $css_file )
+				. $relative_path,
+			$dependencies,
+			file_exists( $file_path )
+				? (string) filemtime( $file_path )
 				: MYPORTFOLIO_CORE_VERSION
 		);
 	}

@@ -1,0 +1,207 @@
+/**
+ * Single Project
+ * Responsive rules.
+ */
+
+@media (max-width: 1100px) {
+
+    .mpc-project-detail__hero {
+        grid-template-columns: 1fr;
+    }
+
+    .mpc-project-detail__meta-card {
+        margin-top: 1.5rem;
+    }
+
+    .mpc-project-detail__bottom-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .mpc-project-detail__testimonial {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 900px) {
+
+    .mpc-project-detail__story-card {
+        grid-template-columns: 1fr;
+    }
+
+    .mpc-project-detail__story-sidebar {
+        border-right: 0;
+        border-bottom: 1px solid var(--color-border, #e4ddd3);
+    }
+
+    .mpc-project-detail__story-nav {
+        flex-flow: row wrap;
+        gap: 0.35rem;
+        border-left: 0;
+    }
+
+    .mpc-project-detail__story-nav a {
+        padding: 0.55rem 0.75rem;
+        border: 1px solid var(--color-border, #e4ddd3);
+        border-radius: 999px;
+    }
+
+    .mpc-project-detail__story-nav a:first-child::before {
+        display: none;
+    }
+
+    .mpc-project-detail__pdf {
+        max-width: 24rem;
+    }
+
+    .mpc-project-detail__columns {
+        grid-template-columns: 1fr;
+    }
+
+    .mpc-project-detail__story-column {
+        padding: 0 0 1.2rem;
+        border-right: 0;
+        border-bottom: 1px solid var(--color-border, #e4ddd3);
+    }
+
+    .mpc-project-detail__story-column:last-child {
+        padding-bottom: 0;
+        border-bottom: 0;
+    }
+
+    .mpc-project-detail__screenshot-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .mpc-project-detail__stats {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .mpc-project-detail__stat:nth-child(2) {
+        border-right: 0;
+    }
+
+    .mpc-project-detail__stat:nth-child(-n + 2) {
+        border-bottom: 1px solid var(--color-border, #e4ddd3);
+    }
+
+    .mpc-project-detail__cta-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .mpc-project-detail__similar-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 680px) {
+
+    .mpc-project-detail__container {
+        width: min(
+            calc(100% - 1.4rem),
+            var(--container-wide, 82rem)
+        );
+    }
+
+    .mpc-project-detail__breadcrumb {
+        padding-top: 0.85rem;
+    }
+
+    .mpc-project-detail__title {
+        font-size: clamp(
+            2.7rem,
+            15vw,
+            4.2rem
+        );
+    }
+
+    .mpc-project-detail__meta-card {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .mpc-project-detail__meta-item:nth-child(2) {
+        border-right: 0;
+    }
+
+    .mpc-project-detail__meta-item:nth-child(-n + 2) {
+        border-bottom: 1px solid var(--color-border, #e4ddd3);
+    }
+
+    .mpc-project-detail__thumbs {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+
+    .mpc-project-detail__slider-controls {
+        top: 0.85rem;
+        right: 0.85rem;
+    }
+
+    .mpc-project-detail__story-content {
+        padding: 1.25rem;
+    }
+
+    .mpc-project-detail__stats,
+    .mpc-project-detail__screenshot-grid,
+    .mpc-project-detail__bottom-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mpc-project-detail__stat {
+        border-right: 0;
+        border-bottom: 1px solid var(--color-border, #e4ddd3);
+    }
+
+    .mpc-project-detail__stat:last-child {
+        border-bottom: 0;
+    }
+
+    .mpc-project-detail__testimonial {
+        grid-column: auto;
+    }
+
+    .mpc-project-detail__similar-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .mpc-project-detail__similar-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mpc-project-detail__cta-inner {
+        padding: 1.4rem;
+    }
+
+    .mpc-project-detail__cta-actions {
+        flex-direction: column;
+    }
+
+    .mpc-project-detail__cta-actions a {
+        width: 100%;
+    }
+
+    .mpc-project-detail__video iframe {
+        min-height: 16rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .mpc-project-detail__button,
+    .mpc-project-detail__hero-image,
+    .mpc-project-detail__slider-button,
+    .mpc-project-detail__similar-card,
+    .mpc-project-detail__similar-image {
+        transition: none;
+    }
+
+    .mpc-project-detail__button:hover,
+    .mpc-project-detail__similar-card:hover {
+        transform: none;
+    }
+}

@@ -1,0 +1,85 @@
+/**
+ * Single Project
+ * Final CTA.
+ */
+
+.mpc-project-detail__cta {
+    padding-bottom: 1.5rem;
+}
+
+.mpc-project-detail__cta-inner {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1fr)
+        auto;
+    gap: 2rem;
+    align-items: center;
+    overflow: hidden;
+    padding: 1.7rem 2.2rem;
+    border-radius: 1rem;
+    background:
+        radial-gradient(
+            circle at 8% 50%,
+            rgb(130 166 135 / 30%),
+            transparent 20%
+        ),
+        linear-gradient(
+            105deg,
+            #183527,
+            #243a25 58%,
+            #2a241a
+        );
+    color: #ffffff;
+    box-shadow: 0 18px 50px rgb(20 30 24 / 18%);
+}
+
+.mpc-project-detail__cta-inner > div > span {
+    color: #ffffff;
+    font-family:
+        var(--font-family-heading, "DM Serif Display", Georgia, serif);
+    font-size: 1.35rem;
+}
+
+.mpc-project-detail__cta h2 {
+    margin: 0.2rem 0 0;
+    color: #ffffff;
+    font-family:
+        var(--font-family-heading, "DM Serif Display", Georgia, serif);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 400;
+}
+
+.mpc-project-detail__cta p {
+    margin: 0.45rem 0 0;
+    color: rgb(255 255 255 / 78%);
+    font-size: 0.78rem;
+}
+
+.mpc-project-detail__cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.mpc-project-detail__cta-actions a {
+    display: inline-flex;
+    min-height: 3rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    padding-inline: 1.4rem;
+    border-radius: 0.55rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.mpc-project-detail__cta-primary {
+    background: #fff5e8;
+    color: #b95718;
+}
+
+.mpc-project-detail__cta-secondary {
+    border: 1px solid rgb(255 255 255 / 38%);
+    color: #ffffff;
+}

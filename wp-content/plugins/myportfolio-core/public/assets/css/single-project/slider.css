@@ -1,0 +1,110 @@
+/**
+ * Single Project
+ * Main image slider.
+ */
+
+.mpc-project-detail__slider-stage {
+    position: relative;
+}
+
+.mpc-project-detail__slider-controls {
+    position: absolute;
+    top: 1.35rem;
+    right: 1.35rem;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.4rem;
+    border: 1px solid rgb(255 255 255 / 18%);
+    border-radius: 999px;
+    background: rgb(16 22 29 / 82%);
+    color: #ffffff;
+    box-shadow: 0 8px 24px rgb(0 0 0 / 18%);
+    backdrop-filter: blur(0.75rem);
+}
+
+.mpc-project-detail__slider-counter {
+    min-width: 3.25rem;
+    padding-inline: 0.45rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.mpc-project-detail__slider-button {
+    display: inline-flex;
+    width: 2rem;
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: rgb(255 255 255 / 12%);
+    color: #ffffff;
+    font: inherit;
+    cursor: pointer;
+    transition:
+        background 160ms ease,
+        transform 160ms ease;
+}
+
+.mpc-project-detail__slider-button:hover,
+.mpc-project-detail__slider-button:focus-visible {
+    background: var(--color-accent, #d97918);
+    transform: translateY(-1px);
+    outline: none;
+}
+
+.mpc-project-detail__hero-image {
+    transition:
+        opacity 180ms ease,
+        transform 180ms ease;
+}
+
+.mpc-project-detail__hero-image.is-changing {
+    opacity: 0.35;
+    transform: scale(0.995);
+}
+
+.mpc-project-detail__thumbs {
+    display: grid;
+    overflow-x: auto;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.65rem;
+    margin-top: 0.75rem;
+    padding: 0.6rem;
+    border-radius: 0.95rem;
+    background: #11161d;
+    scrollbar-width: thin;
+}
+
+.mpc-project-detail__thumb {
+    display: block;
+    min-width: 0;
+    overflow: hidden;
+    padding: 0;
+    border: 2px solid transparent;
+    border-radius: 0.5rem;
+    background: #ffffff;
+    cursor: pointer;
+}
+
+.mpc-project-detail__thumb.is-active {
+    border-color: var(--color-accent, #d97918);
+}
+
+.mpc-project-detail__thumb:focus-visible {
+    border-color: var(--color-accent, #d97918);
+    outline: 2px solid rgb(217 121 24 / 28%);
+    outline-offset: 2px;
+}
+
+.mpc-project-detail__thumb-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9.5;
+    object-fit: cover;
+    object-position: top center;
+}

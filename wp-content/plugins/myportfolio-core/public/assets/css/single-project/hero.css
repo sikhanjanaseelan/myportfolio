@@ -1,0 +1,192 @@
+/**
+ * Single Project
+ * Hero, project information and metadata.
+ */
+
+.mpc-project-detail__hero {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 0.78fr)
+        minmax(0, 1.22fr);
+    gap: 3.2rem;
+    align-items: stretch;
+    padding-bottom: 1.7rem;
+}
+
+.mpc-project-detail__hero-copy {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    padding-top: 1.25rem;
+}
+
+.mpc-project-detail__eyebrow {
+    display: inline-block;
+    margin-bottom: 1.1rem;
+    color: var(--color-accent-700, #a94f15);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.mpc-project-detail__title {
+    max-width: 36rem;
+    margin: 0;
+    color: var(--color-heading, #12100e);
+    font-family:
+        var(--font-family-heading, "DM Serif Display", Georgia, serif);
+    font-size: clamp(3rem, 6vw, 5.4rem);
+    font-weight: 400;
+    letter-spacing: -0.035em;
+    line-height: 0.98;
+}
+
+.mpc-project-detail__excerpt {
+    max-width: 35rem;
+    margin-top: 1.35rem;
+    color: var(--color-text-default, #344054);
+    font-size: 1.02rem;
+    line-height: 1.7;
+}
+
+.mpc-project-detail__excerpt p {
+    margin: 0;
+}
+
+.mpc-project-detail__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 1.35rem;
+}
+
+.mpc-project-detail__tags span {
+    display: inline-flex;
+    min-height: 2.25rem;
+    align-items: center;
+    padding-inline: 0.95rem;
+    border: 1px solid var(--color-border, #e4ddd3);
+    border-radius: 0.65rem;
+    background: var(--color-surface, #ffffff);
+    color: var(--color-text-strong, #1c2430);
+    font-size: 0.78rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgb(28 36 48 / 4%);
+}
+
+.mpc-project-detail__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+}
+
+.mpc-project-detail__button {
+    display: inline-flex;
+    min-height: 3rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding-inline: 1.25rem;
+    border: 1px solid var(--color-border, #e4ddd3);
+    border-radius: 0.7rem;
+    background: var(--color-surface, #ffffff);
+    color: var(--color-text-strong, #1c2430);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 6px 20px rgb(28 36 48 / 6%);
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease;
+}
+
+.mpc-project-detail__button:hover {
+    border-color: var(--color-primary-300, #a9c6b5);
+    transform: translateY(-2px);
+}
+
+.mpc-project-detail__button--primary {
+    border-color: var(--color-primary, #203f31);
+    background: var(--color-primary, #203f31);
+    color: #ffffff;
+}
+
+.mpc-project-detail__meta-card {
+    display: grid;
+    overflow: hidden;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: auto;
+    padding-top: 1.5rem;
+    border: 1px solid var(--color-border, #e4ddd3);
+    border-radius: 1rem;
+    background: var(--color-surface, #ffffff);
+    box-shadow: 0 12px 32px rgb(28 36 48 / 7%);
+}
+
+.mpc-project-detail__meta-item {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 1rem 1.45rem;
+    border-right: 1px solid var(--color-border, #e4ddd3);
+    text-align: center;
+}
+
+.mpc-project-detail__meta-item:last-child {
+    border-right: 0;
+}
+
+.mpc-project-detail__meta-icon {
+    display: inline-flex;
+    width: 2.9rem;
+    height: 2.9rem;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+    border-radius: 50%;
+    background: var(--color-primary-100, #e8f0eb);
+    color: var(--color-primary, #203f31);
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.mpc-project-detail__meta-item small {
+    color: var(--color-text-muted, #8b92a0);
+    font-size: 0.72rem;
+}
+
+.mpc-project-detail__meta-item strong {
+    margin-top: 0.35rem;
+    color: var(--color-text-strong, #1c2430);
+    font-size: 0.82rem;
+    line-height: 1.45;
+}
+
+.mpc-project-detail__visual {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+}
+
+.mpc-project-detail__frame {
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    padding: 0.55rem;
+    border: 0.5rem solid #11161d;
+    border-radius: 1.35rem;
+    background: #11161d;
+    box-shadow: 0 22px 54px rgb(16 20 28 / 16%);
+}
+
+.mpc-project-detail__hero-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9.25;
+    border-radius: 0.55rem;
+    object-fit: cover;
+    object-position: top center;
+}

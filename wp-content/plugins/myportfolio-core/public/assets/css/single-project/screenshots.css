@@ -1,0 +1,54 @@
+/**
+ * Single Project
+ * Screenshots gallery.
+ */
+
+.mpc-project-detail__screenshots {
+    margin-top: 1.25rem;
+    padding: 1.25rem;
+    border: 1px solid var(--color-border, #e4ddd3);
+    border-radius: 1rem;
+    background: var(--color-surface, #ffffff);
+    box-shadow: 0 10px 30px rgb(28 36 48 / 5%);
+}
+
+.mpc-project-detail__section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.mpc-project-detail__section-header h2 {
+    margin: 0;
+    color: var(--color-heading, #12100e);
+    font-family:
+        var(--font-family-heading, "DM Serif Display", Georgia, serif);
+    font-size: 1.45rem;
+    font-weight: 400;
+}
+
+.mpc-project-detail__screenshot-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.mpc-project-detail__screenshot-grid a {
+    display: block;
+    overflow: hidden;
+    padding: 0.35rem;
+    border: 1px solid var(--color-border, #e4ddd3);
+    border-radius: 0.75rem;
+    background: #ffffff;
+}
+
+.mpc-project-detail__screenshot-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9.4;
+    border-radius: 0.5rem;
+    object-fit: cover;
+    object-position: top center;
+}

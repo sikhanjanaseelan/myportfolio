@@ -1,0 +1,132 @@
+/**
+ * Single Project
+ * Similar Projects.
+ */
+
+.mpc-project-detail__similar {
+    padding: 3.5rem 0;
+    border-top: 1px solid var(--color-border, #e4ddd3);
+    background: var(--color-cream-100, #faf6ef);
+}
+
+.mpc-project-detail__similar-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.mpc-project-detail__similar-header > div > span {
+    display: block;
+    margin-bottom: 0.35rem;
+    color: var(--color-accent-700, #a94f15);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.mpc-project-detail__similar-header h2 {
+    margin: 0;
+    color: var(--color-heading, #12100e);
+    font-family:
+        var(--font-family-heading, "DM Serif Display", Georgia, serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+}
+
+.mpc-project-detail__similar-header > a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-primary, #203f31);
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.mpc-project-detail__similar-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+.mpc-project-detail__similar-card {
+    overflow: hidden;
+    border: 1px solid var(--color-border, #e4ddd3);
+    border-radius: 1rem;
+    background: var(--color-surface, #ffffff);
+    box-shadow: 0 10px 30px rgb(28 36 48 / 6%);
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.mpc-project-detail__similar-card:hover {
+    box-shadow: 0 18px 42px rgb(28 36 48 / 10%);
+    transform: translateY(-4px);
+}
+
+.mpc-project-detail__similar-media {
+    display: block;
+    overflow: hidden;
+    background: var(--color-surface-soft, #f5efe7);
+}
+
+.mpc-project-detail__similar-image,
+.mpc-project-detail__similar-placeholder {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+}
+
+.mpc-project-detail__similar-image {
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 300ms ease;
+}
+
+.mpc-project-detail__similar-card:hover
+.mpc-project-detail__similar-image {
+    transform: scale(1.025);
+}
+
+.mpc-project-detail__similar-body {
+    padding: 1.2rem;
+}
+
+.mpc-project-detail__similar-category {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--color-accent-700, #a94f15);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.mpc-project-detail__similar-body h3 {
+    margin: 0;
+    font-family:
+        var(--font-family-heading, "DM Serif Display", Georgia, serif);
+    font-size: 1.35rem;
+    font-weight: 400;
+    line-height: 1.25;
+}
+
+.mpc-project-detail__similar-body h3 a {
+    color: var(--color-heading, #12100e);
+    text-decoration: none;
+}
+
+.mpc-project-detail__similar-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-top: 0.85rem;
+    color: var(--color-primary, #203f31);
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-decoration: none;
+}

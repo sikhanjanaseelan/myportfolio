@@ -1,0 +1,40 @@
+/**
+ * Single Project
+ * Foundation and shared layout.
+ */
+
+.mpc-project-detail {
+    min-height: 100vh;
+    background: var(--color-background, #fbf8f3);
+    color: var(--color-text-default, #344054);
+    font-family:
+        var(--font-family-body, "Inter", "Segoe UI", Arial, sans-serif);
+}
+
+.mpc-project-detail__container {
+    width: min(
+        var(--container-wide, 82rem),
+        calc(100% - 3rem)
+    );
+    margin-inline: auto;
+}
+
+.mpc-project-detail__breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 1.2rem 0 1.5rem;
+    color: var(--color-text-muted, #8b92a0);
+    font-size: 0.78rem;
+}
+
+.mpc-project-detail__breadcrumb a {
+    color: var(--color-text-soft, #667085);
+    text-decoration: none;
+}
+
+.mpc-project-detail__breadcrumb a:hover,
+.mpc-project-detail__breadcrumb a:focus-visible {
+    color: var(--color-primary, #203f31);
+}

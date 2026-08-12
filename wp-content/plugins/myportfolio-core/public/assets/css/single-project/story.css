@@ -1,0 +1,247 @@
+/**
+ * Single Project
+ * Overview, sidebar, challenge, solution and statistics.
+ */
+
+.mpc-project-detail__story-card {
+    display: grid;
+    grid-template-columns:
+        minmax(12.5rem, 15rem)
+        minmax(0, 1fr);
+    overflow: hidden;
+    margin-top: 1rem;
+    border: 1px solid var(--color-border, #e4ddd3);
+    border-radius: 1rem;
+    background: var(--color-surface, #ffffff);
+    box-shadow: 0 12px 34px rgb(28 36 48 / 6%);
+}
+
+.mpc-project-detail__story-sidebar {
+    padding: 1.25rem;
+    border-right: 1px solid var(--color-border, #e4ddd3);
+    background: #fffdfa;
+}
+
+.mpc-project-detail__story-nav {
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid var(--color-border, #e4ddd3);
+}
+
+.mpc-project-detail__story-nav a {
+    position: relative;
+    display: block;
+    padding: 0.75rem 0.9rem;
+    color: var(--color-text-strong, #1c2430);
+    font-size: 0.84rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.mpc-project-detail__story-nav a:first-child {
+    background: var(--color-accent-50, #fff7ed);
+    color: var(--color-accent-700, #a94f15);
+}
+
+.mpc-project-detail__story-nav a:first-child::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -1px;
+    width: 2px;
+    background: var(--color-accent, #d97918);
+    content: "";
+}
+
+.mpc-project-detail__pdf {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.75rem;
+    margin-top: 1.2rem;
+    padding: 1rem;
+    border: 1px solid var(--color-border, #e4ddd3);
+    border-radius: 0.8rem;
+    background: #ffffff;
+}
+
+.mpc-project-detail__pdf-icon {
+    display: inline-flex;
+    width: 2rem;
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-accent, #d97918);
+    font-size: 1.35rem;
+}
+
+.mpc-project-detail__pdf strong,
+.mpc-project-detail__pdf small {
+    display: block;
+}
+
+.mpc-project-detail__pdf strong {
+    color: var(--color-text-strong, #1c2430);
+    font-size: 0.78rem;
+}
+
+.mpc-project-detail__pdf small {
+    margin-top: 0.2rem;
+    color: var(--color-text-muted, #8b92a0);
+    font-size: 0.68rem;
+}
+
+.mpc-project-detail__pdf a {
+    grid-column: 1 / -1;
+    display: inline-flex;
+    min-height: 2.7rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 0.35rem;
+    border: 1px solid var(--color-accent-300, #eeb47d);
+    border-radius: 0.55rem;
+    color: var(--color-accent-700, #a94f15);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.mpc-project-detail__story-content {
+    min-width: 0;
+    padding: 1.65rem 1.7rem 1.35rem;
+}
+
+.mpc-project-detail__overview h2 {
+    margin: 0;
+    color: var(--color-heading, #12100e);
+    font-family:
+        var(--font-family-heading, "DM Serif Display", Georgia, serif);
+    font-size: 1.45rem;
+    font-weight: 400;
+}
+
+.mpc-project-detail__prose {
+    color: var(--color-text-default, #344054);
+    font-size: 0.86rem;
+    line-height: 1.72;
+}
+
+.mpc-project-detail__overview .mpc-project-detail__prose {
+    max-width: 46rem;
+    margin-top: 0.85rem;
+}
+
+.mpc-project-detail__prose > :first-child {
+    margin-top: 0;
+}
+
+.mpc-project-detail__prose > :last-child {
+    margin-bottom: 0;
+}
+
+.mpc-project-detail__columns {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.4rem;
+    margin-top: 1.35rem;
+}
+
+.mpc-project-detail__story-column {
+    min-width: 0;
+    padding-right: 1.35rem;
+    border-right: 1px solid var(--color-border, #e4ddd3);
+}
+
+.mpc-project-detail__story-column:last-child {
+    padding-right: 0;
+    border-right: 0;
+}
+
+.mpc-project-detail__story-column h3 {
+    margin: 0.75rem 0 0.6rem;
+    color: var(--color-heading, #12100e);
+    font-family:
+        var(--font-family-heading, "DM Serif Display", Georgia, serif);
+    font-size: 1.15rem;
+    font-weight: 400;
+}
+
+.mpc-project-detail__round-icon {
+    display: inline-flex;
+    width: 2.35rem;
+    height: 2.35rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: 700;
+}
+
+.mpc-project-detail__round-icon--orange {
+    background: #fff3e7;
+    color: #d97918;
+}
+
+.mpc-project-detail__round-icon--green {
+    background: #eef6ef;
+    color: #2d6a4f;
+}
+
+.mpc-project-detail__round-icon--pink {
+    background: #fff0f4;
+    color: #e03a6f;
+}
+
+.mpc-project-detail__stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    overflow: hidden;
+    margin-top: 1.5rem;
+    border: 1px solid var(--color-border, #e4ddd3);
+    border-radius: 0.8rem;
+}
+
+.mpc-project-detail__stat {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem;
+    border-right: 1px solid var(--color-border, #e4ddd3);
+}
+
+.mpc-project-detail__stat:last-child {
+    border-right: 0;
+}
+
+.mpc-project-detail__stat-icon {
+    display: inline-flex;
+    width: 2.35rem;
+    height: 2.35rem;
+    flex: 0 0 2.35rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--color-primary-100, #e8f0eb);
+    color: var(--color-primary, #203f31);
+    font-weight: 700;
+}
+
+.mpc-project-detail__stat strong,
+.mpc-project-detail__stat small {
+    display: block;
+}
+
+.mpc-project-detail__stat strong {
+    color: var(--color-primary, #203f31);
+    font-family:
+        var(--font-family-heading, "DM Serif Display", Georgia, serif);
+    font-size: 1.55rem;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.mpc-project-detail__stat small {
+    margin-top: 0.28rem;
+    color: var(--color-text-muted, #8b92a0);
+    font-size: 0.65rem;
+}
