@@ -1,22 +1,149 @@
 /**
- * Featured projects responsive behaviour.
+ * Featured Projects
+ * Responsive compact grid.
  */
 
-@media (min-width: 90rem) {
+/* ==========================================================
+   Very wide desktop
+   6 cards
+========================================================== */
+
+@media (min-width: 94rem) {
+
     .featured-projects__list {
-        grid-auto-columns: minmax(16rem, 1fr);
+        grid-template-columns:
+            repeat(6, minmax(0, 1fr));
     }
 }
 
-@media (max-width: 64rem) {
+/* ==========================================================
+   Normal desktop
+   5 cards
+========================================================== */
+
+@media (
+    min-width: 75rem
+)
+and (
+    max-width: 93.999rem
+) {
+
     .featured-projects__list {
-        grid-auto-columns: minmax(18rem, 70vw);
+        grid-template-columns:
+            repeat(5, minmax(0, 1fr));
     }
 }
 
-@media (max-width: 40rem) {
+/* ==========================================================
+   Laptop
+   4 cards
+========================================================== */
+
+@media (max-width: 74.999rem) {
+
     .featured-projects__list {
-        grid-auto-columns: minmax(16.5rem, 86vw);
-        gap: var(--space-4);
+        grid-template-columns:
+            repeat(4, minmax(0, 1fr));
+    }
+}
+
+/* ==========================================================
+   Tablet
+   3 cards
+========================================================== */
+
+@media (max-width: 56rem) {
+
+    .featured-projects__list {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+        gap: 0.75rem;
+    }
+
+    .featured-projects .project-card__content,
+    .featured-projects .project-card__body {
+        padding: 0.75rem;
+    }
+}
+
+/* ==========================================================
+   Small tablet / large mobile
+   2 cards
+========================================================== */
+
+@media (max-width: 42rem) {
+
+    .featured-projects {
+        padding-bottom: 1.25rem;
+    }
+
+    .featured-projects.section {
+        padding-bottom: 1.25rem;
+    }
+
+    .featured-projects__list {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+        gap: 0.7rem;
+    }
+
+    .featured-projects
+    .project-card__description,
+    .featured-projects
+    .project-card__excerpt {
+        -webkit-line-clamp: 2;
+    }
+
+    .featured-projects
+    .project-card__technologies
+    span:nth-child(n + 3),
+    .featured-projects
+    .project-card__tags
+    span:nth-child(n + 3) {
+        display: none;
+    }
+}
+
+/* ==========================================================
+   Small mobile
+========================================================== */
+
+@media (max-width: 30rem) {
+
+    .featured-projects__list {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+        gap: 0.55rem;
+    }
+
+    .featured-projects .project-card__content,
+    .featured-projects .project-card__body {
+        padding: 0.65rem;
+    }
+
+    .featured-projects .project-card__title {
+        font-size: 0.85rem;
+    }
+
+    /*
+     * On very small screens remove the description
+     * instead of making the cards unnecessarily tall.
+     */
+    .featured-projects
+    .project-card__description,
+    .featured-projects
+    .project-card__excerpt {
+        display: none;
+    }
+}
+
+/* ==========================================================
+   Tiny phones
+========================================================== */
+
+@media (max-width: 22rem) {
+
+    .featured-projects__list {
+        grid-template-columns: 1fr;
     }
 }

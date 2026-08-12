@@ -1,9 +1,9 @@
 <?php
 /**
- * Featured projects homepage section.
+ * Featured Projects homepage section.
  *
- * Temporary project data is used until the MyPortfolio Core plugin
- * provides the portfolio_project custom post type.
+ * Displays projects managed by the MyPortfolio Core
+ * Projects module.
  *
  * @package MyPortfolio
  */
@@ -17,111 +17,369 @@ $defaults = array(
 	'action_label' => __( 'View All Projects', 'myportfolio' ),
 	'action_url'   => home_url( '/projects/' ),
 	'show_action'  => true,
-	'limit'        => 5,
+	'limit'        => 6,
 );
 
-$data = wp_parse_args( $args ?? array(), $defaults );
+$data = wp_parse_args(
+	$args ?? array(),
+	$defaults
+);
 
-/**
- * Temporary project data.
- *
- * This will later be replaced by a WP_Query connected to the
- * MyPortfolio Core project custom post type.
+/*
+ * Limit.
  */
-$projects = array(
-	array(
-		'title'        => 'MyPortfolio Framework',
-		'description'  => 'A modular WordPress developer portfolio with reusable components, responsive layouts and accessible frontend architecture.',
-		'image_url'    => 'https://placehold.co/800x460/f7ead9/203f31?text=MyPortfolio+Framework',
-		'image_alt'    => 'MyPortfolio framework website preview',
-		'project_url'  => '#',
-		'live_url'     => '#',
-		'github_url'   => '#',
-		'case_url'     => '#',
-		'type'         => 'Developer Portfolio',
-		'technologies' => array(
-			'WordPress',
-			'PHP',
-			'JavaScript',
-		),
-		'variant'      => 'compact',
-	),
-	array(
-		'title'        => 'Assisi Nursing School',
-		'description'  => 'A custom nursing-school website with faculty, events, testimonials, galleries and reusable content modules.',
-		'image_url'    => 'https://placehold.co/800x460/e8f0eb/203f31?text=Assisi+Nursing+School',
-		'image_alt'    => 'Assisi Nursing School website preview',
-		'project_url'  => '#',
-		'live_url'     => '#',
-		'github_url'   => '#',
-		'case_url'     => '#',
-		'type'         => 'Education',
-		'technologies' => array(
-			'WordPress',
-			'PHP',
-			'Custom Plugin',
-		),
-		'variant'      => 'compact',
-	),
-	array(
-		'title'        => 'Crest Global Edu',
-		'description'  => 'A modern education consultancy platform designed around clear programmes, enquiries and responsive content presentation.',
-		'image_url'    => 'https://placehold.co/800x460/e5edf7/243f68?text=Crest+Global+Edu',
-		'image_alt'    => 'Crest Global Edu website preview',
-		'project_url'  => '#',
-		'live_url'     => '#',
-		'github_url'   => '#',
-		'case_url'     => '#',
-		'type'         => 'Education Platform',
-		'technologies' => array(
-			'WordPress',
-			'PHP',
-			'MySQL',
-		),
-		'variant'      => 'compact',
-	),
-	array(
-		'title'        => 'Pran Fertility',
-		'description'  => 'A healthcare website focused on trust, treatment information, lead generation and mobile-friendly patient experiences.',
-		'image_url'    => 'https://placehold.co/800x460/f7e5e5/772b3a?text=Pran+Fertility',
-		'image_alt'    => 'Pran Fertility healthcare website preview',
-		'project_url'  => '#',
-		'live_url'     => '#',
-		'github_url'   => '',
-		'case_url'     => '#',
-		'type'         => 'Healthcare',
-		'technologies' => array(
-			'WordPress',
-			'REST API',
-			'Custom Theme',
-		),
-		'variant'      => 'compact',
-	),
-	array(
-		'title'        => 'Greshma Portfolio',
-		'description'  => 'A content-rich personal portfolio with projects, events, editorials, galleries and a custom WordPress administration system.',
-		'image_url'    => 'https://placehold.co/800x460/eee8f7/4e3f70?text=Greshma+Portfolio',
-		'image_alt'    => 'Greshma personal portfolio website preview',
-		'project_url'  => '#',
-		'live_url'     => '#',
-		'github_url'   => '#',
-		'case_url'     => '#',
-		'type'         => 'Portfolio',
-		'technologies' => array(
-			'WordPress',
-			'PHP',
-			'Custom CPTs',
-		),
-		'variant'      => 'compact',
-	),
+$project_limit = absint(
+	$data['limit']
 );
 
-$project_limit = absint( $data['limit'] );
-
-if ( $project_limit > 0 ) {
-	$projects = array_slice( $projects, 0, $project_limit );
+if ( $project_limit < 1 ) {
+	$project_limit = 5;
 }
 
+/*
+ * Project CPT.
+ *
+ * Keep the theme safe if MyPortfolio Core
+ * is temporarily disabled.
+ */
+$project_post_type = 'portfolio_project';
+
+$projects = array();
+
+if (
+	post_type_exists(
+		$project_post_type
+	)
+) {
+
+	/*
+	 * First try to retrieve projects explicitly
+	 * marked as Featured.
+	 */
+	$featured_query = new WP_Query(
+		array(
+			'post_type'           => $project_post_type,
+			'post_status'         => 'publish',
+			'posts_per_page'      => $project_limit,
+			'ignore_sticky_posts' => true,
+			'no_found_rows'       => true,
+
+			/*
+			 * Display order first.
+			 * Newest project used as fallback.
+			 */
+			'orderby' => array(
+				'menu_order' => 'ASC',
+				'date'       => 'DESC',
+			),
+
+			/*
+			 * Featured project flag from
+			 * MyPortfolio Core.
+			 */
+			'meta_query' => array(
+				array(
+					'key'     => '_mpc_project_featured',
+					'value'   => '1',
+					'compare' => '=',
+				),
+			),
+		)
+	);
+
+	/*
+	 * If there are no projects marked Featured yet,
+	 * show latest published projects.
+	 *
+	 * This prevents the homepage from becoming empty
+	 * while project data is being prepared.
+	 */
+	if (
+		! $featured_query->have_posts()
+	) {
+
+		$featured_query = new WP_Query(
+			array(
+				'post_type'           => $project_post_type,
+				'post_status'         => 'publish',
+				'posts_per_page'      => $project_limit,
+				'ignore_sticky_posts' => true,
+				'no_found_rows'       => true,
+				'orderby'             => array(
+					'menu_order' => 'ASC',
+					'date'       => 'DESC',
+				),
+			)
+		);
+	}
+
+	/*
+	 * Convert WordPress posts into the same
+	 * data structure expected by card-project.php.
+	 *
+	 * This allows us to keep the existing card
+	 * design completely unchanged.
+	 */
+	if (
+		$featured_query->have_posts()
+	) {
+
+		while (
+			$featured_query->have_posts()
+		) {
+
+			$featured_query->the_post();
+
+			$project_id = get_the_ID();
+
+			/* ------------------------------------------
+			 * Project URLs
+			 * --------------------------------------- */
+
+			$project_url = get_permalink(
+				$project_id
+			);
+
+			$live_url = (string) get_post_meta(
+				$project_id,
+				'_mpc_project_live_url',
+				true
+			);
+
+			$github_url = (string) get_post_meta(
+				$project_id,
+				'_mpc_project_github_url',
+				true
+			);
+
+			$case_url = (string) get_post_meta(
+				$project_id,
+				'_mpc_project_case_url',
+				true
+			);
+
+			/*
+			 * The internal single-project page is
+			 * our default case-study URL.
+			 */
+			if ( ! $case_url ) {
+				$case_url = $project_url;
+			}
+
+			/* ------------------------------------------
+			 * Description
+			 * --------------------------------------- */
+
+			$description = get_the_excerpt(
+				$project_id
+			);
+
+			if ( ! $description ) {
+
+				$description = wp_trim_words(
+					wp_strip_all_tags(
+						get_post_field(
+							'post_content',
+							$project_id
+						)
+					),
+					24,
+					'…'
+				);
+			}
+
+			/* ------------------------------------------
+			 * Featured image
+			 * --------------------------------------- */
+
+			$image_id = get_post_thumbnail_id(
+				$project_id
+			);
+
+			/*
+			 * Gallery fallback.
+			 */
+			if ( ! $image_id ) {
+
+				$gallery_value = (string) get_post_meta(
+					$project_id,
+					'_mpc_project_gallery',
+					true
+				);
+
+				$gallery_ids = array_values(
+					array_filter(
+						array_map(
+							'absint',
+							explode(
+								',',
+								$gallery_value
+							)
+						)
+					)
+				);
+
+				if ( $gallery_ids ) {
+
+					$image_id = (int) reset(
+						$gallery_ids
+					);
+				}
+			}
+
+			$image_url = '';
+
+			$image_alt = get_the_title(
+				$project_id
+			);
+
+			if ( $image_id ) {
+
+				$image_url = wp_get_attachment_image_url(
+					$image_id,
+					'large'
+				);
+
+				$attachment_alt = get_post_meta(
+					$image_id,
+					'_wp_attachment_image_alt',
+					true
+				);
+
+				if ( $attachment_alt ) {
+					$image_alt = $attachment_alt;
+				}
+			}
+
+			/* ------------------------------------------
+			 * Project type
+			 * --------------------------------------- */
+
+			$type = '';
+
+			if (
+				taxonomy_exists(
+					'project_type'
+				)
+			) {
+
+				$type_terms = get_the_terms(
+					$project_id,
+					'project_type'
+				);
+
+				if (
+					$type_terms
+					&& ! is_wp_error(
+						$type_terms
+					)
+				) {
+
+					$type = implode(
+						' · ',
+						wp_list_pluck(
+							$type_terms,
+							'name'
+						)
+					);
+				}
+			}
+
+			/*
+			 * Category fallback if project type
+			 * has not been assigned.
+			 */
+			if (
+				! $type
+				&& taxonomy_exists(
+					'project_category'
+				)
+			) {
+
+				$category_terms = get_the_terms(
+					$project_id,
+					'project_category'
+				);
+
+				if (
+					$category_terms
+					&& ! is_wp_error(
+						$category_terms
+					)
+				) {
+
+					$type = $category_terms[0]->name;
+				}
+			}
+
+			/* ------------------------------------------
+			 * Technologies
+			 * --------------------------------------- */
+
+			$technologies = array();
+
+			if (
+				taxonomy_exists(
+					'technology'
+				)
+			) {
+
+				$technology_terms = get_the_terms(
+					$project_id,
+					'technology'
+				);
+
+				if (
+					$technology_terms
+					&& ! is_wp_error(
+						$technology_terms
+					)
+				) {
+
+					$technologies = wp_list_pluck(
+						$technology_terms,
+						'name'
+					);
+
+					/*
+					 * Keep homepage cards compact.
+					 */
+					$technologies = array_slice(
+						$technologies,
+						0,
+						3
+					);
+				}
+			}
+
+			/* ------------------------------------------
+			 * Build existing card data
+			 * --------------------------------------- */
+
+			$projects[] = array(
+				'title'        => get_the_title(
+					$project_id
+				),
+				'description'  => $description,
+				'image_url'    => $image_url,
+				'image_alt'    => $image_alt,
+				'project_url'  => $project_url,
+				'live_url'     => $live_url,
+				'github_url'   => $github_url,
+				'case_url'     => $case_url,
+				'type'         => $type,
+				'technologies' => $technologies,
+				'variant'      => 'compact',
+			);
+		}
+
+		wp_reset_postdata();
+	}
+}
+
+/*
+ * Section heading visibility.
+ */
 $section_has_heading = (
 	! empty( $data['eyebrow'] )
 	|| ! empty( $data['title'] )
@@ -150,9 +408,15 @@ $section_has_heading = (
 					<?php if ( $data['eyebrow'] ) : ?>
 
 						<p class="featured-projects__eyebrow">
+
 							<span aria-hidden="true"></span>
 
-							<?php echo esc_html( $data['eyebrow'] ); ?>
+							<?php
+							echo esc_html(
+								$data['eyebrow']
+							);
+							?>
+
 						</p>
 
 					<?php endif; ?>
@@ -163,7 +427,11 @@ $section_has_heading = (
 							id="featured-projects-title"
 							class="featured-projects__title"
 						>
-							<?php echo esc_html( $data['title'] ); ?>
+							<?php
+							echo esc_html(
+								$data['title']
+							);
+							?>
 						</h2>
 
 					<?php else : ?>
@@ -172,7 +440,12 @@ $section_has_heading = (
 							id="featured-projects-title"
 							class="screen-reader-text"
 						>
-							<?php esc_html_e( 'Featured Projects', 'myportfolio' ); ?>
+							<?php
+							esc_html_e(
+								'Featured Projects',
+								'myportfolio'
+							);
+							?>
 						</h2>
 
 					<?php endif; ?>
@@ -180,7 +453,13 @@ $section_has_heading = (
 					<?php if ( $data['description'] ) : ?>
 
 						<p class="featured-projects__description">
-							<?php echo esc_html( $data['description'] ); ?>
+
+							<?php
+							echo esc_html(
+								$data['description']
+							);
+							?>
+
 						</p>
 
 					<?php endif; ?>
@@ -199,11 +478,19 @@ $section_has_heading = (
 						class="featured-projects__view-all"
 						href="<?php echo esc_url( $data['action_url'] ); ?>"
 					>
+
 						<span>
-							<?php echo esc_html( $data['action_label'] ); ?>
+							<?php
+							echo esc_html(
+								$data['action_label']
+							);
+							?>
 						</span>
 
-						<span aria-hidden="true">→</span>
+						<span aria-hidden="true">
+							→
+						</span>
+
 					</a>
 
 				<?php endif; ?>
@@ -218,6 +505,7 @@ $section_has_heading = (
 				class="featured-projects__viewport"
 				aria-label="<?php esc_attr_e( 'Featured project list', 'myportfolio' ); ?>"
 			>
+
 				<div class="featured-projects__list">
 
 					<?php foreach ( $projects as $project ) : ?>
@@ -233,6 +521,7 @@ $section_has_heading = (
 					<?php endforeach; ?>
 
 				</div>
+
 			</div>
 
 		<?php else : ?>
@@ -240,7 +529,12 @@ $section_has_heading = (
 			<div class="featured-projects__empty">
 
 				<h3>
-					<?php esc_html_e( 'Projects are coming soon.', 'myportfolio' ); ?>
+					<?php
+					esc_html_e(
+						'Projects are coming soon.',
+						'myportfolio'
+					);
+					?>
 				</h3>
 
 				<p>

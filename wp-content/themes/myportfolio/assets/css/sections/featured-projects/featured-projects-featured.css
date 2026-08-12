@@ -1,5 +1,196 @@
 /**
- * Featured projects special variants.
+ * Featured Projects
+ * Compact project card overrides.
  *
- * No featured oversized card is used in this section.
+ * These styles only affect cards inside
+ * the homepage Featured Projects section.
  */
+
+/* ==========================================================
+   Card
+========================================================== */
+
+.featured-projects .project-card {
+    display: flex;
+    min-width: 0;
+    height: 100%;
+    overflow: hidden;
+    flex-direction: column;
+    border: 1px solid var(--color-border);
+    border-radius: 0.85rem;
+    background: var(--color-surface);
+    box-shadow:
+        0 4px 16px
+        rgb(28 36 48 / 5%);
+    transition:
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast),
+        border-color var(--transition-fast);
+}
+
+.featured-projects .project-card:hover {
+    border-color: var(--color-border-strong);
+    box-shadow:
+        0 8px 22px
+        rgb(28 36 48 / 8%);
+    transform: translateY(-2px);
+}
+
+/* ==========================================================
+   Image
+========================================================== */
+
+.featured-projects .project-card__media {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: var(--color-surface-soft);
+}
+
+.featured-projects .project-card__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition:
+        transform var(--transition-slow);
+}
+
+.featured-projects .project-card:hover
+.project-card__image {
+    transform: scale(1.02);
+}
+
+/* ==========================================================
+   Card content
+========================================================== */
+
+.featured-projects .project-card__content,
+.featured-projects .project-card__body {
+    display: flex;
+    min-width: 0;
+    flex: 1;
+    flex-direction: column;
+    padding: 0.8rem;
+}
+
+/* ==========================================================
+   Type / category
+========================================================== */
+
+.featured-projects .project-card__type,
+.featured-projects .project-card__category {
+    margin: 0 0 0.3rem;
+    color: var(--color-accent);
+    font-size: 0.62rem;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+/* ==========================================================
+   Title
+========================================================== */
+
+.featured-projects .project-card__title {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.25;
+}
+
+.featured-projects .project-card__title a {
+    color: var(--color-text-strong);
+    text-decoration: none;
+}
+
+.featured-projects .project-card__title a:hover {
+    color: var(--color-accent);
+}
+
+/* ==========================================================
+   Description
+========================================================== */
+
+.featured-projects .project-card__description,
+.featured-projects .project-card__excerpt {
+    display: -webkit-box;
+    overflow: hidden;
+    margin: 0.4rem 0 0;
+    color: var(--color-text-soft);
+    font-size: 0.68rem;
+    line-height: 1.45;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+/* ==========================================================
+   Technologies
+========================================================== */
+
+.featured-projects .project-card__technologies,
+.featured-projects .project-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-top: 0.55rem;
+}
+
+.featured-projects .project-card__technologies span,
+.featured-projects .project-card__tags span {
+    display: inline-flex;
+    min-height: 1.45rem;
+    align-items: center;
+    padding-inline: 0.45rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    background: var(--color-surface-soft);
+    color: var(--color-text-soft);
+    font-size: 0.55rem;
+    font-weight: var(--font-weight-medium);
+}
+
+/*
+ * Homepage cards only need three technologies.
+ */
+.featured-projects
+.project-card__technologies
+span:nth-child(n + 4),
+.featured-projects
+.project-card__tags
+span:nth-child(n + 4) {
+    display: none;
+}
+
+/* ==========================================================
+   Actions
+========================================================== */
+
+.featured-projects .project-card__actions,
+.featured-projects .project-card__links,
+.featured-projects .project-card__footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: auto;
+    padding-top: 0.65rem;
+}
+
+.featured-projects .project-card__link,
+.featured-projects .project-card__action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--color-text-strong);
+    font-size: 0.65rem;
+    font-weight: var(--font-weight-semibold);
+    text-decoration: none;
+}
+
+.featured-projects .project-card__link:hover,
+.featured-projects .project-card__action:hover {
+    color: var(--color-accent);
+}
