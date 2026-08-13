@@ -4,20 +4,22 @@
  */
 
 .mpc-project-detail__screenshots {
-    margin-top: 1.25rem;
-    padding: 1.25rem;
+    margin-top: 0.8rem;
+    padding: 0.85rem;
     border: 1px solid var(--color-border, #e4ddd3);
-    border-radius: 1rem;
+    border-radius: 0.8rem;
     background: var(--color-surface, #ffffff);
-    box-shadow: 0 10px 30px rgb(28 36 48 / 5%);
+    box-shadow:
+        0 7px 20px
+        rgb(28 36 48 / 4%);
 }
 
 .mpc-project-detail__section-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 1rem;
+    gap: 0.75rem;
+    margin-bottom: 0.65rem;
 }
 
 .mpc-project-detail__section-header h2 {
@@ -25,30 +27,31 @@
     color: var(--color-heading, #12100e);
     font-family:
         var(--font-family-heading, "DM Serif Display", Georgia, serif);
-    font-size: 1.45rem;
+    font-size: 1.05rem;
     font-weight: 400;
 }
 
 .mpc-project-detail__screenshot-grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 1rem;
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+    gap: 0.65rem;
 }
 
 .mpc-project-detail__screenshot-grid a {
     display: block;
     overflow: hidden;
-    padding: 0.35rem;
+    padding: 0.25rem;
     border: 1px solid var(--color-border, #e4ddd3);
-    border-radius: 0.75rem;
+    border-radius: 0.55rem;
     background: #ffffff;
 }
 
 .mpc-project-detail__screenshot-image {
     display: block;
     width: 100%;
-    aspect-ratio: 16 / 9.4;
-    border-radius: 0.5rem;
+    aspect-ratio: 16 / 8;
+    border-radius: 0.4rem;
     object-fit: cover;
     object-position: top center;
 }

@@ -8,19 +8,21 @@
     grid-template-columns:
         1fr
         1fr
-        1.18fr;
-    gap: 1rem;
-    margin-top: 1.25rem;
-    padding-bottom: 1.8rem;
+        1.15fr;
+    gap: 0.7rem;
+    margin-top: 0.8rem;
+    padding-bottom: 1rem;
 }
 
 .mpc-project-detail__bottom-card {
     min-width: 0;
-    padding: 1.4rem;
+    padding: 0.9rem;
     border: 1px solid var(--color-border, #e4ddd3);
-    border-radius: 1rem;
+    border-radius: 0.8rem;
     background: var(--color-surface, #ffffff);
-    box-shadow: 0 10px 30px rgb(28 36 48 / 5%);
+    box-shadow:
+        0 7px 20px
+        rgb(28 36 48 / 4%);
 }
 
 .mpc-project-detail__bottom-card h2 {
@@ -28,35 +30,39 @@
     color: var(--color-heading, #12100e);
     font-family:
         var(--font-family-heading, "DM Serif Display", Georgia, serif);
-    font-size: 1.45rem;
+    font-size: 1.05rem;
     font-weight: 400;
 }
+
+/* Technologies */
 
 .mpc-project-detail__technology-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.65rem;
-    margin-top: 1rem;
+    gap: 0.4rem;
+    margin-top: 0.65rem;
 }
 
 .mpc-project-detail__technology-list span {
     display: inline-flex;
-    min-height: 2.1rem;
+    min-height: 1.6rem;
     align-items: center;
-    padding-inline: 0.8rem;
+    padding-inline: 0.55rem;
     border: 1px solid var(--color-border, #e4ddd3);
-    border-radius: 0.55rem;
+    border-radius: 0.45rem;
     background: var(--color-surface, #ffffff);
     color: var(--color-text-strong, #1c2430);
-    font-size: 0.72rem;
+    font-size: 0.56rem;
     font-weight: 600;
 }
+
+/* Features */
 
 .mpc-project-detail__feature-list {
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
-    margin: 1rem 0 0;
+    gap: 0.4rem;
+    margin: 0.65rem 0 0;
     padding: 0;
     list-style: none;
 }
@@ -64,25 +70,27 @@
 .mpc-project-detail__feature-list li {
     display: flex;
     align-items: flex-start;
-    gap: 0.65rem;
+    gap: 0.45rem;
     color: var(--color-text-default, #344054);
-    font-size: 0.77rem;
+    font-size: 0.62rem;
     line-height: 1.45;
 }
 
 .mpc-project-detail__feature-list li > span {
     display: inline-flex;
-    width: 1.25rem;
-    height: 1.25rem;
-    flex: 0 0 1.25rem;
+    width: 1rem;
+    height: 1rem;
+    flex: 0 0 1rem;
     align-items: center;
     justify-content: center;
-    margin-top: 0.05rem;
+    margin-top: 0.03rem;
     border-radius: 50%;
     background: var(--color-primary, #203f31);
     color: #ffffff;
-    font-size: 0.7rem;
+    font-size: 0.55rem;
 }
+
+/* Testimonial */
 
 .mpc-project-detail__testimonial {
     position: relative;
@@ -91,27 +99,27 @@
 .mpc-project-detail__quote-mark {
     color: var(--color-primary, #203f31);
     font-family: Georgia, serif;
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     line-height: 0.7;
 }
 
 .mpc-project-detail__testimonial blockquote {
-    margin: 0.85rem 0 0;
+    margin: 0.55rem 0 0;
     color: var(--color-text-default, #344054);
-    font-size: 0.84rem;
-    line-height: 1.65;
+    font-size: 0.66rem;
+    line-height: 1.55;
 }
 
 .mpc-project-detail__testimonial-person {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
-    margin-top: 1.25rem;
+    gap: 0.6rem;
+    margin-top: 0.8rem;
 }
 
 .mpc-project-detail__testimonial-photo {
-    width: 3.25rem;
-    height: 3.25rem;
+    width: 2.5rem;
+    height: 2.5rem;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -123,32 +131,34 @@
 
 .mpc-project-detail__testimonial-person strong {
     color: var(--color-text-strong, #1c2430);
-    font-size: 0.8rem;
+    font-size: 0.64rem;
 }
 
 .mpc-project-detail__testimonial-person small {
-    margin-top: 0.2rem;
+    margin-top: 0.15rem;
     color: var(--color-text-muted, #8b92a0);
-    font-size: 0.67rem;
+    font-size: 0.54rem;
 }
 
 .mpc-project-detail__stars {
-    margin-top: 1rem;
+    margin-top: 0.65rem;
     color: #f39b14;
-    font-size: 1.05rem;
-    letter-spacing: 0.12em;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
 }
+
+/* Video */
 
 .mpc-project-detail__video {
     overflow: hidden;
-    margin-bottom: 1.5rem;
-    border-radius: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.8rem;
     background: #000000;
 }
 
 .mpc-project-detail__video iframe {
     display: block;
     width: 100%;
-    min-height: 34rem;
+    min-height: 24rem;
     border: 0;
 }
