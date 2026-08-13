@@ -1,0 +1,52 @@
+/**
+ * Skills Page
+ * Other Tools & Technologies.
+ */
+
+.skills-tools {
+    padding: 0.1rem 0 1rem;
+}
+
+.skills-tools__title {
+    margin: 0 0 0.55rem;
+    color: var(--color-text-strong);
+    font-family: var(--font-family-heading);
+    font-size: 1rem;
+    font-weight: var(--font-weight-regular);
+}
+
+.skills-tools__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+}
+
+.skills-tools__tag {
+    display: inline-flex;
+    min-height: 2rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4rem 0.9rem;
+
+    border: 1px solid transparent;
+    border-radius: 0.55rem;
+
+    background: var(--color-surface-soft);
+    color: var(--color-text-strong);
+
+    font-size: 0.62rem;
+    font-weight: var(--font-weight-medium);
+
+    transition:
+        background var(--transition-fast),
+        border-color var(--transition-fast),
+        color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.skills-tools__tag:hover {
+    border-color: var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-accent);
+    transform: translateY(-1px);
+}

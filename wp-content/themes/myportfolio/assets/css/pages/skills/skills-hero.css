@@ -1,0 +1,47 @@
+/**
+ * Skills Page
+ * Hero.
+ */
+
+.skills-hero {
+    padding-bottom: 1rem;
+}
+
+.skills-hero__breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1rem 0 1.1rem;
+    color: var(--color-text-muted);
+    font-size: var(--font-size-xs);
+}
+
+.skills-hero__breadcrumb a {
+    color: var(--color-text-soft);
+    text-decoration: none;
+}
+
+.skills-hero__breadcrumb a:hover {
+    color: var(--color-accent);
+}
+
+.skills-hero__header {
+    max-width: 34rem;
+}
+
+.skills-hero__title {
+    margin: 0;
+    color: var(--color-text-strong);
+    font-family: var(--font-family-heading);
+    font-size: clamp(2rem, 3vw, 2.75rem);
+    font-weight: var(--font-weight-regular);
+    line-height: 1.1;
+}
+
+.skills-hero__description {
+    max-width: 31rem;
+    margin: 0.65rem 0 0;
+    color: var(--color-text-default);
+    font-size: 0.82rem;
+    line-height: 1.6;
+}
