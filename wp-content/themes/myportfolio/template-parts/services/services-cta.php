@@ -51,13 +51,20 @@ defined( 'ABSPATH' ) || exit;
 			</div>
 
 			<a
-				class="services-cta__button"
-				href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"
-			>
-				<?php esc_html_e( 'Let’s Talk', 'myportfolio' ); ?>
+	class="button button--accent services-cta__button"
+	href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"
+>
+	<span>
+		<?php esc_html_e( 'Let’s Talk', 'myportfolio' ); ?>
+	</span>
 
-				<span aria-hidden="true">→</span>
-			</a>
+	<span
+		class="button__icon"
+		aria-hidden="true"
+	>
+		→
+	</span>
+</a>
 
 			<div
 				class="services-cta__plant"

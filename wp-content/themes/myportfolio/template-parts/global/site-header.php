@@ -86,16 +86,21 @@ defined( 'ABSPATH' ) || exit;
 				?>
 			</nav>
 
-			<a
-				class="button button--primary site-header__cta"
-				href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"
-			>
-				<span>
-					<?php esc_html_e( 'Let’s Work Together', 'myportfolio' ); ?>
-				</span>
+		<a
+	class="button button--primary site-header__cta"
+	href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"
+>
+	<span>
+		<?php esc_html_e( 'Let’s Connect', 'myportfolio' ); ?>
+	</span>
 
-				<span aria-hidden="true">↗</span>
-			</a>
+	<span
+		class="button__icon"
+		aria-hidden="true"
+	>
+		→
+	</span>
+</a>
 
 		</div>
 

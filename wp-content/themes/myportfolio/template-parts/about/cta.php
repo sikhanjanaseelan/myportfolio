@@ -35,14 +35,21 @@ defined( 'ABSPATH' ) || exit;
 
 		<div class="about-cta__actions">
 
-			<a
-				class="about-cta__button about-cta__button--primary"
-				href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"
-			>
-				<?php esc_html_e( 'Let’s Connect', 'myportfolio' ); ?>
+<a
+	class="button button--primary about-cta__button"
+	href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"
+>
+	<span>
+		<?php esc_html_e( 'Let’s Connect', 'myportfolio' ); ?>
+	</span>
 
-				<span aria-hidden="true">→</span>
-			</a>
+	<span
+		class="button__icon"
+		aria-hidden="true"
+	>
+		→
+	</span>
+</a>
 
 			<a
 				class="about-cta__button about-cta__button--secondary"
