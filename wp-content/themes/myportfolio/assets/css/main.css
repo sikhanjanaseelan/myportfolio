@@ -41,3 +41,7 @@
 @import url("./utilities/helpers.css");
 @import url("./utilities/accessibility.css");
 @import url("./utilities/responsive.css");
+
+
+/* About Page */
+@import url("./pages/about.css");

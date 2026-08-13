@@ -1,0 +1,55 @@
+/**
+ * About Page
+ * Statistics strip.
+ */
+
+.about-stats {
+    overflow: hidden;
+    border-radius: 0.85rem;
+    background:
+        linear-gradient(
+            105deg,
+            #1d3a2b,
+            #294831
+        );
+    color: #ffffff;
+}
+
+.about-stats__grid {
+    display: grid;
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+}
+
+.about-stat {
+    min-width: 0;
+    padding: 0.9rem 0.65rem;
+    border-right:
+        1px solid
+        rgb(255 255 255 / 12%);
+    text-align: center;
+}
+
+.about-stat:last-child {
+    border-right: 0;
+}
+
+.about-stat strong,
+.about-stat span {
+    display: block;
+}
+
+.about-stat strong {
+    color: #ffffff;
+    font-family: var(--font-family-heading);
+    font-size: 1.25rem;
+    font-weight: var(--font-weight-regular);
+    line-height: 1;
+}
+
+.about-stat span {
+    margin-top: 0.35rem;
+    color: rgb(255 255 255 / 72%);
+    font-size: 0.52rem;
+    line-height: 1.35;
+}

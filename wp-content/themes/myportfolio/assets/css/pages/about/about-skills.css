@@ -1,0 +1,160 @@
+/**
+ * About Page
+ * Skills & technologies.
+ */
+
+.about-skills {
+    min-width: 0;
+}
+
+.about-skills__panel {
+    padding: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.85rem;
+    background: var(--color-surface);
+}
+
+/* ==========================================================
+   Heading
+========================================================== */
+
+.about-skills__header {
+    margin-bottom: 0.7rem;
+}
+
+.about-skills__title {
+    margin: 0;
+    color: var(--color-text-strong);
+    font-family: var(--font-family-heading);
+    font-size: 1.05rem;
+    font-weight: var(--font-weight-regular);
+}
+
+.about-skills__intro {
+    max-width: 27rem;
+    margin: 0.25rem 0 0;
+    color: var(--color-text-soft);
+    font-size: 0.6rem;
+    line-height: 1.5;
+}
+
+/* ==========================================================
+   Main skills
+========================================================== */
+
+.about-skills__grid {
+    display: grid;
+    grid-template-columns:
+        repeat(5, minmax(0, 1fr));
+    gap: 0.5rem;
+}
+
+.about-skill-card {
+    display: flex;
+    min-width: 0;
+    min-height: 3.5rem;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 0.55rem 0.35rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.55rem;
+    background: var(--color-surface);
+    text-align: center;
+}
+
+.about-skill-card__icon {
+    display: inline-flex;
+    min-width: 1.65rem;
+    height: 1.45rem;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    font-size: 0.68rem;
+    font-weight: 800;
+}
+
+.about-skill-card strong {
+    color: var(--color-text-strong);
+    font-size: 0.58rem;
+    font-weight: var(--font-weight-semibold);
+}
+
+/* ==========================================================
+   Individual icon accents
+========================================================== */
+
+.about-skill-card__icon--php {
+    color: #5968a5;
+}
+
+.about-skill-card__icon--wordpress {
+    color: #28759c;
+}
+
+.about-skill-card__icon--laravel {
+    color: #ef4b3f;
+}
+
+.about-skill-card__icon--javascript {
+    padding-inline: 0.25rem;
+    background: #f4d21f;
+    color: #111111;
+}
+
+.about-skill-card__icon--mysql {
+    color: #287da1;
+}
+
+.about-skill-card__icon--html {
+    color: #e65328;
+}
+
+.about-skill-card__icon--css {
+    color: #3478c8;
+}
+
+.about-skill-card__icon--api {
+    color: #3977b7;
+}
+
+.about-skill-card__icon--git {
+    color: #e6532d;
+}
+
+.about-skill-card__icon--linux {
+    color: var(--color-primary);
+}
+
+/* ==========================================================
+   Other technologies
+========================================================== */
+
+.about-skills__other {
+    margin-top: 0.65rem;
+}
+
+.about-skills__other h3 {
+    margin: 0 0 0.45rem;
+    color: var(--color-text-strong);
+    font-size: 0.58rem;
+    font-weight: var(--font-weight-semibold);
+}
+
+.about-skills__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.about-skills__tags span {
+    display: inline-flex;
+    min-height: 1.35rem;
+    align-items: center;
+    padding-inline: 0.55rem;
+    border-radius: var(--radius-pill);
+    background: var(--color-surface-soft);
+    color: var(--color-text-default);
+    font-size: 0.52rem;
+}

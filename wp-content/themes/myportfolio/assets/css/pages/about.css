@@ -1,0 +1,12 @@
+/**
+ * About Page
+ */
+
+@import url("./about/about-layout.css");
+@import url("./about/about-hero.css");
+@import url("./about/about-journey.css");
+@import url("./about/about-skills.css");
+@import url("./about/about-beyond.css");
+@import url("./about/about-stats.css");
+@import url("./about/about-cta.css");
+@import url("./about/about-responsive.css");

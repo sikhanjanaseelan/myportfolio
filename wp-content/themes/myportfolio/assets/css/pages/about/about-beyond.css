@@ -1,0 +1,136 @@
+/**
+ * About Page
+ * Beyond the Code.
+ */
+
+.about-beyond {
+    min-width: 0;
+}
+
+.about-beyond__panel {
+    padding: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.85rem;
+    background:
+        linear-gradient(
+            135deg,
+            var(--color-surface),
+            var(--color-surface-soft)
+        );
+}
+
+.about-beyond__header {
+    margin-bottom: 0.65rem;
+}
+
+.about-beyond__eyebrow {
+    margin: 0 0 0.2rem;
+    color: var(--color-accent);
+    font-size: 0.58rem;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.about-beyond__title {
+    margin: 0;
+    color: var(--color-text-strong);
+    font-family: var(--font-family-heading);
+    font-size: 1.05rem;
+    font-weight: var(--font-weight-regular);
+}
+
+.about-beyond__copy {
+    color: var(--color-text-default);
+    font-size: 0.67rem;
+    line-height: 1.6;
+}
+
+.about-beyond__copy p {
+    margin: 0;
+}
+
+.about-beyond__copy p + p {
+    margin-top: 0.45rem;
+}
+
+/* ==========================================================
+   Interests
+========================================================== */
+
+.about-beyond__interests {
+    display: grid;
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+    gap: 0.45rem;
+    margin-top: 0.75rem;
+}
+
+.about-interest {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.5rem 0.55rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.55rem;
+    background: var(--color-surface);
+}
+
+.about-interest__icon {
+    display: inline-flex;
+    width: 1.45rem;
+    height: 1.45rem;
+    flex: 0 0 1.45rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.4rem;
+    background: var(--color-primary-100, #edf3ef);
+    color: var(--color-primary);
+    font-size: 0.68rem;
+    font-weight: 700;
+}
+
+.about-interest:nth-child(even)
+.about-interest__icon {
+    background: var(--color-accent-50, #fff4e8);
+    color: var(--color-accent);
+}
+
+.about-interest__label {
+    overflow: hidden;
+    color: var(--color-text-strong);
+    font-size: 0.58rem;
+    font-weight: var(--font-weight-semibold);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ==========================================================
+   Quote
+========================================================== */
+
+.about-beyond__quote {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.55rem;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.about-beyond__quote > span {
+    color: var(--color-accent);
+    font-family: Georgia, serif;
+    font-size: 1.6rem;
+    line-height: 0.8;
+}
+
+.about-beyond__quote p {
+    margin: 0;
+    color: var(--color-text-soft);
+    font-family: var(--font-family-heading);
+    font-size: 0.68rem;
+    font-style: italic;
+    line-height: 1.55;
+}

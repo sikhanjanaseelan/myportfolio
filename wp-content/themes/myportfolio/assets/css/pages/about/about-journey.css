@@ -1,0 +1,113 @@
+/**
+ * About Page
+ * Journey timeline.
+ */
+
+.about-journey {
+    min-width: 0;
+}
+
+.about-journey__panel {
+    padding: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.85rem;
+    background: var(--color-surface);
+}
+
+.about-journey__header {
+    margin-bottom: 0.85rem;
+}
+
+.about-journey__title {
+    margin: 0;
+    color: var(--color-text-strong);
+    font-family: var(--font-family-heading);
+    font-size: 1.05rem;
+    font-weight: var(--font-weight-regular);
+    line-height: 1.2;
+}
+
+/* ==========================================================
+   Timeline
+========================================================== */
+
+.about-journey__timeline {
+    position: relative;
+    display: grid;
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+    gap: 0.65rem;
+}
+
+.about-journey__line {
+    position: absolute;
+    top: 1.05rem;
+    right: 9%;
+    left: 9%;
+    height: 1px;
+    background: var(--color-border-strong);
+}
+
+.about-journey__item {
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+    text-align: center;
+}
+
+/* ==========================================================
+   Icon
+========================================================== */
+
+.about-journey__icon {
+    display: inline-flex;
+    width: 2.2rem;
+    height: 2.2rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow:
+        0 0 0 0.28rem
+        var(--color-surface);
+}
+
+.about-journey__icon svg {
+    width: 1rem;
+    height: 1rem;
+}
+
+.about-journey__icon--green {
+    background: var(--color-primary-100, #edf3ef);
+    color: var(--color-primary);
+}
+
+.about-journey__icon--orange {
+    background: var(--color-accent-50, #fff4e8);
+    color: var(--color-accent);
+}
+
+/* ==========================================================
+   Text
+========================================================== */
+
+.about-journey__year {
+    margin: 0.55rem 0 0;
+    color: var(--color-text-soft);
+    font-size: 0.58rem;
+    font-weight: var(--font-weight-semibold);
+}
+
+.about-journey__item-title {
+    margin: 0.25rem 0 0;
+    color: var(--color-text-strong);
+    font-size: 0.65rem;
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.35;
+}
+
+.about-journey__description {
+    margin: 0.35rem auto 0;
+    color: var(--color-text-soft);
+    font-size: 0.56rem;
+    line-height: 1.5;
+}

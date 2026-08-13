@@ -1,0 +1,143 @@
+/* ==========================================================
+   About Journey Responsive
+========================================================== */
+
+@media (max-width: 56rem) {
+
+    .about-journey__timeline {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+        gap: 1.5rem 1rem;
+    }
+
+    .about-journey__line {
+        display: none;
+    }
+}
+
+@media (max-width: 34rem) {
+
+    .about-journey__panel {
+        padding: 1rem;
+    }
+
+    .about-journey__timeline {
+        grid-template-columns: 1fr;
+    }
+
+    .about-journey__item {
+        display: grid;
+        grid-template-columns:
+            auto
+            minmax(0, 1fr);
+        column-gap: 0.85rem;
+        text-align: left;
+    }
+
+    .about-journey__icon {
+        grid-row: 1 / 4;
+    }
+
+    .about-journey__year,
+    .about-journey__item-title,
+    .about-journey__description {
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    .about-journey__year {
+        margin-top: 0;
+    }
+
+    .about-journey__description {
+        max-width: none;
+    }
+}
+
+
+/* ==========================================================
+   Main About Grid
+========================================================== */
+
+@media (max-width: 64rem) {
+
+    .about-content__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================
+   Journey / Skills
+========================================================== */
+
+@media (max-width: 42rem) {
+
+    .about-journey__timeline {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    .about-journey__line {
+        display: none;
+    }
+
+    .about-skills__grid {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 30rem) {
+
+    .about-skills__grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* ==========================================================
+   Beyond / Stats / CTA
+========================================================== */
+
+@media (max-width: 42rem) {
+
+    .about-beyond__interests {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .about-stats__grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .about-stat:nth-child(2) {
+        border-right: 0;
+    }
+
+    .about-stat:nth-child(-n + 2) {
+        border-bottom:
+            1px solid
+            rgb(255 255 255 / 12%);
+    }
+
+    .about-cta__inner {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 30rem) {
+
+    .about-beyond__interests {
+        grid-template-columns: 1fr;
+    }
+
+    .about-cta__actions {
+        flex-direction: column;
+    }
+
+    .about-cta__button {
+        width: 100%;
+    }
+}
