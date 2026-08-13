@@ -1,0 +1,141 @@
+/**
+ * Services Page
+ * CTA.
+ */
+
+.services-cta {
+    padding: 0.15rem 0 1.5rem;
+}
+
+.services-cta__panel {
+    position: relative;
+    display: grid;
+    overflow: hidden;
+    grid-template-columns:
+        minmax(0, 1fr)
+        auto;
+    gap: 2rem;
+    align-items: center;
+    min-height: 8.5rem;
+    padding: 1.25rem 8rem 1.25rem 1.4rem;
+    border-radius: 0.9rem;
+    background: linear-gradient(
+        110deg,
+        #173728,
+        #21472f 60%,
+        #183823
+    );
+    color: #ffffff;
+}
+
+.services-cta__content {
+    min-width: 0;
+}
+
+.services-cta h2 {
+    margin: 0;
+    color: #f8efe1;
+    font-family: var(--font-family-heading);
+    font-size: 1.4rem;
+    font-weight: var(--font-weight-regular);
+}
+
+.services-cta__content > p {
+    margin: 0.35rem 0 0;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.82rem;
+}
+
+.services-cta__benefits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.9rem;
+}
+
+.services-cta__benefits span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 0.58rem;
+}
+
+.services-cta__benefits strong {
+    color: #f2e8d8;
+}
+
+.services-cta__button {
+    display: inline-flex;
+    min-height: 2.8rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding-inline: 1.4rem;
+    border-radius: 0.55rem;
+    background: var(--color-accent);
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight: var(--font-weight-semibold);
+    text-decoration: none;
+    transition:
+        transform var(--transition-fast),
+        background var(--transition-fast);
+}
+
+.services-cta__button:hover {
+    background: var(--color-accent-hover);
+    transform: translateY(-1px);
+}
+
+/* Plant */
+
+.services-cta__plant {
+    position: absolute;
+    right: 1.7rem;
+    bottom: 0;
+    width: 5rem;
+    height: 6rem;
+}
+
+.services-cta__pot {
+    position: absolute;
+    right: 0.9rem;
+    bottom: 0;
+    width: 3rem;
+    height: 2.2rem;
+    border-radius: 0.25rem 0.25rem 0.75rem 0.75rem;
+    background: #f1eee7;
+}
+
+.services-cta__leaf {
+    position: absolute;
+    bottom: 1.8rem;
+    width: 1.4rem;
+    height: 3rem;
+    border-radius: 100% 0 100% 0;
+    background: #638255;
+    transform-origin: bottom center;
+}
+
+.services-cta__leaf--1 {
+    left: 1.4rem;
+    transform: rotate(-35deg);
+}
+
+.services-cta__leaf--2 {
+    left: 2.15rem;
+    height: 3.6rem;
+    transform: rotate(-10deg);
+}
+
+.services-cta__leaf--3 {
+    left: 2.8rem;
+    height: 3.7rem;
+    transform: rotate(15deg);
+}
+
+.services-cta__leaf--4 {
+    left: 3.45rem;
+    transform: rotate(35deg);
+}

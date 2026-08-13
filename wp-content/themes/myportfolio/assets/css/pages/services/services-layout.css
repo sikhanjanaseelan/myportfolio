@@ -1,0 +1,51 @@
+/**
+ * Services Page
+ * Main layout.
+ */
+
+.services-page {
+    background: var(--color-background);
+}
+
+.services-page__intro {
+    padding-bottom: 1.15rem;
+}
+
+.services-page__breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1rem 0 1.1rem;
+    color: var(--color-text-muted);
+    font-size: var(--font-size-xs);
+}
+
+.services-page__breadcrumb a {
+    color: var(--color-text-soft);
+    text-decoration: none;
+}
+
+.services-page__breadcrumb a:hover {
+    color: var(--color-accent);
+}
+
+.services-page__header {
+    max-width: 40rem;
+}
+
+.services-page__header h1 {
+    margin: 0;
+    color: var(--color-text-strong);
+    font-family: var(--font-family-heading);
+    font-size: clamp(2rem, 3vw, 2.75rem);
+    font-weight: var(--font-weight-regular);
+    line-height: 1.1;
+}
+
+.services-page__header p {
+    max-width: 39rem;
+    margin: 0.65rem 0 0;
+    color: var(--color-text-default);
+    font-size: 0.82rem;
+    line-height: 1.6;
+}
