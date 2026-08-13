@@ -1,0 +1,115 @@
+/**
+ * Experience Page
+ * Main layout.
+ */
+
+.experience-page {
+    background: var(--color-background);
+}
+
+.experience-page__intro {
+    padding-bottom: 1.25rem;
+}
+
+.experience-page__breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1rem 0 1.1rem;
+    color: var(--color-text-muted);
+    font-size: var(--font-size-xs);
+}
+
+.experience-page__breadcrumb a {
+    color: var(--color-text-soft);
+    text-decoration: none;
+}
+
+.experience-page__breadcrumb a:hover {
+    color: var(--color-accent);
+}
+
+.experience-page__header {
+    max-width: 35rem;
+}
+
+.experience-page__header h1 {
+    margin: 0;
+    color: var(--color-text-strong);
+    font-family: var(--font-family-heading);
+    font-size: clamp(2rem, 3vw, 2.75rem);
+    font-weight: var(--font-weight-regular);
+    line-height: 1.1;
+}
+
+.experience-page__header p {
+    max-width: 32rem;
+    margin: 0.65rem 0 0;
+    color: var(--color-text-default);
+    font-size: 0.82rem;
+    line-height: 1.6;
+}
+
+/* Main 6 / 6 layout */
+
+.experience-content {
+    padding-bottom: 1.5rem;
+}
+
+.experience-content__grid {
+    display: grid;
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    align-items: stretch;
+}
+
+.experience-timeline,
+.experience-achievements {
+    min-width: 0;
+}
+
+.experience-card {
+    height: 100%;
+    padding: 1.35rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.9rem;
+    background: var(--color-surface);
+    box-shadow:
+        0 8px 24px
+        rgb(28 36 48 / 4%);
+}
+
+.experience-card__header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.experience-card__header h2 {
+    margin: 0;
+    color: var(--color-primary);
+    font-family: var(--font-family-heading);
+    font-size: 1.35rem;
+    font-weight: var(--font-weight-regular);
+}
+
+.experience-card__header-icon {
+    display: inline-flex;
+    width: 2.4rem;
+    height: 2.4rem;
+    flex: 0 0 2.4rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.55rem;
+    background: var(--color-accent-50, #fff4e8);
+    color: var(--color-accent);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.experience-card__header-icon--green {
+    background: var(--color-primary-100, #edf3ef);
+    color: var(--color-primary);
+}

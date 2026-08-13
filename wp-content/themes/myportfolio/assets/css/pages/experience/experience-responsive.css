@@ -1,0 +1,26 @@
+/**
+ * Experience Page
+ * Responsive.
+ */
+
+@media (max-width: 64rem) {
+
+    .experience-content__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 40rem) {
+
+    .experience-card {
+        padding: 1rem;
+    }
+
+    .experience-card__header h2 {
+        font-size: 1.15rem;
+    }
+
+    .experience-timeline__item + .experience-timeline__item {
+        margin-top: 1.25rem;
+    }
+}
